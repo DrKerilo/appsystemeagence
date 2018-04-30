@@ -2,41 +2,52 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.adaming.dao.IClasseStandardDao;
 import fr.adaming.model.ClasseStandard;
 
 @Service
 public class ClasseStandardServiceImpl implements IClasseStandardService {
-
+	
+	// Injection de dépendance
+	@Autowired
+	private IClasseStandardDao csDao;
+	
+	// Setter pour l'injection de dépendance
+	public void setCsDao(IClasseStandardDao csDao) {
+		this.csDao = csDao;
+	}
+	
+	// Méthodes CRUD Service
+	// ----- CREATE
 	@Override
 	public ClasseStandard addClasseStandard(ClasseStandard cs) {
-		// TODO Auto-generated method stub
-		return null;
+		return csDao.addClasseStandard(cs);
 	}
 
+	// ----- UPDATE
 	@Override
 	public ClasseStandard updateClasseStandard(ClasseStandard cs) {
-		// TODO Auto-generated method stub
-		return null;
+		return csDao.updateClasseStandard(cs);
 	}
 
+	// ----- DELETE
 	@Override
 	public int deleteClasseStandard(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return csDao.deleteClasseStandard(id);
 	}
 
+	// ----- READ ALL
 	@Override
 	public List<ClasseStandard> getAllClasseStandard() {
-		// TODO Auto-generated method stub
-		return null;
+		return csDao.getAllClasseStandard();
 	}
 
 	@Override
 	public ClasseStandard getClasseStandardById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return csDao.getClasseStandardById(id);
 	}
 
 }
