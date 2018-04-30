@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,10 +33,23 @@ public class BienImmobilier implements Serializable {
 	private Date dateDisposition;
 	private double revenuCadastral;
 
-	// private ClasseStandard classeStandard;
+	// Association UML en Java
+	@ManyToOne
+	@JoinColumn(name = "cs_id", referencedColumnName = "code")
+	private ClasseStandard classeStandard;
+	
+	
 	// private Visite visite;
 	// private Acquereur acquereur;
 	// private Agent agent
+
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
+	}
+
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
 
 	// Constructeurs
 	public BienImmobilier() {
@@ -52,7 +67,7 @@ public class BienImmobilier implements Serializable {
 		this.revenuCadastral = revenuCadastral;
 	}
 
-	public BienImmobilier(Long id, ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
+	public BienImmobilier(int id, ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
 			double revenuCadastral) {
 		super();
 		this.id = id;
@@ -64,11 +79,11 @@ public class BienImmobilier implements Serializable {
 	}
 
 	// Getters et setters
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
