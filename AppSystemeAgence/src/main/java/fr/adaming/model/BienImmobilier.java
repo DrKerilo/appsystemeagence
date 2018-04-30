@@ -21,7 +21,7 @@ public class BienImmobilier implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
-	private Long id;
+	private int id;
 	private ImmoStatut statut;
 	@Temporal(TemporalType.DATE)
 	private Date dateSoumission;
