@@ -54,19 +54,31 @@ public class ClientDaoImpl implements IClientDao{
 	}
 
 	@Override
-	public int deleteClient() {
+	public int deleteClient(int id) {
+		
+		// Création de la requête
+		String req = "DELETE from Client cl WHERE cl.id=pId";
 		
 		// Ouverture de la session
 		s=sf.getCurrentSession();
 		
-		// 
+		//Récup du query
+		Query query=s.createQuery(req);
+		
+		// Passage des params
+		query.setParameter("pId",id);
+		
+		query.executeUpdate();
 		
 		return 0;
 	}
 
 	@Override
-	public Client getClientById(Client cl) {
-		// TODO Auto-generated method stub
+	public Client getClientById(int id) {
+		
+		// Création de la requête
+		String req = "FROM Client cl WHERE cl.id=id";
+		
 		return null;
 	}
 
