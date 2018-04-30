@@ -107,8 +107,21 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- Spring Expression Language est chargé automatiquement car les autres 
-			modules en dépendent -->
+		<!-- Spring Expression Language -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-expression -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Spring AOP -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
 		<!-- Spring ORM -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
