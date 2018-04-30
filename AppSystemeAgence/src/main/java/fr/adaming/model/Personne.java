@@ -1,15 +1,30 @@
 package fr.adaming.model;
 
-public class Personne {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="personnes")
+public class Personne implements Serializable {
 	
 	// Attributs
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_p")
 	private int id;
 	private String nom;
 	private String prenom;
 	private int telPerso;
 	
-	// Transformation de l'association UML en JAVA
+	@Embedded
 	private Adresse adresse;
 
 	// Constructeurs

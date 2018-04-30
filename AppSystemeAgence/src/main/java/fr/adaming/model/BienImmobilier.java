@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import fr.adaming.model.enumerations.ImmoStatut;
+
 @Entity
 @Table(name = "biens_immobiliers")
 public class BienImmobilier implements Serializable {
@@ -20,7 +22,7 @@ public class BienImmobilier implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
 	private Long id;
-	private String statut;
+	private ImmoStatut statut;
 	@Temporal(TemporalType.DATE)
 	private Date dateSoumission;
 	@Embedded
@@ -40,7 +42,7 @@ public class BienImmobilier implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BienImmobilier(String statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
+	public BienImmobilier(ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
 			double revenuCadastral) {
 		super();
 		this.statut = statut;
@@ -50,7 +52,7 @@ public class BienImmobilier implements Serializable {
 		this.revenuCadastral = revenuCadastral;
 	}
 
-	public BienImmobilier(Long id, String statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
+	public BienImmobilier(Long id, ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
 			double revenuCadastral) {
 		super();
 		this.id = id;
@@ -70,11 +72,11 @@ public class BienImmobilier implements Serializable {
 		this.id = id;
 	}
 
-	public String getStatut() {
+	public ImmoStatut getStatut() {
 		return statut;
 	}
 
-	public void setStatut(String statut) {
+	public void setStatut(ImmoStatut statut) {
 		this.statut = statut;
 	}
 
@@ -109,7 +111,6 @@ public class BienImmobilier implements Serializable {
 	public void setRevenuCadastral(double revenuCadastral) {
 		this.revenuCadastral = revenuCadastral;
 	}
-	
 
 	// Méthode
 	@Override
@@ -117,7 +118,5 @@ public class BienImmobilier implements Serializable {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission
 				+ ", dateDisposition=" + dateDisposition + ", revenuCadastral=" + revenuCadastral + "]";
 	}
-	
-	
 
 }

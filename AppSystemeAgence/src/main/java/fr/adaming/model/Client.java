@@ -1,14 +1,27 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Client extends Personne {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity
+@Table(name="clients")
+public class Client extends Personne implements Serializable {
 	
 	// Attributs
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int numCl;
 
 	// Transformation des associations UML en JAVA
+	@Autowired
 	List<ClasseStandard> listeClasseStd;
 
 	// Constructeurs
