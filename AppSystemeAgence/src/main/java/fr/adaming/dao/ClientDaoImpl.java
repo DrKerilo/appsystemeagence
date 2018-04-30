@@ -28,7 +28,7 @@ public class ClientDaoImpl implements IClientDao{
 	}
 
 	@Override
-	public List<Client> getAllClient(Client cl) {
+	public List<Client> getAllClient() {
 		
 		// Création de la requête
 		String req = "FROM Client";
