@@ -8,7 +8,7 @@ public interface IClientDao {
 	
 	public Client addClient(Client cl);
 	
-	public List<Client> getAllClient(Client cl);
+	public List<Client> getAllClient();
 	
 	public Client updateClient(Client cl);
 	
