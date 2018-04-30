@@ -1,7 +1,9 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class ClasseStandard implements Serializable{
 	// déclaration des attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_cs")
 	private int code;
 	private String type;
 	private String modeOffre;
@@ -24,7 +27,7 @@ public class ClasseStandard implements Serializable{
 	
 	// association uml en java
 	@OneToMany(mappedBy="classeStandard")
-	private BienImmobilier bienImmo;
+	private List<BienImmobilier> listeBiens;
 	
 	// déclaration des constructeurs
 	public ClasseStandard() {
@@ -87,6 +90,14 @@ public class ClasseStandard implements Serializable{
 
 	public void setSuperficieMin(double superficieMin) {
 		this.superficieMin = superficieMin;
+	}
+
+	public List<BienImmobilier> getListeBiens() {
+		return listeBiens;
+	}
+
+	public void setListeBiens(List<BienImmobilier> listeBiens) {
+		this.listeBiens = listeBiens;
 	}
 	
 	

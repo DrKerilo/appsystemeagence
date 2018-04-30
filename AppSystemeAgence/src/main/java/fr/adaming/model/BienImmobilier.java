@@ -35,7 +35,7 @@ public class BienImmobilier implements Serializable {
 
 	// Association UML en Java
 	@ManyToOne
-	@JoinColumn(name = "cs_id", referencedColumnName = "code")
+	@JoinColumn(name = "cs_id", referencedColumnName = "id_cs")
 	private ClasseStandard classeStandard;
 	
 	
@@ -126,6 +126,8 @@ public class BienImmobilier implements Serializable {
 	public void setRevenuCadastral(double revenuCadastral) {
 		this.revenuCadastral = revenuCadastral;
 	}
+	
+	
 
 	// Méthode
 	@Override

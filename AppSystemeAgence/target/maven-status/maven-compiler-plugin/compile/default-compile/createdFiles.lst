@@ -1,12 +1,14 @@
 fr\adaming\dao\ClientDaoImpl.class
 fr\adaming\model\ClasseStandard.class
 fr\adaming\dao\IClasseStandardDao.class
+fr\adaming\rest\BienImmobilierRest.class
 fr\adaming\service\IBienImmobilierService.class
 fr\adaming\model\Adresse.class
 fr\adaming\model\enumerations\ImmoStatut.class
 fr\adaming\model\Client.class
 fr\adaming\model\BienImmobilier.class
 fr\adaming\service\IClientService.class
+fr\adaming\dao\BienImmobilierDaoImpl.class
 fr\adaming\dao\IClientDao.class
 fr\adaming\model\Visite.class
 ClasseStandardRest.class
@@ -16,5 +18,6 @@ fr\adaming\dao\IBienImmobilierDao.class
 fr\adaming\model\Personne.class
 fr\adaming\rest\ClasseStandardRest.class
 fr\adaming\service\BienImmobilierServiceImpl.class
+fr\adaming\service\ClientServiceImpl.class
 fr\adaming\service\IClasseStandardService.class
 Truc.class
