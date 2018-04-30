@@ -22,8 +22,8 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public List<Client> getAllClient(Client cl) {
-		return clientDao.getAllClient(cl);
+	public List<Client> getAllClient() {
+		return clientDao.getAllClient();
 	}
 
 	@Override
@@ -33,13 +33,13 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public int deleteClient() {
-		return clientDao.deleteClient();
+	public int deleteClient(int id) {
+		return clientDao.deleteClient(id);
 	}
 
 	@Override
-	public Client getClientById(Client cl) {
-		return clientDao.getClientById(cl);
+	public Client getClientById(int id) {
+		return clientDao.getClientById(id);
 	}
 
 }

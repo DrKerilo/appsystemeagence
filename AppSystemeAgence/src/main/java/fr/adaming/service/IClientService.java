@@ -8,11 +8,11 @@ public interface IClientService {
 
 	public Client addClient(Client cl);
 
-	public List<Client> getAllClient(Client cl);
+	public List<Client> getAllClient();
 
 	public Client updateClient(Client cl);
 
-	public int deleteClient();
+	public int deleteClient(int id);
 
-	public Client getClientById(Client cl);
+	public Client getClientById(int id);
 }
