@@ -1,8 +1,21 @@
 package fr.adaming.model;
 
-public class ClasseStandard {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="classesStandards")
+public class ClasseStandard implements Serializable{
 	
 	// déclaration des attributs
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int code;
 	private String type;
 	private String modeOffre;
@@ -10,6 +23,8 @@ public class ClasseStandard {
 	private double superficieMin;
 	
 	// association uml en java
+	@OneToMany(mappedBy="classeStandard")
+	private BienImmobilier bienImmo;
 	
 	// déclaration des constructeurs
 	public ClasseStandard() {
