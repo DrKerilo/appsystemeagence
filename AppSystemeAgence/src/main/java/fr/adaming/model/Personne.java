@@ -10,15 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="personnes")
+
 public class Personne implements Serializable {
 	
 	// Attributs
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_p")
+
 	private int id;
 	private String nom;
 	private String prenom;

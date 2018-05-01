@@ -21,7 +21,6 @@ public class Client extends Personne implements Serializable {
 	private int numCl;
 
 	// Transformation des associations UML en JAVA
-	@Autowired
 	List<ClasseStandard> listeClasseStd;
 
 	// Constructeurs
