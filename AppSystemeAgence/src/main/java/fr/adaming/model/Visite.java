@@ -22,7 +22,7 @@ public class Visite {
 	
 	// associations uml en java
 	@ManyToOne
-	@JoinColumn(name="cl_num", referencedColumnName="numCl")
+	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
 	private Client client;
 	
 	// ajouter l'association avec le conseillier

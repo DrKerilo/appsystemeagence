@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="classesStandards")
+@Table(name="classes_standards")
 public class ClasseStandard implements Serializable{
 	
 	// déclaration des attributs

@@ -1,47 +1,39 @@
 package fr.adaming.model;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
-@Table(name="clients")
-public class Client extends Personne implements Serializable {
-	
-	// Attributs
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int numCl;
+@Table(name = "clients")
+@AttributeOverride(name = "id", column = @Column(name = "id_cl"))
+public class Client extends Personne {
 
 	// Transformation des associations UML en JAVA
-	List<ClasseStandard> listeClasseStd;
+	@OneToMany
+	@JoinTable(name = "recherches_clients", joinColumns = @JoinColumn(name = "cl_id"), inverseJoinColumns = @JoinColumn(name = "cs_id"))
+	private List<ClasseStandard> listeClasseStd;
 
 	// Constructeurs
 	public Client() {
 		super();
 	}
 
-	public Client(int numCl) {
-		super();
-		this.numCl = numCl;
+	public Client(String nom, String prenom, int telPerso, Adresse adresse) {
+		super(nom, prenom, telPerso, adresse);
+	}
+
+	public Client(int id, String nom, String prenom, int telPerso, Adresse adresse) {
+		super(id, nom, prenom, telPerso, adresse);
 	}
 
 	// Getters et setters
-	public int getNumCl() {
-		return numCl;
-	}
-
-	public void setNumCl(int numCl) {
-		this.numCl = numCl;
-	}
-
 	public List<ClasseStandard> getListeClasseStd() {
 		return listeClasseStd;
 	}
@@ -49,11 +41,5 @@ public class Client extends Personne implements Serializable {
 	public void setListeClasseStd(List<ClasseStandard> listeClasseStd) {
 		this.listeClasseStd = listeClasseStd;
 	}
-
-	@Override
-	public String toString() {
-		return "Client [numCl=" + numCl + "]";
-	}
-	
 
 }
