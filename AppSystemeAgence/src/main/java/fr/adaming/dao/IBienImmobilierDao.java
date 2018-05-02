@@ -15,4 +15,5 @@ public interface IBienImmobilierDao {
 	
 	public List<BienImmobilier> getAllBienImmobilier();
 	
+	public List<BienImmobilier> getBiensByClasse(int id);
 }

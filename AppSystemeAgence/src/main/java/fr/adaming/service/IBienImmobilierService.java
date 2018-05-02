@@ -15,4 +15,5 @@ public interface IBienImmobilierService {
 	
 	public List<BienImmobilier> getAllBienImmobilier();
 	
+	public List<BienImmobilier> getBiensByClasse(int id);
 }

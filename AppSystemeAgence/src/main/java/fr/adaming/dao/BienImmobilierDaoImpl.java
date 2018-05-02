@@ -75,4 +75,19 @@ public class BienImmobilierDaoImpl implements IBienImmobilierDao {
 		return liste;
 	}
 
+	@Override
+	public List<BienImmobilier> getBiensByClasse(int id) {
+		
+		Session s = sf.getCurrentSession();
+		
+		String req = "FROM BienImmobilier b WHERE b.classeStandard.code = :pId";
+		
+		Query query = s.createQuery(req);
+		
+		// Passage des parametres
+		query.setParameter("pId", id);
+
+		return query.list();
+	}
+
 }
