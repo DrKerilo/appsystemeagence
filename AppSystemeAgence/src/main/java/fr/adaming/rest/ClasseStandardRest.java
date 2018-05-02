@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +20,12 @@ public class ClasseStandardRest {
 	private IClasseStandardService csService;
 		
 	@RequestMapping(value="/classeStandard", method=RequestMethod.POST, consumes="application/json", produces="application/json")
-	public ClasseStandard addClasseStandard(ClasseStandard cs) {
+	public ClasseStandard addClasseStandard(@RequestBody ClasseStandard cs) {
 		return csService.addClasseStandard(cs);
 	}
 	
 	@RequestMapping(value="/classeStandard", method=RequestMethod.PUT, consumes="application/json", produces="application/json")
-	public ClasseStandard updateClasseStandard(ClasseStandard cs) {
+	public ClasseStandard updateClasseStandard(@RequestBody ClasseStandard cs) {
 		return csService.updateClasseStandard(cs);
 	}
 	
