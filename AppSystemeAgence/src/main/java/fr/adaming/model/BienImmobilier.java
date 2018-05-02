@@ -14,9 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import fr.adaming.model.enumerations.ImmoStatut;
 
+@XmlRootElement
 @Entity
 @Table(name = "biens_immobiliers")
 public class BienImmobilier implements Serializable {
