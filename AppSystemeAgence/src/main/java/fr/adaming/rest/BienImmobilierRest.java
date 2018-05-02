@@ -44,7 +44,7 @@ public class BienImmobilierRest {
 		return bmService.getAllBienImmobilier();
 	}
 	
-	@RequestMapping(value="/biByClasse/{pId}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/listeBIByClasse/{pId}", method=RequestMethod.GET, produces="application/json")
 	public List<BienImmobilier> getBiensByClasse(@PathVariable("pId") int id) {
 		return bmService.getBiensByClasse(id);
 	}
