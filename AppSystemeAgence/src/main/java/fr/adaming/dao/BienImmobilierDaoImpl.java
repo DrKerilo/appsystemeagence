@@ -44,9 +44,7 @@ public class BienImmobilierDaoImpl implements IBienImmobilierDao {
 		// Passage des parametres
 		query.setParameter("pId", id);
 		
-		int verif = query.executeUpdate();
-		
-		return verif;
+		return query.executeUpdate();
 	}
 
 	@Override
