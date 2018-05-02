@@ -60,7 +60,7 @@ public class ClientDaoImpl implements IClientDao{
 	public int deleteClient(int id) {
 		
 		// Création de la requête
-		String req = "DELETE from Client cl WHERE cl.id=pId";
+		String req = "DELETE from Client cl WHERE cl.id=:pId";
 		
 		// Ouverture de la session
 		s=sf.getCurrentSession();
@@ -80,9 +80,18 @@ public class ClientDaoImpl implements IClientDao{
 	public Client getClientById(int id) {
 		
 		// Création de la requête
-		String req = "FROM Client cl WHERE cl.id=id";
+		String req = "FROM Client cl WHERE cl.id=:pid";
 		
-		return null;
+		// Ouverture de la session
+		s=sf.getCurrentSession();
+		
+		// Récup du query
+		Query query=s.createQuery(req);
+		
+		// Passage des params
+		query.setParameter("pId", id);
+		
+		return (Client) query.uniqueResult();
 	}
 
 }
