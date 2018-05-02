@@ -48,7 +48,6 @@ public class BienImmobilier implements Serializable {
 
 	// private Visite visite;
 	// private Acquereur acquereur;
-	// private Agent agent
 
 	public ClasseStandard getClasseStandard() {
 		return classeStandard;
