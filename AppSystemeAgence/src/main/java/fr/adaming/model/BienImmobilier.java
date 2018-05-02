@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,6 +35,8 @@ public class BienImmobilier implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateDisposition;
 	private double revenuCadastral;
+	@Lob
+	private byte[] photo;
 
 	// Association UML en Java
 	@ManyToOne
