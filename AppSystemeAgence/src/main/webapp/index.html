@@ -11,7 +11,6 @@
 <!-- ===== Ajouter les librairies de bootstrap ===== -->
 <link rel="stylesheet" type="text/css"
 	href="assets/resources/css/bootstrap.css" />
-<script type="text/javascript" src="assets/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="assets/resources/js/dropdown.js"></script>
 
 <!-- ===== Ajouter les librairies de AngularJS ===== -->
@@ -27,8 +26,10 @@
 <script type="text/javascript" src="assets/js/modules/app.js"></script>
 <script type="text/javascript" src="assets/js/routing/routing.js"></script>
 <!-- ClasseStandard -->
-<script type="text/javascript" src="assets/js/services/ClasseStandardProvider.js"></script>
-<script type="text/javascript" src="assets/js/controllers/classeStandardController.js"></script>
+<script type="text/javascript"
+	src="assets/js/services/ClasseStandardProvider.js"></script>
+<script type="text/javascript"
+	src="assets/js/controllers/classeStandardController.js"></script>
 <!-- BienImmobilier -->
 <!-- Client -->
 <!-- Visite -->
@@ -36,10 +37,54 @@
 <body ng-app="app">
 
 	<!-- ========== Menu navigation ========== -->
-	<div class="container-fluid" style="margin-top:10px">
-		<nav class="navbar navbar-default" style="padding:10px">
+	<div class="container-fluid" style="margin-top: 10px">
+		<nav class="navbar navbar-default" style="padding: 10px">
 			<ul class="nav nav-pills">
 				<li role="presentation" class="active"><a href="#!listCS">Home</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> Classes standards <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listCS">Liste des classes standards</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addCS">Ajouter</a></li>
+						<li><a href="#!updateCS">Modifier</a></li>
+						<li><a href="#!deleteCS">Supprimer</a></li>
+						<li><a href="#!searchCS">Chercher</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> Biens immobiliers <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listBI">Liste des bien immobiliers</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addBI">Ajouter</a></li>
+						<li><a href="#!updateBI">Modifier</a></li>
+						<li><a href="#!deleteBI">Supprimer</a></li>
+						<li><a href="#!searchBI">Chercher</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> Clients <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listCL">Liste des clients</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addCL">Ajouter</a></li>
+						<li><a href="#!updateCL">Modifier</a></li>
+						<li><a href="#!deleteCL">Supprimer</a></li>
+						<li><a href="#!searchCL">Chercher</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"> Visites <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listVI">Liste des visites</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addVI">Ajouter</a></li>
+						<li><a href="#!updateVI">Modifier</a></li>
+						<li><a href="#!deleteVI">Supprimer</a></li>
+						<li><a href="#!searchVI">Chercher</a></li>
+					</ul></li>
 			</ul>
 		</nav>
 	</div>
