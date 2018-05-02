@@ -1,31 +1,25 @@
 // Configuration de la table de routage
 app.config(function($routeProvider) {
 	
-	// Variables globales
-	urlClasseStandard = "/gestion/classeStandard";
-	urlBienImmobilier = "/gestion/bienImmobilier";
-	urlClient = "/gestion/client";
-	urlVisite = "/gestion/visite";
-	
 	// ----- ClasseStandard
 	$routeProvider
-		.when(urlClasseStandard+"/list",{
+		.when("/listCS",{
 			controller:"listeCSCtrl",
 			templateUrl:"vues/classeStandard/listeCS.html"
 		})
-		.when(urlClasseStandard+"/add", {
+		.when("/addCS", {
 			controller:"ajoutCSCtrl",
 			templateUrl:"vues/classeStandard/ajoutCS.html"
 		})
-		.when(urlClasseStandard+"/update", {
+		.when("/updateCS", {
 			controller:"modifCSCtrl",
 			templateUrl:"vues/classeStandard/modifCS.html"
 		})
-		.when(urlClasseStandard+"/delete", {
+		.when("/deleteCS", {
 			controller:"supprCSCtrl",
 			templateUrl:"vues/classeStandard/supprCS.html"
 		})
-		.when(urlClasseStandard+"/search", {
+		.when("/searchCS", {
 			controller:"rechCSCtrl",
 			templateUrl:"vues/classeStandard/rechCS.html"
 		});

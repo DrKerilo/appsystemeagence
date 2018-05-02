@@ -35,4 +35,9 @@
 		<url-pattern>/</url-pattern>	<!-- pas de * ici, différent de Jersey -->
 	</servlet-mapping>
 
+	<!-- ===== Etape 4 ===== -->
+	<!-- Page d'accueil -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 </web-app>
