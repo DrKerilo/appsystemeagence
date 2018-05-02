@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Rechercher une classe standard</h1>
+<hr />
+<form class="form-inline">
+	<div class="form-group">
+		<label for="idID">Code de classe</label> <input type="number"
+			class="form-control" id="idID" placeholder="Code de classe"
+			ng-model="id">
+	</div>
+	<button class="btn btn-default" ng-click="rechercherCS()">Rechercher</button>
+</form>
+<hr />
+<h2 style="text-align: center; color: red" ng-show="indiceNOT">{{message}}</h2>
+<div ng-show="indiceOK">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="text-align: center">Code de classe</th>
+				<th style="text-align: center">Type</th>
+				<th style="text-align: center">Mode d'offre</th>
+				<th style="text-align: center">Prix maximum</th>
+				<th style="text-align: center">Superficie minimum</th>
+				<th style="text-align: center">Liste biens immobiliers</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{csOut.code}}</td>
+				<td>{{csOut.type}}</td>
+				<td>{{csOut.modeOffre}}</td>
+				<td>{{csOut.prixMax}}</td>
+				<td>{{csOut.superficieMin}}</td>
+				<td><a ng-click="getListeByClasse(cs.code)">Afficher</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
