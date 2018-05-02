@@ -5,15 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+@XmlRootElement
 @Entity
 @Table(name="classes_standards")
 public class ClasseStandard implements Serializable{
@@ -29,8 +28,7 @@ public class ClasseStandard implements Serializable{
 	private double superficieMin;
 	
 	// association uml en java
-	@JsonIgnore
-	@OneToMany(mappedBy="classeStandard",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="classeStandard")
 	private List<BienImmobilier> listeBiens;
 	
 	// déclaration des constructeurs
