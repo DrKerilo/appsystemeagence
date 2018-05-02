@@ -2,10 +2,33 @@
 
 app
 
-.controller("listeCtrl", function($scope,eService,$rootScope,$location) {
+.controller("listeCLCtrl", function($scope,eService,$rootScope,$location) {
 	eService.getAll(function(callBack) {
 	$scope.listeClients=callBack;
 		
-	});
+	})
 	
-})
+	.controller("ajoutCLCtrl", function($scope,eService,$location) {
+		
+		//Variables
+		$scope.client = {
+			nom :"",
+			prenom : "",
+			tel : "",
+			Adresse : ""
+		};
+		
+		// fonction appelée par le bouton ajouter
+		$scope.ajoutClient = function(){
+			eService.addOne($scope.client,function(callBack){
+				if (callBack =='OK'){
+					$location.path('listCL')// url du lien menant à la vue affichant la liste (cf : vue index)
+				}else{
+					$scope.message="fail";
+				}
+			})
+		}
+		
+	})	
+	
+});

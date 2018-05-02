@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<table class="table table-bordered">
 
-</body>
-</html>
+<tr>
+	<th>ID</th>
+	<th>Nom</th>
+	<th>Prenom</th>
+	<th>Tel</th>
+	<th>Adresse</th>
+	<th>Operation</th>
+</tr>
+
+<tr ng-repeat="cl in listeClients">
+	<td>{{cl.id}}</td>
+	<td>{{cl.nom}}</td>
+	<td>{{cl.prenom}}</td>
+	<td>{{cl.tel}}</td>
+	<td>{{cl.adresse}}</td>
+	<td><a ng-click="supprimerLien(cl.id)">Supprimer</a> | <a ng-click="modifLien(cl)">Modifier</a> </td>
+</tr>
+ 
+</table>

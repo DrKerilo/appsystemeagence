@@ -18,7 +18,7 @@ app.factory("eService", function($http) {
 		});
 	}
 	
-	function addStudent(etudiant,busSC){
+	function addStudent(client,busSC){
 		
 		$http({
 			method: "POST",
