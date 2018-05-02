@@ -25,8 +25,71 @@ app.config(function($routeProvider) {
 		});
 	
 	// ----- BienImmobilier
+	$routeProvider
+	.when("/listBI",{
+		controller:"listeBICtrl",
+		templateUrl:"vues/bienImmobilier/listeBI.html"
+	})
+	.when("/addBI", {
+		controller:"ajoutBICtrl",
+		templateUrl:"vues/bienImmobilier/ajoutBI.html"
+	})
+	.when("/updateBI", {
+		controller:"modifBICtrl",
+		templateUrl:"vues/bienImmobilier/modifBI.html"
+	})
+	.when("/deleteBI", {
+		controller:"supprBICtrl",
+		templateUrl:"vues/bienImmobilier/supprBI.html"
+	})
+	.when("/searchBI", {
+		controller:"rechBICtrl",
+		templateUrl:"vues/bienImmobilier/rechBI.html"
+	});
 	
 	// ----- Client
+	$routeProvider
+	.when("/listCL",{
+		controller:"listeCLCtrl",
+		templateUrl:"vues/client/listeCL.html"
+	})
+	.when("/addCL", {
+		controller:"ajoutCLCtrl",
+		templateUrl:"vues/client/ajoutCL.html"
+	})
+	.when("/updateCL", {
+		controller:"modifCLCtrl",
+		templateUrl:"vues/client/modifCL.html"
+	})
+	.when("/deleteCL", {
+		controller:"supprCLCtrl",
+		templateUrl:"vues/client/supprCL.html"
+	})
+	.when("/searchCL", {
+		controller:"rechCLCtrl",
+		templateUrl:"vues/client/rechCL.html"
+	});
 	
 	// ----- Visite
+	$routeProvider
+	.when("/listVI",{
+		controller:"listeVICtrl",
+		templateUrl:"vues/visite/listeVI.html"
+	})
+	.when("/addVI", {
+		controller:"ajoutVICtrl",
+		templateUrl:"vues/visite/ajoutVI.html"
+	})
+	.when("/updateVI", {
+		controller:"modifVICtrl",
+		templateUrl:"vues/visite/modifVI.html"
+	})
+	.when("/deleteVI", {
+		controller:"supprVICtrl",
+		templateUrl:"vues/visite/supprVI.html"
+	})
+	.when("/searchVI", {
+		controller:"rechVICtrl",
+		templateUrl:"vues/visite/rechVI.html"
+	});
 })
