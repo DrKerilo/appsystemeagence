@@ -12,12 +12,44 @@ app
 		console.log(id);
 		biService.supprimBi(id, function(callBack) {
 			 if (callBack == 'OK') {
-				eService.getAll(function(callBack) {
+				biService.getAll(function(callBack) {
 					$scope.listeBiensImmobilier= callBack;
 				});
 			}
 		});
 	}
+	
+	$rootScope.biModif = { 
+			id : undefined
+			};
+	
+	$scope.modifLinkBi = function(bien){
+		console.log(bien);
+		$rootScope.biModif = bien;
+		$location.path('updateBI');
+		
+	}
+
+})
+
+.controller("listeBICatCtrl", function($rootScope, $scope, $location, biService) {
+	$scope.code = "";
+
+	// Fonction appelée dès l'affichage de la vue
+	biService.getBiByCat($scope.code, function(callback) {
+		$scope.listeBiensParCat = callback;
+	})
+	
+	$scope.deleteLinkBi = function(id) {
+		console.log(id);
+		biService.supprimBi(id, function(callBack) {
+			 if (callBack == 'OK') {
+				biService.getBiByCat($scope.code, function(callBack) {
+					$scope.listeBiensParCat = callBack;
+				});
+			}
+		});
+	}	
 	
 	$rootScope.biModif = { 
 			id : undefined

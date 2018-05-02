@@ -19,6 +19,20 @@ app.factory("biService", function($http,$window) {
 		});
 	}
 	
+	// ----- Afficher liste
+	function findByCat(cat, busSC){
+		$http({
+			method:"GET",
+			url:restUrl+"/listeBIByClasse/" + cat 
+		}).then(function successCallback(response) {
+			console.log(response.data);
+			busSC(response.data);
+		}, function errorCallback(reason) {
+			console.log("Erreur "+reason.status+": "+reason.statusText);
+		});
+	}
+
+	
 	function searchBi(id, busSC) {
 		$http.get(restUrl + "/bienImmo?pId=" + id)
 		
@@ -79,7 +93,9 @@ app.factory("biService", function($http,$window) {
 		ajoutBi:addBi, 
 		modifBi:editBi,
 		supprimBi:delBi,
-		getBi:searchBi
+		getBi:searchBi,
+		getBiByCat:findByCat
+		
 	}
 	
 	
