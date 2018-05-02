@@ -11,86 +11,86 @@ import org.springframework.stereotype.Repository;
 import fr.adaming.model.Client;
 
 @Repository
-public class ClientDaoImpl implements IClientDao{
-	
+public class ClientDaoImpl implements IClientDao {
+
 	@Autowired
 	SessionFactory sf;
-	
+
 	Session s;
 
 	@Override
 	public Client addClient(Client cl) {
-		
+
 		// Ouverture de la session
-		s=sf.getCurrentSession();
-		
+		s = sf.getCurrentSession();
+
 		// Ajout du client
 		s.save(cl);
-			
+
 		return cl;
 	}
 
 	@Override
 	public List<Client> getAllClient() {
-		
+
 		// Création de la requête
 		String req = "FROM Client";
-		
+
 		// Ouverture de la session
-		s=sf.getCurrentSession();
-		
-		Query query =s.createQuery(req);
-		
+		s = sf.getCurrentSession();
+
+		Query query = s.createQuery(req);
+
 		return query.list();
 	}
 
 	@Override
 	public Client updateClient(Client cl) {
-		
+
 		// Ouverture de la session
-		s=sf.getCurrentSession();
-		
+		s = sf.getCurrentSession();
+
 		// Modification du client
 		s.update(cl);
-		
+
 		return cl;
 	}
 
 	@Override
 	public int deleteClient(int id) {
-		
+
 		// Création de la requête
 		String req = "DELETE from Client cl WHERE cl.id=:pId";
-		
+
 		// Ouverture de la session
-		s=sf.getCurrentSession();
-		
-		//Récup du query
-		Query query=s.createQuery(req);
-		
+		s = sf.getCurrentSession();
+
+		// Récup du query
+		Query query = s.createQuery(req);
+
 		// Passage des params
-		query.setParameter("pId",id);
-		
+		query.setParameter("pId", id);
+
 		query.executeUpdate();
-		
+
 		return 0;
 	}
 
 	@Override
 	public Client getClientById(int id) {
-		
+
 		// Création de la requête
-		String req = "FROM Client cl WHERE cl.id=:pid";
-		
+		String req = "FROM Client cl WHERE cl.id= :pId";
+
 		// Ouverture de la session
-		s=sf.getCurrentSession();
-		
+		s = sf.getCurrentSession();
+
 		// Récup du query
-		Query query=s.createQuery(req);
-		
+		Query query = s.createQuery(req);
+
 		// Passage des params
 		query.setParameter("pId", id);
-		
+
 		return (Client) query.uniqueResult();
 	}
 
