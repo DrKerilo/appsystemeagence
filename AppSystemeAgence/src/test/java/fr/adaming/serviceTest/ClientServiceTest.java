@@ -46,7 +46,7 @@ public class ClientServiceTest {
 
 		// crete Visite attributes
 		Client cl = clService.getClientById(2);
-		Agent ag = new Agent(1, "test");
+		Agent ag = new Agent();
 		Date date = new Date();
 		int heure = 17;
 
