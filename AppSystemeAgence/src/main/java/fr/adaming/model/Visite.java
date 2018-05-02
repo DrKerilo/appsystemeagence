@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -14,35 +15,40 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Entity
 @Table(name="visites")
-public class Visite {
+public class Visite implements Serializable{
 
 	// déclaration des attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private Date date;
+	private int heure;
 	
 	// associations uml en java
 	@ManyToOne
 	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
 	private Client client;
 	
-	// ajouter l'association avec le conseillier
+	@ManyToOne
+	@JoinColumn(name="a_id", referencedColumnName="id_a")
+	private Agent agent;
 	
 	// déclaration des constructeurs
 	public Visite() {
 		super();
 	}
 
-	public Visite(Date date) {
+	public Visite(Date date, int heure) {
 		super();
 		this.date = date;
+		this.heure = heure;
 	}
 
-	public Visite(int id, Date date) {
+	public Visite(int id, Date date, int heure) {
 		super();
 		this.id = id;
 		this.date = date;
+		this.heure = heure;
 	}
 
 	// getters et setters
@@ -60,6 +66,22 @@ public class Visite {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public int getHeure() {
+		return heure;
+	}
+
+	public void setHeure(int heure) {
+		this.heure = heure;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 
 	public Client getClient() {
