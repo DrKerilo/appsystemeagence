@@ -29,7 +29,7 @@ public class BienImmobilierRest {
 		return bmService.editBienImmobilier(b);
 	}
 	
-	@RequestMapping(value="/bienImmo", method=RequestMethod.DELETE)
+	@RequestMapping(value="/bienImmo/{pId}", method=RequestMethod.DELETE)
 	public int deleteBienImmobilier(@PathVariable("pId") int id) {
 		return bmService.deleteBienImmobilier(id);
 	}
