@@ -5,11 +5,14 @@ import java.util.List;
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlRootElement
 @Entity
@@ -18,7 +21,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Client extends Personne {
 
 	// Transformation des associations UML en JAVA
-	@OneToMany
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "recherches_clients", joinColumns = @JoinColumn(name = "cl_id"), inverseJoinColumns = @JoinColumn(name = "cs_id"))
 	private List<ClasseStandard> listeClasseStd;
 
