@@ -6,9 +6,9 @@ import fr.adaming.model.Visite;
 
 public interface IVisiteService {
 
-	public Visite getVisiteById(int id);
+	public List<Visite> getVisiteByAgent(int idAgent);
 
-	public List<Visite> getAllVisite();
+	public List<Visite> getVisiteByClient(int idClient);
 
 	public Visite addVisite(Visite vst);
 
