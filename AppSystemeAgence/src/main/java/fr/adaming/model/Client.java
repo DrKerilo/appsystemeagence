@@ -26,6 +26,18 @@ public class Client extends Personne {
 	@JoinTable(name = "recherches_clients", joinColumns = @JoinColumn(name = "cl_id"), inverseJoinColumns = @JoinColumn(name = "cs_id"))
 	private List<ClasseStandard> listeClasseStd;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	private List<Visite> visites;
+
+	public List<Visite> getVisites() {
+		return visites;
+	}
+
+	public void setVisites(List<Visite> visites) {
+		this.visites = visites;
+	}
+
 	// Constructeurs
 	public Client() {
 		super();
