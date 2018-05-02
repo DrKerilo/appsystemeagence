@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,6 +29,7 @@ public class BienImmobilier implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
 	private int id;
+	@Enumerated(EnumType.STRING)
 	private ImmoStatut statut;
 	@Temporal(TemporalType.DATE)
 	private Date dateSoumission;
@@ -42,8 +45,7 @@ public class BienImmobilier implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "cs_id", referencedColumnName = "id_cs")
 	private ClasseStandard classeStandard;
-	
-	
+
 	// private Visite visite;
 	// private Acquereur acquereur;
 	// private Agent agent
@@ -131,8 +133,6 @@ public class BienImmobilier implements Serializable {
 	public void setRevenuCadastral(double revenuCadastral) {
 		this.revenuCadastral = revenuCadastral;
 	}
-	
-	
 
 	// Méthode
 	@Override
