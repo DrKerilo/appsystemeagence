@@ -9,6 +9,7 @@
   		<th style="text-align:center">Mode d'offre</th>
   		<th style="text-align:center">Prix maximum</th>
   		<th style="text-align:center">Superficie minimum</th>
+  		<th style="text-align:center">Liste biens immobiliers</th>
   	</tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
   		<td>{{cs.modeOffre}}</td>
   		<td>{{cs.prixMax}}</td>
   		<td>{{cs.superficieMin}}</td>
+  		<td><a ng-click="getListeByClasse(cs.code)">Afficher</a></td>
   	</tr>
   </tbody>
 </table>
