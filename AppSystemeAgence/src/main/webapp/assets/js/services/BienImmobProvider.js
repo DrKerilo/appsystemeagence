@@ -16,11 +16,71 @@ app.factory("biService", function($http,$window) {
 			busSC(response.data);
 		}, function errorCallback(reason) {
 			console.log("Erreur "+reason.status+": "+reason.statusText);
+		});
+	}
+	
+	function searchBi(id, busSC) {
+		$http.get(restUrl + "/bienImmo?pId=" + id)
+		
+		.then(function succesCallback(response) { //promise
+//			console.log(response.data);
+			busSC(response.data);
+		}, function erreurCallback(response) {
+			console.log("Erreur : ----" + response.statusText)
+		});
+	}
+	
+	function delBi(id, busSC) {
+		$http.delete(restUrl + "/bienImmo/" + id)
+		
+		.then(function succesCallback(response) { //promise
+			busSC(response.data);
+			}, function erreurCallback(response) {
+			console.log("Erreur : ----" + response.statusText)
+		});
+	}
+	
+	function addBi(bi, busSC) {
+		$http({
+			method : "POST",
+			url : restUrl + "/bienImmo",
+			data : JSON.stringify(bi),
+			headers: {
+				"Content-Type" : "application/JSON"
+			}
 		})
-	};
+		
+		.then(function succesCallback(response) { //promise
+			busSC(response.statusText);
+		}, function erreurCallback(reason) {
+			console.log("Erreur : ----" + reason.statusText);
+		});
+	}
+	
+	function editBi(bi, busSC) {
+		$http({
+			method : "PUT",
+			url : restUrl + "/bienImmo",
+			data : JSON.stringify(bi),
+			headers: {
+				"Content-Type" : "application/JSON"
+			}
+		})
+		
+		.then(function succesCallback(response) { //promise
+			busSC(response.statusText);
+		}, function erreurCallback(reason) {
+			console.log("Erreur : ----" + reason.statusText);
+		});
+	}
 	
 	return {
-		getAllBi:findAllBi
+		getAllBi:findAllBi,
+		ajoutBi:addBi, 
+		modifBi:editBi,
+		supprimBi:delBi,
+		getBi:searchBi
 	}
+	
 	
 })

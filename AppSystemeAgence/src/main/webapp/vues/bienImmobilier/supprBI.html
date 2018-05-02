@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<h1 style="text-align: center; color: red">Supprimer des biens immobiliers</h1>
 
-</body>
-</html>
+<br />
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="ID" class="col-sm-2 control-label">id</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" placeholder="ID" ng-model="idDel">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="supprimerBi()">Supprimer</button>
+		</div>
+	</div>
+</form>
+
+
+<h1 style="text-align: center; color: red" ng-show = "indice">{{msg}}</h1>

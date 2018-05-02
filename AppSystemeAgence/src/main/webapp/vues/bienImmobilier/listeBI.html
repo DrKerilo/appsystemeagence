@@ -14,6 +14,8 @@
   		<th style="text-align:center">Date de disposition</th>
   		<th style="text-align:center">Revenu cadastral</th>
   		<th style="text-align:center">Photo</th>
+  		<th style="text-align:center">Classe</th>
+  		<th style="text-align:center">Opérations</th>
   	</tr>
   </thead>
   <tbody>
@@ -28,6 +30,8 @@
   		<td>{{bi.dateDisposition}}</td>
   		<td>{{bi.revenuCadastral}}</td>
   		<td></td>
+  		<td>{{bi.classeStandard.code}}</td>
+  		<td><a ng-click="modifLinkBi(bi)">Modifier</a> | <a ng-click="deleteLinkBi(bi.id)">Supprimer</td>
   	</tr>
   </tbody>
 </table>
