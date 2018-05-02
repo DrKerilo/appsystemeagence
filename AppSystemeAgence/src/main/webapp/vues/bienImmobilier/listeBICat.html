@@ -1,0 +1,38 @@
+<h1>Liste des biens immobiliers</h1>
+<hr/>
+
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  		<th style="text-align:center">Id</th>
+  		<th style="text-align:center">Statut</th>
+  		<th style="text-align:center">Date de soumission</th>
+  		<th style="text-align:center">N°</th>
+  		<th style="text-align:center">Rue</th>
+  		<th style="text-align:center">Code Postal</th>
+  		<th style="text-align:center">Localité</th>
+  		<th style="text-align:center">Date de disposition</th>
+  		<th style="text-align:center">Revenu cadastral</th>
+  		<th style="text-align:center">Photo</th>
+  		<th style="text-align:center">Classe</th>
+  		<th style="text-align:center">Opérations</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<tr	ng-repeat="bi in listeBiensImmobilier">
+  		<td>{{bi.id}}</td>
+  		<td>{{bi.statut}}</td>
+  		<td>{{bi.dateSoumission}}</td>
+  		<td>{{bi.adresse.numero}}</td>
+  		<td>{{bi.adresse.rue}}</td>
+  		<td>{{bi.adresse.codePostal}}</td>
+  		<td>{{bi.adresse.localite}}</td>
+  		<td>{{bi.dateDisposition}}</td>
+  		<td>{{bi.revenuCadastral}}</td>
+  		<td></td>
+  		<td>{{bi.classeStandard.code}}</td>
+  		<td><a ng-click="modifLinkBi(bi)">Modifier</a> | <a ng-click="deleteLinkBi(bi.id)">Supprimer</td>
+  	</tr>
+  </tbody>
+</table>
+<hr/>
