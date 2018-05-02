@@ -10,7 +10,7 @@ app.factory("biService", function($http,$window) {
 	function findAllBi(busSC){
 		$http({
 			method:"GET",
-			url:restUrl+"/listBI"
+			url:restUrl+"/listeBI"
 		}).then(function successCallback(response) {
 			console.log(response.data);
 			busSC(response.data);
