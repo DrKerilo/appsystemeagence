@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Ajouter une classe standard</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idCode" class="col-sm-2 col-sm-offset-2 control-label">Code de classe</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idCode"
+				placeholder="Code de classe" ng-model="cs.code">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idType" class="col-sm-2 col-sm-offset-2 control-label">Type</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idType"
+				placeholder="Type" ng-model="cs.type">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idMode" class="col-sm-2 col-sm-offset-2 control-label">Mode d'offre</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idMode"
+				placeholder="Mode d'offre" ng-model="cs.modeOffre">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idPrix" class="col-sm-2 col-sm-offset-2 control-label">Prix maximum</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idPrix"
+				placeholder="Prix maximum" ng-model="cs.prixMax">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idSuperficie" class="col-sm-2 col-sm-offset-2 control-label">Superficie minimum</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idSuperficie"
+				placeholder="Superficie minimum" ng-model="cs.superficieMin">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="modifierCS()">Modifier</button>
+</form>
+<hr />
+<h2 style="text-align: center;color:red" ng-show="indice">{{message}}</h2>

@@ -10,6 +10,7 @@
   		<th style="text-align:center">Prix maximum</th>
   		<th style="text-align:center">Superficie minimum</th>
   		<th style="text-align:center">Liste biens immobiliers</th>
+  		<th style="text-align:center">Operations</th>
   	</tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@
   		<td>{{cs.prixMax}}</td>
   		<td>{{cs.superficieMin}}</td>
   		<td><a ng-click="getListeByClasse(cs.code)">Afficher</a></td>
+  		<td>
+  			<a ng-click="modifierLien(cs)">Modifier</a>
+  			|
+  			<a ng-click="supprimerLien(cs.code)">Supprimer</a>
+  		</td>
   	</tr>
   </tbody>
 </table>
