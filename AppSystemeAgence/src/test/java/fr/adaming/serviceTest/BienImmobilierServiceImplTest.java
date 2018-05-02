@@ -90,4 +90,21 @@ public class BienImmobilierServiceImplTest {
 		assertEquals(new Double(2500), new Double(biService.editBienImmobilier(csModif).getRevenuCadastral()));
 
 	}
+	
+	// ----- Test UPDATE
+	@Ignore
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void testDeleteBienImmobilierService() {
+		double tailleAtt = biService.getAllBienImmobilier().size() - 1;
+		
+		biService.deleteBienImmobilier(1);
+		
+		double tailleReelle = biService.getAllBienImmobilier().size();
+
+		assertEquals(new Double(tailleAtt), new Double(tailleReelle));
+	}
+
+	
 }
