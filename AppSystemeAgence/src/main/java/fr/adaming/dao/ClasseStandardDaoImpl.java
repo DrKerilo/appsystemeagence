@@ -82,7 +82,7 @@ public class ClasseStandardDaoImpl implements IClasseStandardDao {
 	@Override
 	public ClasseStandard getClasseStandardById(int id) {
 		// Requête HQL
-		String req = "FROM ClasseStandard WHERE cs.code=:pID";
+		String req = "FROM ClasseStandard cs WHERE cs.code=:pID";
 		// Ouvrir une session
 		s = sf.getCurrentSession();
 		// Créer Query

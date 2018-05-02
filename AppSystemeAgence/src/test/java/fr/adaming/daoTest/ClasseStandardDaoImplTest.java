@@ -24,7 +24,7 @@ public class ClasseStandardDaoImplTest {
 	
 	// ----- Test READ ALL
 	// Test 1 : taille de la liste
-	@Ignore
+//	@Ignore
 	@Test	
 	@Transactional(readOnly=true)
 	public void test1GetAllClasseStandardDao(){
@@ -35,26 +35,26 @@ public class ClasseStandardDaoImplTest {
 		
 	}
 	// Test 2 : liste non vide - test sur type
-	@Ignore
+//	@Ignore
 	@Test	
 	@Transactional(readOnly=true)
 	public void test2GetAllClasseStandardDao(){
-		assertEquals("", csDao.getAllClasseStandard().get(0).getType());
+		assertEquals("maison", csDao.getAllClasseStandard().get(0).getType());
 	}
 	
 	// ----- Test READ ONE
-	@Ignore
+//	@Ignore
 	@Test
 	@Transactional(readOnly=true)
 	public void testGetClasseStandardByIdDao(){
 		ClasseStandard csIn = csDao.getClasseStandardById(1);		// Vérifier valeur de l'id
 		
-		assertEquals("", csIn.getType());	// Vérifier type correspondant à l'id donné
+		assertEquals("maison", csIn.getType());	// Vérifier type correspondant à l'id donné
 		
 	}
 	
 	// ----- Test CREATE
-	@Ignore
+//	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -70,9 +70,17 @@ public class ClasseStandardDaoImplTest {
 	}
 	
 	// ----- Test UPDATE
-	@Ignore
+//	@Ignore
 	@Test
+	@Transactional
+	@Rollback(true)
 	public void testUpdateClasseStandardDao(){
+		// Récupération d'un objet de la BD
+		ClasseStandard csModif = csDao.getClasseStandardById(1);
+		
+		csModif.setType("TEST");
+		
+		assertEquals("TEST", csDao.updateClasseStandard(csModif).getType());
 		
 	}
 	
