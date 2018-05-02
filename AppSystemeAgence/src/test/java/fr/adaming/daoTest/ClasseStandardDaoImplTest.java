@@ -1,6 +1,7 @@
 package fr.adaming.daoTest;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -85,6 +86,16 @@ public class ClasseStandardDaoImplTest {
 
 		assertEquals("TEST", csDao.updateClasseStandard(csModif).getType());
 
+	}
+	
+	// ----- Test DELETE
+	@Ignore
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void testDeleteClasseStandardDao(){
+		int tailleAvant = csDao.getAllClasseStandard().size();
+		assertNotEquals(first, second, delta);
 	}
 
 }
