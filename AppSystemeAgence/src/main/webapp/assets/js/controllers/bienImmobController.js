@@ -29,6 +29,15 @@ app
 		$location.path('updateBI');
 
 	}
+	
+	$scope.rechLinkBi = function(id) {
+		console.log(id);
+		biService.getBi(id, function(callBack) {
+			$rootScope.bi = callBack;
+				$location.path('searchBI');
+			
+		});
+	}
 
 })
 
@@ -124,7 +133,7 @@ app
 			
 		})
 
-.controller("rechBICtrl", function($scope, biService) {
+.controller("rechBICtrl", function($rootScope, $scope, biService) {
 	$scope.id = undefined;
 	$scope.indice = false;
 	$scope.indice2 = false;
