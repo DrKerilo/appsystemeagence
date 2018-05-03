@@ -18,8 +18,25 @@ app.factory("visiteService", function($http,$window) {
 		})
 	};
 	
+	// ----- Ajouter une visite à la liste
+	function newVisite(vi, busSC) {
+		$http({
+			method : "POST",
+			url : restUrl + "/visite",
+			data : JSON.stringify(vi),
+			headers : {
+				"Content-Type" : "application/json"
+			}
+		}).then(function successCallback(response) {
+			busSC(response.statusText);
+		}, function errorCallback(reason) {
+			console.log("Erreur " + reason.status + ": " + reason.statusText);
+		})
+	};
+	
 	return {
-		getVisitesByAgent:findAllByAgent
+		getVisitesByAgent : findAllByAgent,
+		addVisite : newVisite
 	}
 	
 })
