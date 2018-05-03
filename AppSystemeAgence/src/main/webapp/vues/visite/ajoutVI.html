@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Ajouter une nouvelle visite</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idDate" class="col-sm-2 col-sm-offset-2 control-label">Date de visite</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idDate"
+				placeholder="Type" ng-model="vi.date">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idRef" class="col-sm-2 col-sm-offset-2 control-label">Reference du bien</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idRef"
+				placeholder="Mode d'offre" ng-model="vi.id">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idPrix" class="col-sm-2 col-sm-offset-2 control-label">Nom de l'agent immobilier</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idPrix"
+				placeholder="Prix maximum" ng-model="vi.agent.nom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idSuperficie" class="col-sm-2 col-sm-offset-2 control-label">Nom du client</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idSuperficie"
+				placeholder="Superficie minimum" ng-model="vi.client.nom">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="ajouterVI()">Ajouter</button>
+</form>
+<hr />
