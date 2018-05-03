@@ -48,6 +48,14 @@ app.controller("listeCSCtrl",
 		superficieMin : "",
 		type : ""
 	};
+	
+	$scope.modeOff=[{
+		id:1,
+		mode:"Louer"
+	},{
+		id:2,
+		mode:"Acheter"
+	}];
 
 	// Fonction appelée via le bouton Ajouter
 	$scope.ajouterCS = function() {
