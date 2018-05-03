@@ -29,7 +29,7 @@
   		<td>{{bi.adresse.localite}}</td>
   		<td>{{bi.dateDisposition}}</td>
   		<td>{{bi.revenuCadastral}}</td>
-  		<td></td>
+  		<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="150"/></td>
   		<td>{{bi.classeStandard.code}}</td>
   		<td><a ng-click="modifLinkBi(bi)">Modifier</a> | <a ng-click="deleteLinkBi(bi.id)">Supprimer</td>
   	</tr>

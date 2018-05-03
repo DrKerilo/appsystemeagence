@@ -55,6 +55,10 @@ app.factory("biService", function($http,$window) {
 	}
 	
 	function addBi(bi, busSC) {
+		
+		// transformer l'image récupérée en base 64
+		bi.photo = bi.photo.base64;
+		
 		$http({
 			method : "POST",
 			url : restUrl + "/bienImmo",
