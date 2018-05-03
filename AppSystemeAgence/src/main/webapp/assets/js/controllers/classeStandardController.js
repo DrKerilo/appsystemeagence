@@ -85,6 +85,14 @@ app.controller("listeCSCtrl",
 	} else {
 		$scope.cs = $rootScope.csModif;
 	}
+	
+	$scope.modeOff=[{
+		id:1,
+		mode:"Louer"
+	},{
+		id:2,
+		mode:"Acheter"
+	}];
 
 	// Fonction appelée via le bouton Modifier
 	$scope.modifierCS = function() {
