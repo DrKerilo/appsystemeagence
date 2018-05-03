@@ -79,10 +79,12 @@ app
 		
 .controller("listeBIPropCtrl",
 		function($rootScope, $scope, $location, biService) {
-			if ($rootScope.code == undefined) {
+	
+			// Vérification si arrivé à partir de la liste des proprios
+			if ($rootScope.codeProp == undefined) {
 				$scope.code = "";
 			} else {
-				$scope.code = $rootScope.code
+				$scope.code = $rootScope.codeProp
 				
 				// Fonction appelée dès l'affichage de la vue
 				biService.getBiByProp($scope.code, function(callback) {
@@ -178,6 +180,8 @@ app
 		valeur : "NON_MEUBLE",
 		nom : "Non meublé"
 	} ];
+	
+	$scope.bailBI = ["Habitation", "Mixte", "Commercial", "Professionnel"];
 
 	$scope.etat = [{
 		valeur : "A_restaurer",
@@ -188,7 +192,11 @@ app
 	}, {
 		valeur : "Impeccable",
 		nom : "Impeccable"
-	}]
+	}];
+//	
+//	$scope.classe = csService.getAll(function(callback) {
+//		$scope.listeClassesStandards = callback;
+//	});
 
 	$scope.bien = {
 		statut : "",

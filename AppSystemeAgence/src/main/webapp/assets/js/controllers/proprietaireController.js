@@ -33,7 +33,7 @@ app.controller("listePRCtrl",
 			
 			// Fonction appelée via le lien afficher
 			$scope.getListeByProprio = function(idProp){
-				$rootScope.id = idProp;
+				$rootScope.codeProp = idProp;
 				$location.path("listBIProp");
 			};
 

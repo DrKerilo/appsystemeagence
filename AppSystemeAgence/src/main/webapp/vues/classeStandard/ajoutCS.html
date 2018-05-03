@@ -9,10 +9,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="idMode" class="col-sm-2 col-sm-offset-2 control-label">Mode d'offre</label>
+		<label for="idMode"  class="col-sm-2 col-sm-offset-2 control-label">Mode d'offre:</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="idMode"
-				placeholder="Mode d'offre" ng-model="cs.modeOffre">
+			<select class="form-control" id="idMode" ng-model="cs.modeOffre" ng-options="m.mode as m.mode for m in modeOff"></select>
 		</div>
 	</div>
 	<div class="form-group">
