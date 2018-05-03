@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IProprietaireDao;
 import fr.adaming.model.Adresse;
-import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Proprietaire;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +25,7 @@ public class ProprietaireDaoImplTest {
 
 	// ----- Test READ ALL
 	// Test 1 : taille de la liste
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void test1GetAllProprietaireDao() {
@@ -38,7 +37,7 @@ public class ProprietaireDaoImplTest {
 	}
 
 	// Test 2 : liste non vide - test sur nom
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void test2GetAllProprietaireDao() {
@@ -46,7 +45,7 @@ public class ProprietaireDaoImplTest {
 	}
 
 	// ----- Test READ ONE
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void testGetProprietaireByIdDao() {
@@ -59,7 +58,7 @@ public class ProprietaireDaoImplTest {
 	}
 
 	// ----- Test CREATE
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -75,7 +74,7 @@ public class ProprietaireDaoImplTest {
 	}
 
 	// ----- Test UPDATE
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -90,7 +89,7 @@ public class ProprietaireDaoImplTest {
 	}
 
 	// ----- Test DELETE
-//	@Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)

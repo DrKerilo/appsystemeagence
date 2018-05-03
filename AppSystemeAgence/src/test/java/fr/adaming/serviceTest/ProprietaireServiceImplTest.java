@@ -2,6 +2,7 @@ package fr.adaming.serviceTest;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ProprietaireServiceImplTest {
 
 	// ----- Test READ ALL
 	// Test 1 : taille de la liste
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void test1GetAllProprietaire() {
@@ -36,7 +37,7 @@ public class ProprietaireServiceImplTest {
 	}
 
 	// Test 2 : liste non vide - test sur nom
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void test2GetAllProprietaireService() {
@@ -44,12 +45,13 @@ public class ProprietaireServiceImplTest {
 	}
 
 	// ----- Test READ ONE
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional(readOnly = true)
 	public void testGetProprietaireByIdService() {
-		Proprietaire pIn = propService.getProprietaireById(1); // Vérifier valeur
-															// de l'id
+		Proprietaire pIn = propService.getProprietaireById(1); // Vérifier
+																// valeur
+																// de l'id
 
 		assertEquals("Michel", pIn.getNom()); // Vérifier nom correspondant à
 												// l'id donné
@@ -57,13 +59,13 @@ public class ProprietaireServiceImplTest {
 	}
 
 	// ----- Test CREATE
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void testAddProprietaireService() {
 		// Instanciation objet vide
-		Proprietaire pIn = new Proprietaire("Toto","Titi",666,new Adresse("Rue", 1, 44000, "Ville"),222);
+		Proprietaire pIn = new Proprietaire("Toto", "Titi", 666, new Adresse("Rue", 1, 44000, "Ville"), 222);
 
 		int tailleAvant = propService.getAllProprietaire().size();
 
@@ -73,7 +75,7 @@ public class ProprietaireServiceImplTest {
 	}
 
 	// ----- Test UPDATE
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -88,7 +90,7 @@ public class ProprietaireServiceImplTest {
 	}
 
 	// ----- Test DELETE
-	// @Ignore
+	@Ignore
 	@Test
 	@Transactional
 	@Rollback(true)
