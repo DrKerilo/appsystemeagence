@@ -1,10 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Modifier un proprietaire</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idID" class="col-sm-2 col-sm-offset-2 control-label">#</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idID"
+				placeholder="Identifiant" ng-model="p.id">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idNom" class="col-sm-2 col-sm-offset-2 control-label">Nom</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idNom"
+				placeholder="Nom" ng-model="p.nom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idPrenom" class="col-sm-2 col-sm-offset-2 control-label">Prenom</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idPrenom"
+				placeholder="Prenom" ng-model="p.prenom">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idNum" class="col-sm-2 col-sm-offset-2 control-label">Numero</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idNum"
+				placeholder="Numero dans la rue" ng-model="p.adresse.numero">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idRue" class="col-sm-2 col-sm-offset-2 control-label">Rue</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idRue"
+				placeholder="Nom de la rue" ng-model="p.adresse.rue">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idCP" class="col-sm-2 col-sm-offset-2 control-label">Code postal</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idCP"
+				placeholder="Code postal" ng-model="p.adresse.codePostal">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idVille" class="col-sm-2 col-sm-offset-2 control-label">Ville</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" id="idVille"
+				placeholder="Ville" ng-model="p.adresse.localite">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idTelPerso" class="col-sm-2 col-sm-offset-2 control-label">Tel. perso</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idTelPerso"
+				placeholder="Num de telephone personnel" ng-model="p.telPerso">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="idTelPro" class="col-sm-2 col-sm-offset-2 control-label">Tel. pro</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idTelPro"
+				placeholder="Num de telephone professionnel" ng-model="p.telPro">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="modifierPR()">Modifier</button>
+</form>
+<hr />
+<h2 style="text-align: center;color:red" ng-show="indice">{{message}}</h2>

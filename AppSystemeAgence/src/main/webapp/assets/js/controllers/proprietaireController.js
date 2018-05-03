@@ -31,13 +31,11 @@ app.controller("listePRCtrl",
 				});
 			};
 			
-			// TODO : Afficher les biens immobiliers du propriétaire
-			
-//			// Fonction appelée via le lien afficher
-//			$scope.getListeByClasse = function(code){
-//				$rootScope.code = code;
-//				$location.path("listBICat");
-//			};
+			// Fonction appelée via le lien afficher
+			$scope.getListeByProprio = function(idProp){
+				$rootScope.id = idProp;
+				$location.path("listBICat");
+			};
 
 		})
 

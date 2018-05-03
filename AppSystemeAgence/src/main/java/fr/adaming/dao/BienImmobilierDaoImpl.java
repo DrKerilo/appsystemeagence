@@ -88,4 +88,19 @@ public class BienImmobilierDaoImpl implements IBienImmobilierDao {
 		return query.list();
 	}
 
+	// ----- READ BY PROPRIETAIRE
+	@Override
+	public List<BienImmobilier> getBiensByProprietaire(int id) {
+		// Ouvrir une session
+		Session s=sf.getCurrentSession();
+		// Requête
+		String req="FROM BienImmobilier b WHERE b.proprietaire.id=:pId";
+		// Query
+		Query q=s.createQuery(req);
+		// Passage des paramètres
+		q.setParameter("pId", id);
+		// Envoi requête et récupération résultat
+		return q.list();
+	}
+
 }
