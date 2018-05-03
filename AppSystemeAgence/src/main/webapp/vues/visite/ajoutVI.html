@@ -4,26 +4,32 @@
 	<div class="form-group">
 		<label for="idDate" class="col-sm-2 col-sm-offset-2 control-label">Date de visite</label>
 		<div class="col-sm-4">
-			<input type="datetime" class="form-control" id="idDate"
-				placeholder="Type" ng-model="vi.date">
-		</div>
+			<input type="date" class="form-control" id="idDate" ng-model="vi.date">
+			<input type="time" class="form-control" id="idDate" ng-model="vi.heure">
+		</div> 
 	</div>
 	<div class="form-group">
 		<label for="idRef" class="col-sm-2 col-sm-offset-2 control-label">Reference du bien</label>
 		<div class="col-sm-4">
-			<option ng-repeat="vi in listeBI" ng-value="vi.id">{{ vi.id }}</option>
+			<select ng-model="vi.bienImmo.id">
+			<option ng-repeat="bi in listeBI" ng-value="{{bi.id}}">{{ bi.id }}</option>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idPrix" class="col-sm-2 col-sm-offset-2 control-label">Nom de l'agent immobilier</label>
 		<div class="col-sm-4">
-			<option ng-repeat="a in listeAgents" ng-value="a.nom">{{ vi.agent.nom }}</option>
+			<select ng-model="vi.agent.id">
+			<option ng-repeat="a in listeAgents" ng-value="{{a.id}}">{{ a.nom }}</option>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idSuperficie" class="col-sm-2 col-sm-offset-2 control-label">Nom du client</label>
 		<div class="col-sm-4">
-			<option ng-repeat="cl in listeClients" ng-value="cl.nom">{{ vi.client.nom }}</option>
+			<select ng-model="vi.client.id">
+			<option ng-repeat="cl in listeClients" value="{{cl.id}}">{{ cl.nom }}</option>
+			</select>
 		</div>
 	</div>
 	<button class="btn btn-default" ng-click="ajouterVI()">Ajouter</button>

@@ -8,15 +8,15 @@ app
 		})
 })
 
-.controller("ajoutVICtrl", function($scope, $location, visiteService, biService, clService) {
+.controller("ajoutVICtrl", function($scope, $location, visiteService, biService, clService,agentService) {
 
 		// Variables
 		$scope.vi = { // Déclaration d'une visite
 			date : "",
-			id : "",
-			agent : "",
-			client : "",
-			bienImmo : ""
+			heure : "",
+			agent : undefined,
+			client :  undefined,
+			bienImmo :  undefined
 		};
 		
 		biService.getAllBi(function(dataServer){
@@ -33,6 +33,8 @@ app
 	
 		// Fonction appelée via le bouton Ajouter
 		$scope.ajouterVI = function() {
+			
+			console.log($scope.vi)
 			visiteService.addVisite($scope.vi, function(callback) {
 				if (callback == "OK") {
 					$location.path("listVI");

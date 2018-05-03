@@ -10,7 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @XmlRootElement
 @Entity
@@ -21,8 +25,11 @@ public class Visite implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date date;
-	private int heure;
+		
+	@Temporal(TemporalType.TIME)
+	private Date heure;
 
 	// associations uml en java
 	@ManyToOne
@@ -42,13 +49,13 @@ public class Visite implements Serializable {
 		super();
 	}
 
-	public Visite(Date date, int heure) {
+	public Visite(Date date, Date heure) {
 		super();
 		this.date = date;
 		this.heure = heure;
 	}
 
-	public Visite(int id, Date date, int heure) {
+	public Visite(int id, Date date, Date heure) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -72,11 +79,11 @@ public class Visite implements Serializable {
 		this.date = date;
 	}
 
-	public int getHeure() {
+	public Date getHeure() {
 		return heure;
 	}
 
-	public void setHeure(int heure) {
+	public void setHeure(Date heure) {
 		this.heure = heure;
 	}
 

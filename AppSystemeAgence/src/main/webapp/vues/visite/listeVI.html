@@ -14,7 +14,7 @@
   </thead>
   <tbody>
   	<tr	ng-repeat="v in listeVisites">
-  		<td>{{v.date}}</td>
+  		<td>le {{v.date}} a {{v.heure}}</td>
   		<td>{{v.bienImmo.id}}</td>
   		<td><img ng-src="data:image/JPEG;base64,{{v.bienImmo.photo}}" width="200"/>
   		<td>{{v.agent.nom}}</td>
