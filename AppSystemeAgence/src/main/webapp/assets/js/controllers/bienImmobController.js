@@ -178,6 +178,8 @@ app
 		valeur : "NON_MEUBLE",
 		nom : "Non meublé"
 	} ];
+	
+	$scope.bailBI = ["Habitation", "Mixte", "Commercial", "Professionnel"];
 
 	$scope.etat = [{
 		valeur : "A_restaurer",
@@ -188,7 +190,11 @@ app
 	}, {
 		valeur : "Impeccable",
 		nom : "Impeccable"
-	}]
+	}];
+//	
+//	$scope.classe = csService.getAll(function(callback) {
+//		$scope.listeClassesStandards = callback;
+//	});
 
 	$scope.bien = {
 		statut : "",
