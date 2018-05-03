@@ -86,4 +86,16 @@ public class ClasseStandardServiceImplTest {
 		assertEquals("TEST", csService.updateClasseStandard(csModif).getType());
 
 	}
+
+	// ----- Test DELETE : erreur avec contrainte foreign key dans BienImmobilier
+	@Ignore
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void testDeleteClasseStandardService() {
+		int tailleAvant = csService.getAllClasseStandard().size();
+		csService.deleteClasseStandard(1);
+		int tailleApres = csService.getAllClasseStandard().size();
+		assertEquals(new Double(--tailleAvant), new Double(tailleApres));
+	}
 }
