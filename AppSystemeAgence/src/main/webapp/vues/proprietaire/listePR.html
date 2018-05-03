@@ -1,0 +1,37 @@
+<h1>Liste des proprietaires</h1>
+<hr/>
+
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  		<th style="text-align:center">#</th>
+  		<th style="text-align:center">Nom</th>
+  		<th style="text-align:center">Prenom</th>
+  		<th style="text-align:center">N°</th>
+  		<th style="text-align:center">Rue</th>
+  		<th style="text-align:center">Code Postal</th>
+  		<th style="text-align:center">Ville</th>
+  		<th style="text-align:center">Tel. perso</th>
+  		<th style="text-align:center">Tel. pro</th>
+  		<th style="text-align:center">Operations</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<tr	ng-repeat="p in listeProprietaires">
+  		<td>{{p.id}}</td>
+  		<td>{{p.nom}}</td>
+  		<td>{{p.prenom}}</td>
+  		<td>{{p.adresse.numero}}</td>
+  		<td>{{p.id}}</td>
+  		<td>{{p.id}}</td>
+  		<td>{{p.id}}</td>
+  		<td><a ng-click="getListeByClasse(cs.code)">Afficher</a></td>
+  		<td>
+  			<a ng-click="modifierLien(cs)">Modifier</a>
+  			|
+  			<a ng-click="supprimerLien(cs.code)">Supprimer</a>
+  		</td>
+  	</tr>
+  </tbody>
+</table>
+<hr/>

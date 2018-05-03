@@ -74,6 +74,29 @@ app.config(function($routeProvider) {
 		templateUrl:"vues/client/rechCL.html"
 	});
 	
+	// ----- Proprietaire
+	$routeProvider
+	.when("/listPR",{
+		controller:"listePRCtrl",
+		templateUrl:"vues/proprietaire/listePR.html"
+	})
+	.when("/addPR", {
+		controller:"ajoutPRCtrl",
+		templateUrl:"vues/proprietaire/ajoutPR.html"
+	})
+	.when("/updatePR", {
+		controller:"modifPRCtrl",
+		templateUrl:"vues/proprietaire/modifPR.html"
+	})
+	.when("/deletePR", {
+		controller:"supprPRCtrl",
+		templateUrl:"vues/proprietaire/supprPR.html"
+	})
+	.when("/searchPR", {
+		controller:"rechPRCtrl",
+		templateUrl:"vues/proprietaire/rechPR.html"
+	});
+	
 	// ----- Visite
 	$routeProvider
 	.when("/listVI",{
