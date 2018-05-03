@@ -4,17 +4,21 @@
 <table class="table table-striped">
   <thead>
   	<tr>
-  		<th style="text-align:center">Date</th>
-  		<th style="text-align:center">Agent immobilier</th>
-  		<th style="text-align:center">Client</th>
-  		<th style="text-align:center">Editer visite</th>
+  		<th style="text-align:center">Date de visite</th>
+  		<th style="text-align:center">Reference du bien</th>
+  		<th style="text-align:center">Photo du bien</th>
+  		<th style="text-align:center">Nom de l'agent immobilier</th>
+  		<th style="text-align:center">Nom du client</th>
+  		<th style="text-align:center">Editer la visite</th>
   	</tr>
   </thead>
   <tbody>
   	<tr	ng-repeat="v in listeVisites">
   		<td>{{v.date}}</td>
+  		<td>{{v.bienImmo.id}}</td>
+  		<td>{{v.bienImmo.photo}}</td>
   		<td>{{v.agent.nom}}</td>
-  		<td>{{v.client.nom}}</td>
+  		<td>{{v.client.nom}} {{v.client.prenom}}</td>
   		<td>
   			<a ng-click="modifierLien(v)">Modifier</a>
   			|

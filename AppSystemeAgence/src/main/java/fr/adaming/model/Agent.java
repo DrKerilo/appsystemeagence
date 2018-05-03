@@ -26,6 +26,7 @@ public class Agent implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_a")
 	private int id;
+	private String nom;
 	private String identifiant;
 	private String mdp;
 	private int tel;
@@ -39,17 +40,19 @@ public class Agent implements Serializable{
 		super();
 	}	
 
-	public Agent(String identifiant, String mdp, int tel) {
+	public Agent(String nom, String identifiant, String mdp, int tel) {
 		super();
+		this.nom = nom;
 		this.identifiant = identifiant;
 		this.mdp = mdp;
 		this.tel = tel;
 	}
 
 
-	public Agent(int id, String identifiant, String mdp, int tel) {
+	public Agent(int id, String nom, String identifiant, String mdp, int tel) {
 		super();
 		this.id = id;
+		this.nom = nom;
 		this.identifiant = identifiant;
 		this.mdp = mdp;
 		this.tel = tel;
@@ -94,6 +97,14 @@ public class Agent implements Serializable{
 
 	public void setTel(int tel) {
 		this.tel = tel;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 	
