@@ -30,6 +30,12 @@ app.controller("listeCSCtrl",
 					}
 				});
 			};
+			
+			// Fonction appelée via le lien afficher
+			$scope.getListeByClasse = function(code){
+				$rootScope.code = code;
+				$location.path("listBICat");
+			};
 
 		})
 

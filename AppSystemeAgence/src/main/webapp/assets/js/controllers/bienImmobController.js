@@ -33,12 +33,24 @@ app
 })
 
 .controller("listeBICatCtrl", function($rootScope, $scope, $location, biService) {
-	$scope.code = "";
-
-	// Fonction appelée dès l'affichage de la vue
-	biService.getBiByCat($scope.code, function(callback) {
-		$scope.listeBiensParCat = callback;
-	})
+	if ($rootScope.code == undefined) {
+		$scope.code = "";
+	} else {
+		$scope.code = $rootScope.code
+		
+		// Fonction appelée dès l'affichage de la vue
+		biService.getBiByCat($scope.code, function(callback) {
+			$scope.listeBiensParCat = callback;
+		})
+		
+	}
+	
+	$scope.getByCat = function(){
+		biService.getBiByCat($scope.code, function(callback) {
+			$scope.listeBiensParCat = callback;
+		})
+	};
+	
 	
 	$scope.deleteLinkBi = function(id) {
 		console.log(id);
@@ -50,6 +62,7 @@ app
 			}
 		});
 	}	
+	
 	
 	$rootScope.biModif = { 
 			id : undefined
