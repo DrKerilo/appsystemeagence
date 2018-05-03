@@ -1,4 +1,4 @@
-app.factory("eService", function($http) {
+app.factory("clService", function($http) {
 	
 	var restUrl="http://localhost:8080//AppSystemeAgence";
 	
@@ -23,7 +23,7 @@ app.factory("eService", function($http) {
 		$http({
 			method: "POST",
 			url: restUrl+"/clientAdd",
-			data:JSON.stringify(etudiant), // pareil que : angular.toJson(etudiant);
+			data:JSON.stringify(client), // pareil que : angular.toJson(etudiant);
 			headers:{ContentType: "application/JSON"} //spécifie le type du contenu de la requête
 		}).then (function successCallback(reponse) {
 			
