@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Rechercher un client</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idID" class="col-sm-2 col-sm-offset-2 control-label">#</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idID"
+				placeholder="Identifiant" ng-model="id">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="rechercherCL()">Rechercher</button>
+</form>
+<hr />
+<h2 style="text-align: center; color: red" ng-show="indiceNOT">{{message}}</h2>
+<div ng-show="indiceOK">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="text-align: center">#</th>
+				<th style="text-align: center">Nom</th>
+				<th style="text-align: center">Prenom</th>
+				<th style="text-align: center">Num</th>
+				<th style="text-align: center">Rue</th>
+				<th style="text-align: center">Code Postal</th>
+				<th style="text-align: center">Ville</th>
+				<th style="text-align: center">Tel. perso</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{clOut.id}}</td>
+				<td>{{clOut.nom}}</td>
+				<td>{{clOut.prenom}}</td>
+				<td>{{clOut.adresse.numero}}</td>
+				<td>{{clOut.adresse.rue}}</td>
+				<td>{{clOut.adresse.codePostal}}</td>
+				<td>{{clOut.adresse.localite}}</td>
+				<td>{{clOut.telPerso}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

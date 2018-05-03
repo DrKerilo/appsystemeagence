@@ -1,4 +1,4 @@
-// Controllers pour ClasseStandard
+// Controllers pour Proprietaire
 app.controller("listePRCtrl",
 		function($rootScope, $scope, $location, propService) {
 
@@ -73,7 +73,7 @@ app.controller("listePRCtrl",
 	$scope.indice = false;
 
 	if ($rootScope.pModif.id == undefined) {
-		$scope.p = { // Déclaration d'une classe standard
+		$scope.p = { // Déclaration d'un proprietaire vide avec id
 			id: "",
 			nom: "",
 			prenom: "",

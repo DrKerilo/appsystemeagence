@@ -50,10 +50,8 @@ app.controller("listeCSCtrl",
 	};
 	
 	$scope.modeOff=[{
-		id:1,
 		mode:"Louer"
 	},{
-		id:2,
 		mode:"Acheter"
 	}];
 

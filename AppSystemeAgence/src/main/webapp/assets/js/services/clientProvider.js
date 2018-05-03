@@ -1,92 +1,81 @@
-app.factory("clService", function($http) {
+// ===== Client ======
+// Services pour gérer les données de Client
+app.factory("clService", function($http,$window) {
 	
+	// Variable globale du service
 	var restUrl="http://localhost:8080//AppSystemeAgence";
 	
-	function listeAll(busSC){
+	// Déclaration externe des fonctions
+	// ----- Afficher liste
+	function findAll(busSC){
 		
 		$http({
 			method: "GET",
 			url: restUrl+"/listeClient"
 		}).then (function successCallback(reponse) {
-			
 			busSC(reponse.data); // transporte la liste au controller
-			
-		}, function erreurCallback(reponse) {
-			
-			console.log("Erreur:---"+reponse.statusText)
-			
+		}, function erreurCallback(reason) {
+			console.log("Erreur " + reason.status + ": " + reason.statusText);
 		});
-	}
+	};
 	
-	function addStudent(client,busSC){
-		
+	// ----- Ajouter
+	function addClient(cl,busSC){
 		$http({
 			method: "POST",
 			url: restUrl+"/clientAdd",
-			data:JSON.stringify(client), // pareil que : angular.toJson(etudiant);
+			data:JSON.stringify(cl), // pareil que : angular.toJson(cl);
 			headers:{ContentType: "application/JSON"} //spécifie le type du contenu de la requête
 		}).then (function successCallback(reponse) {
-			
 			busSC(reponse.data); // transporte la liste au controller
-			
-		}, function erreurCallback(reponse) {
-			
-			console.log("Erreur:---"+reponse.statusText)
-			
+		}, function erreurCallback(reason) {
+			console.log("Erreur " + reason.status + ": " + reason.statusText);
 		});
 		
 	}
 	
-	function findOne(id,busSC) {
-		
+	// ----- Modifier
+	function updateClient(cl, busSC) {
 		$http({
-			method: "GET",
-			url: restUrl+"/client/"+id
-		}).then (function successCallback(rerponse) {
-			
-			busSC(reponse.data); // transporte la liste au controller
-			
-		}, function erreurCallback(reponse) {
-			
-			console.log("Erreur:---"+reponse.statusText)
-			
-		});
-		
-	}
-	
-	function delOne(idDel,busSC) {
-		$http.delete(restUrl+"/deleteClient/"+idDel)
-		.then(
-				function successCallback(reponse){
-					busSC(reponse.statusText);
-				},function erroCallback(reponse){
-					console.log("Erreur:---"+reponse.statusText)
-		});
-		
-	}
-	
-	function updateStudent(etudiant,busSC){
-		$http({
-			method:"PUT",
-			url: restUrl+"/eModif",
-			data:JSON.stringify(etudiant), // pareil que : angular.toJson(etudiant);
-			headers:{ContentType: "application/JSON"} //spécifie le type du contenu de la requête
+			method : "PUT",
+			url : restUrl + "/clientUpdate",
+			data : JSON.stringify(cl),
+			headers : {"Content-Type" : "application/json"}
+		}).then(function successCallback(response) {
+			busSC(response.status)
+		}, function errorCallback(reason) {
+			busSC(reason.status);
+			console.log("Erreur " + reason.status + ": " + reason.statusText);
 		})
-		.then(
-				function successCallback(reponse){
-					busSC(reponse.statusText);
-				},function erroCallback(reponse){
-					console.log("Erreur:---"+reponse.statusText)
-		});
-		
 	}
 	
+	// ----- Supprimer
+	function deleteClient(id,busSC){
+		if($window.confirm("Êtes-vous sûr de vouloir supprimer ce client ?")){
+			$http.delete(restUrl+"/deleteClient/"+id)
+			.then(function successCallback(response) {
+				busSC(response.statusText);
+			}, function errorCallback(reason) {
+				console.log("Erreur "+reason.status+": "+reason.statusText);
+			});
+		}
+	};
+	
+	// ----- Chercher par id
+	function findClient(id,busSC){
+		$http.get(restUrl+"/client/"+id)
+				.then(function successCallback(response) {
+					busSC(response.data);
+				}, function errorCallback(reason) {
+					console.log("Erreur "+reason.status+": "+reason.statusText);
+				})
+	};
+
 	return {
-		getAll:listeAll, // appel de la fonction
-		getOne:findOne,
-		supOne:delOne,
-		addOne:addStudent,
-		upOne:updateStudent
+		getAll : findAll,
+		addOne : addClient,
+		updateOne : updateClient,
+		deleteOne : deleteClient,
+		getOne : findClient
 	}
-	
 });
