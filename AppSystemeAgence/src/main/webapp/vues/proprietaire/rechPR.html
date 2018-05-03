@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Rechercher un proprietaire</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idID" class="col-sm-2 col-sm-offset-2 control-label">#</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idID"
+				placeholder="Identifiant" ng-model="id">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="rechercherPR()">Rechercher</button>
+</form>
+<hr />
+<h2 style="text-align: center; color: red" ng-show="indiceNOT">{{message}}</h2>
+<div ng-show="indiceOK">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th style="text-align: center">#</th>
+				<th style="text-align: center">Nom</th>
+				<th style="text-align: center">Prenom</th>
+				<th style="text-align: center">Num</th>
+				<th style="text-align: center">Rue</th>
+				<th style="text-align: center">Code Postal</th>
+				<th style="text-align: center">Ville</th>
+				<th style="text-align: center">Tel. perso</th>
+				<th style="text-align: center">Tel. pro</th>
+				<th style="text-align: center">Operations</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{pOut.id}}</td>
+				<td>{{pOut.nom}}</td>
+				<td>{{pOut.prenom}}</td>
+				<td>{{pOut.adresse.numero}}</td>
+				<td>{{pOut.adresse.rue}}</td>
+				<td>{{pOut.adresse.codePostal}}</td>
+				<td>{{pOut.adresse.localite}}</td>
+				<td>{{pOut.telPerso}}</td>
+				<td>{{pOut.telPro}}</td>
+				<td><a ng-click="modifierLien(pOut)">Modifier</a> | <a
+					ng-click="supprimerLien(pOut.id)">Supprimer</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

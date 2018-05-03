@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>Supprimer un proprietaire</h1>
+<hr />
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="idID" class="col-sm-2 col-sm-offset-2 control-label">#</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" id="idID"
+				placeholder="Identifiant" ng-model="id">
+		</div>
+	</div>
+	<button class="btn btn-default" ng-click="supprimerPR()">Supprimer</button>
+</form>
+<hr />
+<h2 style="text-align: center; color: red" ng-show="indice">{{message}}</h2>

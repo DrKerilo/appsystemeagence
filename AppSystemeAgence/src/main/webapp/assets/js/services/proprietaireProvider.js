@@ -3,7 +3,7 @@
 app.factory("propService", function($http,$window) {
 	
 	// Variable globale du service
-	var restUrl = "http://localhost:8080/AppSystemeAgence/";
+	var restUrl = "http://localhost:8080/AppSystemeAgence";
 	
 	// Déclaration externe des fonctions
 	// ----- Afficher liste
@@ -67,7 +67,7 @@ app.factory("propService", function($http,$window) {
 	
 	// ----- Chercher par id
 	function findProprio(id,busSC){
-		$http.get(restUrl+"/proprietaire?pId="+id)
+		$http.get(restUrl+"/proprietaire?pID="+id)
 				.then(function successCallback(response) {
 					busSC(response.data);
 				}, function errorCallback(reason) {
