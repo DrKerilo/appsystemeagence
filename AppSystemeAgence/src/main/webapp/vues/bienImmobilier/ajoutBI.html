@@ -1,75 +1,94 @@
-<h1 style="text-align: center; color: red">Ajouter des biens immobiliers</h1>
+<h1 style="text-align: center; color: red">Ajouter des biens
+	immobiliers</h1>
 
 <br />
 
 <form class="form-horizontal">
+	<!-- 	<div class="form-group"> -->
+	<!-- 		<label for="statut" class="col-sm-2 control-label">Statut</label> -->
+	<!-- 		<div class="col-sm-10"> -->
+	<!-- 			<input type="text" class="form-control" -->
+	<!-- 				placeholder="DISPONIBLE/LOUE/ACHETE" ng-model="bien.statut"> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+	<select ng-model="bien.statut" ng-options="st.valeur as st.nom for st in statutBI"></select>
+	
+	<div ng-if="st.valeur == 'LOUE'">
+	</div>
+
 	<div class="form-group">
-		<label for="statut" class="col-sm-2 control-label">Statut</label>
+		<label for="ds" class="col-sm-2 control-label">Date de
+			soumission</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="DISPONIBLE/LOUE/ACHETE" ng-model="bien.statut">
+			<input type="date" class="form-control" placeholder="Date"
+				ng-model="bien.dateSoumission">
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="ds" class="col-sm-2 control-label">Date de soumission</label>
-		<div class="col-sm-10">
-			<input type="date" class="form-control" placeholder="Date" ng-model="bien.dateSoumission">
-		</div>
-	</div>
-	
+
 	<div class="form-group">
 		<label for="num" class="col-sm-2 control-label">N°</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.adresse.numero">
+			<input type="number" class="form-control" placeholder="id"
+				ng-model="bien.adresse.numero">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="rue" class="col-sm-2 control-label">Rue</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="id" ng-model="bien.adresse.rue">
+			<input type="text" class="form-control" placeholder="id"
+				ng-model="bien.adresse.rue">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="cp" class="col-sm-2 control-label">Code Postal</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.adresse.codePostal">
+			<input type="number" class="form-control" placeholder="id"
+				ng-model="bien.adresse.codePostal">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="localite" class="col-sm-2 control-label">Localité</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="id" ng-model="bien.adresse.localite">
+			<input type="text" class="form-control" placeholder="id"
+				ng-model="bien.adresse.localite">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
-		<label for="dd" class="col-sm-2 control-label">Date de disposition</label>
+		<label for="dd" class="col-sm-2 control-label">Date de
+			disposition</label>
 		<div class="col-sm-10">
-			<input type="date" class="form-control" placeholder="id" ng-model="bien.dateDisposition">
+			<input type="date" class="form-control" placeholder="id"
+				ng-model="bien.dateDisposition">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
-		<label for="revenuC" class="col-sm-2 control-label">Revenu cadastral</label>
+		<label for="revenuC" class="col-sm-2 control-label">Revenu
+			cadastral</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.revenuCadastral">
+			<input type="number" class="form-control" placeholder="id"
+				ng-model="bien.revenuCadastral">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="classe" class="col-sm-2 control-label">Classe</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.classeStandard.code">
+			<input type="number" class="form-control" placeholder="id"
+				ng-model="bien.classeStandard.code">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Image</label>
 		<div class="col-sm-10">
-			<input type="file" class="form-control" ng-model="bien.photo" accept="image/*" base-sixty-four-input>
+			<input type="file" class="form-control" ng-model="bien.photo"
+				accept="image/*" base-sixty-four-input>
 		</div>
 	</div>
 
@@ -81,4 +100,4 @@
 </form>
 
 
-<h1 style="text-align: center; color: red" ng-show = "indice">{{msg}}</h1>
+<h1 style="text-align: center; color: red" ng-show="indice">{{msg}}</h1>

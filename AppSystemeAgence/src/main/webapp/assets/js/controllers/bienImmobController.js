@@ -11,71 +11,70 @@ app
 	$scope.deleteLinkBi = function(id) {
 		console.log(id);
 		biService.supprimBi(id, function(callBack) {
-			 if (callBack == 'OK') {
+			if (callBack == 'OK') {
 				biService.getAll(function(callBack) {
-					$scope.listeBiensImmobilier= callBack;
+					$scope.listeBiensImmobilier = callBack;
 				});
 			}
 		});
 	}
-	
-	$rootScope.biModif = { 
-			id : undefined
-			};
-	
-	$scope.modifLinkBi = function(bien){
-		console.log(bien);
-		$rootScope.biModif = bien;
-		$location.path('updateBI');
-		
-	}
 
-})
-
-.controller("listeBICatCtrl", function($rootScope, $scope, $location, biService) {
-	if ($rootScope.code == undefined) {
-		$scope.code = "";
-	} else {
-		$scope.code = $rootScope.code
-		
-		// Fonction appelée dès l'affichage de la vue
-		biService.getBiByCat($scope.code, function(callback) {
-			$scope.listeBiensParCat = callback;
-		})
-		
-	}
-	
-	$scope.getByCat = function(){
-		biService.getBiByCat($scope.code, function(callback) {
-			$scope.listeBiensParCat = callback;
-		})
+	$rootScope.biModif = {
+		id : undefined
 	};
-	
-	
-	$scope.deleteLinkBi = function(id) {
-		console.log(id);
-		biService.supprimBi(id, function(callBack) {
-			 if (callBack == 'OK') {
-				biService.getBiByCat($scope.code, function(callBack) {
-					$scope.listeBiensParCat = callBack;
-				});
-			}
-		});
-	}	
-	
-	
-	$rootScope.biModif = { 
-			id : undefined
-			};
-	
-	$scope.modifLinkBi = function(bien){
+
+	$scope.modifLinkBi = function(bien) {
 		console.log(bien);
 		$rootScope.biModif = bien;
 		$location.path('updateBI');
-		
+
 	}
 
 })
+
+.controller("listeBICatCtrl",
+		function($rootScope, $scope, $location, biService) {
+			if ($rootScope.code == undefined) {
+				$scope.code = "";
+			} else {
+				$scope.code = $rootScope.code
+
+				// Fonction appelée dès l'affichage de la vue
+				biService.getBiByCat($scope.code, function(callback) {
+					$scope.listeBiensParCat = callback;
+				})
+
+			}
+
+			$scope.getByCat = function() {
+				biService.getBiByCat($scope.code, function(callback) {
+					$scope.listeBiensParCat = callback;
+				})
+			};
+
+			$scope.deleteLinkBi = function(id) {
+				console.log(id);
+				biService.supprimBi(id, function(callBack) {
+					if (callBack == 'OK') {
+						biService.getBiByCat($scope.code, function(callBack) {
+							$scope.listeBiensParCat = callBack;
+						});
+					}
+				});
+			}
+
+			$rootScope.biModif = {
+				id : undefined
+			};
+
+			$scope.modifLinkBi = function(bien) {
+				console.log(bien);
+				$rootScope.biModif = bien;
+				$location.path('updateBI');
+
+			}
+
+		})
 
 .controller("rechBICtrl", function($scope, biService) {
 	$scope.id = undefined;
@@ -115,9 +114,39 @@ app
 })
 
 .controller("ajoutBICtrl", function($scope, $location, biService) {
+	$scope.statutBI = [ {
+		valeur : "DISPONIBLE",
+		nom : "Disponible"
+	}, {
+		valeur : "LOUE",
+		nom : "Loué"
+	}, {
+		valeur : "ACHETE",
+		nom : "Acheté"
+	} ];
+
+	$scope.garnitureBI = [ {
+		valeur : "MEUBLE",
+		nom : "Meublé"
+	}, {
+		valeur : "NON_MEUBLE",
+		nom : "Non meublé"
+	} ];
+
+	$scope.etat = [{
+		valeur : "A_restaurer",
+		nom : "A restaurer"
+	}, {
+		valeur : "Correct",
+		nom : "Correct"
+	}, {
+		valeur : "Impeccable",
+		nom : "Impeccable"
+	}]
+
 	$scope.bien = {
 		statut : "",
-		dateSoumission :"",
+		dateSoumission : "",
 		adresse : {
 			rue : "",
 			numero : "",
@@ -126,14 +155,14 @@ app
 		},
 		dateDisposition : "",
 		revenuCadastral : "",
-		photo: "",
-	    cautionLocative: "",
-	    loyerMensuel: "",
-	    montantMensuelCharges: "",
-	    typeBail: "",
-	    garniture: "",
-	    prixAchat: "",
-	    etat: "",
+		photo : "",
+		cautionLocative : "",
+		loyerMensuel : "",
+		montantMensuelCharges : "",
+		typeBail : "",
+		garniture : "",
+		prixAchat : "",
+		etat : "",
 		classeStandard : {
 			code : "",
 			type : "",
@@ -146,6 +175,7 @@ app
 	$scope.indice = false;
 
 	$scope.ajouterBi = function() {
+		console.log($scope.bien.statut);
 		biService.ajoutBi($scope.bien, function(callBack) {
 			if (callBack == "OK") {
 				$location.path('listBI');
@@ -161,32 +191,33 @@ app
 .controller("modifBICtrl", function($scope, $location, biService, $rootScope) {
 	if ($rootScope.biModif.id == undefined) {
 		$scope.bien = {
-				id : "",
-				statut : "",
-				dateSoumission :"",
-				adresse : {
-					rue : "",
-					numero : "",
-					codePostal : "",
-					localite : ""
-				},
-				dateDisposition : "",
-				revenuCadastral : "",
-				photo: "",
-			    cautionLocative: "",
-			    loyerMensuel: "",
-			    montantMensuelCharges: "",
-			    typeBail: "",
-			    garniture: "",
-			    prixAchat: "",
-			    etat: "",
-				classeStandard : {
-					code : "",
-					type : "",
-					modeOffre : "",
-					prixMax : "",
-					superficieMin : ""
-				}		};
+			id : "",
+			statut : "",
+			dateSoumission : "",
+			adresse : {
+				rue : "",
+				numero : "",
+				codePostal : "",
+				localite : ""
+			},
+			dateDisposition : "",
+			revenuCadastral : "",
+			photo : "",
+			cautionLocative : "",
+			loyerMensuel : "",
+			montantMensuelCharges : "",
+			typeBail : "",
+			garniture : "",
+			prixAchat : "",
+			etat : "",
+			classeStandard : {
+				code : "",
+				type : "",
+				modeOffre : "",
+				prixMax : "",
+				superficieMin : ""
+			}
+		};
 	} else {
 		$scope.bien = $rootScope.biModif;
 	}

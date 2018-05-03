@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import fr.adaming.model.enumerations.ModeOffre;
+
 @XmlRootElement
 @Entity
 @Table(name="classes_standards")
@@ -26,7 +28,7 @@ public class ClasseStandard implements Serializable{
 	@Column(name="id_cs")
 	private int code;
 	private String type;
-	private String modeOffre;
+	private ModeOffre modeOffre;
 	private double prixMax;
 	private double superficieMin;
 	
@@ -40,7 +42,7 @@ public class ClasseStandard implements Serializable{
 		super();
 	}
 
-	public ClasseStandard(String type, String modeOffre, double prixMax, double superficieMin) {
+	public ClasseStandard(String type, ModeOffre modeOffre, double prixMax, double superficieMin) {
 		super();
 		this.type = type;
 		this.modeOffre = modeOffre;
@@ -48,7 +50,7 @@ public class ClasseStandard implements Serializable{
 		this.superficieMin = superficieMin;
 	}
 
-	public ClasseStandard(int code, String type, String modeOffre, double prixMax, double superficieMin) {
+	public ClasseStandard(int code, String type, ModeOffre modeOffre, double prixMax, double superficieMin) {
 		super();
 		this.code = code;
 		this.type = type;
@@ -74,11 +76,11 @@ public class ClasseStandard implements Serializable{
 		this.type = type;
 	}
 
-	public String getModeOffre() {
+	public ModeOffre getModeOffre() {
 		return modeOffre;
 	}
 
-	public void setModeOffre(String modeOffre) {
+	public void setModeOffre(ModeOffre modeOffre) {
 		this.modeOffre = modeOffre;
 	}
 
