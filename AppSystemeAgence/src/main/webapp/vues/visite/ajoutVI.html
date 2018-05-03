@@ -4,29 +4,26 @@
 	<div class="form-group">
 		<label for="idDate" class="col-sm-2 col-sm-offset-2 control-label">Date de visite</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="idDate"
+			<input type="datetime" class="form-control" id="idDate"
 				placeholder="Type" ng-model="vi.date">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idRef" class="col-sm-2 col-sm-offset-2 control-label">Reference du bien</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="idRef"
-				placeholder="Mode d'offre" ng-model="vi.id">
+			<option ng-repeat="vi in listeBI" ng-value="vi.id">{{ vi.id }}</option>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idPrix" class="col-sm-2 col-sm-offset-2 control-label">Nom de l'agent immobilier</label>
 		<div class="col-sm-4">
-			<input type="number" class="form-control" id="idPrix"
-				placeholder="Prix maximum" ng-model="vi.agent.nom">
+			<option ng-repeat="a in listeAgents" ng-value="a.nom">{{ vi.agent.nom }}</option>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idSuperficie" class="col-sm-2 col-sm-offset-2 control-label">Nom du client</label>
 		<div class="col-sm-4">
-			<input type="number" class="form-control" id="idSuperficie"
-				placeholder="Superficie minimum" ng-model="vi.client.nom">
+			<option ng-repeat="cl in listeClients" ng-value="cl.nom">{{ vi.client.nom }}</option>
 		</div>
 	</div>
 	<button class="btn btn-default" ng-click="ajouterVI()">Ajouter</button>

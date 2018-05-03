@@ -2,13 +2,13 @@
 
 app
 
-.controller("listeCLCtrl", function($scope,eService,$rootScope,$location) {
-	eService.getAll(function(callBack) {
+.controller("listeCLCtrl", function($scope,clService,$rootScope,$location) {
+	clService.getAll(function(callBack) {
 	$scope.listeClients=callBack;
 		
 	})
 	
-	.controller("ajoutCLCtrl", function($scope,eService,$location) {
+	.controller("ajoutCLCtrl", function($scope,clService,$location) {
 		
 		//Variables
 		$scope.client = {
@@ -20,7 +20,7 @@ app
 		
 		// fonction appelée par le bouton ajouter
 		$scope.ajoutClient = function(){
-			eService.addOne($scope.client,function(callBack){
+			clService.addOne($scope.client,function(callBack){
 				if (callBack =='OK'){
 					$location.path('listCL')// url du lien menant à la vue affichant la liste (cf : vue index)
 				}else{

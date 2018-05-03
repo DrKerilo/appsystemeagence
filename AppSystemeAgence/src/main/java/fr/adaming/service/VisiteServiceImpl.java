@@ -13,13 +13,13 @@ import fr.adaming.model.Visite;
 @Transactional
 public class VisiteServiceImpl implements IVisiteService {
 	
+	@Autowired
+	private IVisiteDao vstDao;
+	
 	@Override
 	public List<Visite> getAllVisite() {
 		return vstDao.getAllVisite();
 	}
-
-	@Autowired
-	private IVisiteDao vstDao;
 
 	@Override
 	public Visite addVisite(Visite vst) {
