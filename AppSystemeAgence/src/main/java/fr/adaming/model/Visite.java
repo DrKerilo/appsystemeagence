@@ -14,25 +14,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="visites")
-public class Visite implements Serializable{
+@Table(name = "visites")
+public class Visite implements Serializable {
 
 	// déclaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date date;
 	private int heure;
-	
+
 	// associations uml en java
 	@ManyToOne
-	@JoinColumn(name="cl_id", referencedColumnName="id_cl")
+	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	private Client client;
-	
+
 	@ManyToOne
-	@JoinColumn(name="a_id", referencedColumnName="id_a")
+	@JoinColumn(name = "a_id", referencedColumnName = "id_a")
 	private Agent agent;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "bien_id", referencedColumnName = "id_bien")
+	private BienImmobilier bienImmo;
+
 	// déclaration des constructeurs
 	public Visite() {
 		super();
@@ -67,7 +71,7 @@ public class Visite implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	public int getHeure() {
 		return heure;
 	}
@@ -91,7 +95,20 @@ public class Visite implements Serializable{
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
-	
-	
+
+	public BienImmobilier getBienImmo() {
+		return bienImmo;
+	}
+
+	public void setBienImmo(BienImmobilier bienImmo) {
+		this.bienImmo = bienImmo;
+	}
+
+	// toString
+	@Override
+	public String toString() {
+		return "Visite [id=" + id + ", date=" + date + ", heure=" + heure + ", client=" + client + ", agent=" + agent
+				+ ", bienImmo=" + bienImmo + "]";
+	}
+
 }
