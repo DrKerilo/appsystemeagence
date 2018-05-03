@@ -117,7 +117,7 @@ app
 .controller("ajoutBICtrl", function($scope, $location, biService) {
 	$scope.bien = {
 		statut : "",
-		dateSoumission : null,
+		dateSoumission :"",
 		adresse : {
 			rue : "",
 			numero : "",
@@ -126,6 +126,14 @@ app
 		},
 		dateDisposition : "",
 		revenuCadastral : "",
+		photo: "",
+	    cautionLocative: "",
+	    loyerMensuel: "",
+	    montantMensuelCharges: "",
+	    typeBail: "",
+	    garniture: "",
+	    prixAchat: "",
+	    etat: "",
 		classeStandard : {
 			code : "",
 			type : "",
@@ -153,24 +161,32 @@ app
 .controller("modifBICtrl", function($scope, $location, biService, $rootScope) {
 	if ($rootScope.biModif.id == undefined) {
 		$scope.bien = {
-			statut : "",
-			dateSoumission : null,
-			adresse : {
-				rue : "",
-				numero : "",
-				codePostal : "",
-				localite : ""
-			},
-			dateDisposition : "",
-			revenuCadastral : "",
-			classeStandard : {
-				code : "",
-				type : "",
-				modeOffre : "",
-				prixMax : "",
-				superficieMin : ""
-			}
-		};
+				id : "",
+				statut : "",
+				dateSoumission :"",
+				adresse : {
+					rue : "",
+					numero : "",
+					codePostal : "",
+					localite : ""
+				},
+				dateDisposition : "",
+				revenuCadastral : "",
+				photo: "",
+			    cautionLocative: "",
+			    loyerMensuel: "",
+			    montantMensuelCharges: "",
+			    typeBail: "",
+			    garniture: "",
+			    prixAchat: "",
+			    etat: "",
+				classeStandard : {
+					code : "",
+					type : "",
+					modeOffre : "",
+					prixMax : "",
+					superficieMin : ""
+				}		};
 	} else {
 		$scope.bien = $rootScope.biModif;
 	}
