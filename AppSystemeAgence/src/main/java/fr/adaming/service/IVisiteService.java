@@ -5,6 +5,8 @@ import java.util.List;
 import fr.adaming.model.Visite;
 
 public interface IVisiteService {
+	
+	public List<Visite> getAllVisite();
 
 	public List<Visite> getVisiteByAgent(int idAgent);
 

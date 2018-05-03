@@ -12,6 +12,11 @@ import fr.adaming.model.Visite;
 @Service("vstService")
 @Transactional
 public class VisiteServiceImpl implements IVisiteService {
+	
+	@Override
+	public List<Visite> getAllVisite() {
+		return vstDao.getAllVisite();
+	}
 
 	@Autowired
 	private IVisiteDao vstDao;
@@ -40,5 +45,6 @@ public class VisiteServiceImpl implements IVisiteService {
 	public List<Visite> getVisiteByClient(int idClient) {
 		return vstDao.getVisiteByClient(idClient);
 	}
+
 
 }

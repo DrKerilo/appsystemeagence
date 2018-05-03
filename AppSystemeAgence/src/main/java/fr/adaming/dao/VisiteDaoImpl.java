@@ -85,4 +85,16 @@ public class VisiteDaoImpl implements IVisiteDao{
 		return v;
 	}
 
+	@Override
+	public List<Visite> getAllVisite() {
+		// Requête HQL
+		r = "FROM Visite";
+		// Ouvrir une session
+		s = sf.getCurrentSession();
+		// Créer Query
+		q = s.createQuery(r);
+		// Envoi requête et récupération du résultat
+		return q.list();
+	}
+
 }

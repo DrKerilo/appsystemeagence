@@ -18,6 +18,11 @@ public class VisiteRest {
 	@Autowired
 	private IVisiteService visiteService;
 	
+	@RequestMapping(value="/listeVisites", method=RequestMethod.GET, produces="application/json")
+	public List<Visite> getAllVisite() {
+		return visiteService.getAllVisite();
+	}
+	
 	@RequestMapping(value="/listeVisitesByAgent", method=RequestMethod.GET, produces="application/json")
 	public List<Visite> getVisiteByAgent(@RequestParam("pId")int idAgent) {
 		return visiteService.getVisiteByAgent(idAgent);

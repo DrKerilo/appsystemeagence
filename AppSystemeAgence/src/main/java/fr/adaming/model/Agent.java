@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +28,7 @@ public class Agent implements Serializable{
 	private int id;
 	private String identifiant;
 	private String mdp;
+	private int tel;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="agent", fetch = FetchType.LAZY)
@@ -37,29 +39,23 @@ public class Agent implements Serializable{
 		super();
 	}	
 
-	public Agent(String identifiant, String mdp) {
+	public Agent(String identifiant, String mdp, int tel) {
 		super();
 		this.identifiant = identifiant;
 		this.mdp = mdp;
+		this.tel = tel;
 	}
-	
 
-	public Agent(int id, String identifiant, String mdp) {
+
+	public Agent(int id, String identifiant, String mdp, int tel) {
 		super();
 		this.id = id;
 		this.identifiant = identifiant;
 		this.mdp = mdp;
+		this.tel = tel;
 	}
 
 	// getters et setters
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getIdentifiant() {
 		return identifiant;
 	}
@@ -82,6 +78,22 @@ public class Agent implements Serializable{
 
 	public void setVisites(List<Visite> visites) {
 		this.visites = visites;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getTel() {
+		return tel;
+	}
+
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
 	
 	

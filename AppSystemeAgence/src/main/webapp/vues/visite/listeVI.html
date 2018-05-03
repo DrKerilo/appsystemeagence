@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<h1>Liste des visites prevues</h1>
+<hr/>
 
-</body>
-</html>
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  		<th style="text-align:center">Date</th>
+  		<th style="text-align:center">Agent immobilier</th>
+  		<th style="text-align:center">Client</th>
+  		<th style="text-align:center">Editer visite</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<tr	ng-repeat="v in listeVisites">
+  		<td>{{v.date}}</td>
+  		<td>{{v.agent.nom}}</td>
+  		<td>{{v.client.nom}}</td>
+  		<td>
+  			<a ng-click="modifierLien(v)">Modifier</a>
+  			|
+  			<a ng-click="supprimerLien(v.id)">Supprimer</a>
+  		</td>
+  	</tr>
+  </tbody>
+</table>
+<hr/>

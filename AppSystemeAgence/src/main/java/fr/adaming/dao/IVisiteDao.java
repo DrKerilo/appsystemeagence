@@ -6,6 +6,8 @@ import fr.adaming.model.Visite;
 
 public interface IVisiteDao {
 	
+	public List<Visite> getAllVisite();
+	
 	public List<Visite> getVisiteByAgent(int id_agent);
 	
 	public List<Visite> getVisiteByClient(int id_client);
