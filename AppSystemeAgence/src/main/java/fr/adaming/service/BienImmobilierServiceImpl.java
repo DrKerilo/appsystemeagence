@@ -46,4 +46,9 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService {
 		return biDao.getBiensByClasse(id);
 	}
 
+	@Override
+	public List<BienImmobilier> getBiensByProprietaire(int id) {
+		return biDao.getBiensByProprietaire(id);
+	}
+
 }

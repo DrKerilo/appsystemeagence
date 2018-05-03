@@ -13,6 +13,7 @@
   		<th style="text-align:center">Ville</th>
   		<th style="text-align:center">Tel. perso</th>
   		<th style="text-align:center">Tel. pro</th>
+  		<th style="text-align:center">Liste biens immobiliers</th>
   		<th style="text-align:center">Operations</th>
   	</tr>
   </thead>
@@ -27,6 +28,7 @@
   		<td>{{p.adresse.localite}}</td>
   		<td>{{p.telPerso}}</td>
   		<td>{{p.telPro}}</td>
+  		<td><a ng-click="getListeByProprio(p.id)">Afficher</a></td>
   		<td>
   			<a ng-click="modifierLien(p)">Modifier</a>
   			|

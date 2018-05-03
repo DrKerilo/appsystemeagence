@@ -1,0 +1,54 @@
+<h1>Liste des biens immobiliers</h1>
+<hr/>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="ID" class="col-sm-2 control-label">ID</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" ng-model="code">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<!-- 			<button class="btn btn-default" ng-click="getOne(id)">Rechercher</button> -->
+			<button class="btn btn-default" ng-click="getByProp()">Rechercher</button>
+		</div>
+	</div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  		<th style="text-align:center">Id</th>
+  		<th style="text-align:center">Statut</th>
+  		<th style="text-align:center">Date de soumission</th>
+  		<th style="text-align:center">N°</th>
+  		<th style="text-align:center">Rue</th>
+  		<th style="text-align:center">Code Postal</th>
+  		<th style="text-align:center">Localité</th>
+  		<th style="text-align:center">Date de disposition</th>
+  		<th style="text-align:center">Revenu cadastral</th>
+  		<th style="text-align:center">Photo</th>
+  		<th style="text-align:center">Classe</th>
+  		<th style="text-align:center">Opérations</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<tr	ng-repeat="bi in listeBiensParCat">
+  		<td>{{bi.id}}</td>
+  		<td>{{bi.statut}}</td>
+  		<td>{{bi.dateSoumission}}</td>
+  		<td>{{bi.adresse.numero}}</td>
+  		<td>{{bi.adresse.rue}}</td>
+  		<td>{{bi.adresse.codePostal}}</td>
+  		<td>{{bi.adresse.localite}}</td>
+  		<td>{{bi.dateDisposition}}</td>
+  		<td>{{bi.revenuCadastral}}</td>
+  		<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="150"/></td>
+  		<td>{{bi.classeStandard.code}}</td>
+  		<td><a ng-click="modifLinkBi(bi)">Modifier</a> | <a ng-click="deleteLinkBi(bi.id)">Supprimer</td>
+  	</tr>
+  </tbody>
+</table>
+<hr/>
