@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +30,7 @@ public class ClasseStandard implements Serializable{
 	@Column(name="id_cs")
 	private int code;
 	private String type;
+	@Enumerated(EnumType.STRING)
 	private ModeOffre modeOffre;
 	private double prixMax;
 	private double superficieMin;

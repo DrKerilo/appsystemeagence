@@ -34,6 +34,10 @@ app.config(function($routeProvider) {
 		controller:"listeBICatCtrl",
 		templateUrl:"vues/bienImmobilier/listeBICat.html"
 	})
+	.when("/listBIProp",{
+		controller:"listeBIPropCtrl",
+		templateUrl:"vues/bienImmobilier/listeBIProp.html"
+	})
 	.when("/addBI", {
 		controller:"ajoutBICtrl",
 		templateUrl:"vues/bienImmobilier/ajoutBI.html"

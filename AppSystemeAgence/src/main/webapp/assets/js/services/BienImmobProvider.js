@@ -19,11 +19,24 @@ app.factory("biService", function($http,$window) {
 		});
 	}
 	
-	// ----- Afficher liste
+	// ----- Afficher liste selon classe standard
 	function findByCat(cat, busSC){
 		$http({
 			method:"GET",
 			url:restUrl+"/listeBIByClasse/" + cat 
+		}).then(function successCallback(response) {
+			console.log(response.data);
+			busSC(response.data);
+		}, function errorCallback(reason) {
+			console.log("Erreur "+reason.status+": "+reason.statusText);
+		});
+	}
+	
+	// ----- Afficher liste selon propriétaire
+	function findByProp(id, busSC){
+		$http({
+			method:"GET",
+			url:restUrl+"/listeBIByProprietaire/" + id 
 		}).then(function successCallback(response) {
 			console.log(response.data);
 			busSC(response.data);
@@ -98,7 +111,8 @@ app.factory("biService", function($http,$window) {
 		modifBi:editBi,
 		supprimBi:delBi,
 		getBi:searchBi,
-		getBiByCat:findByCat
+		getBiByCat:findByCat,
+		getBiByProp:findByProp
 		
 	}
 	
