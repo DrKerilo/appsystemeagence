@@ -79,20 +79,19 @@
 		</div>
 	</div>
 
+<!-- 	<div class="form-group"> -->
+<!-- 		<label class="col-sm-2 control-label">Propriétaire</label> -->
+<!-- 		<div class="col-sm-10"> -->
+<!-- 			<select ng-model="bien.proprietaire.id"  -->
+<!-- 				ng-options="prop as prop.nom + ' ' + prop.prenom + ' (' + prop.id + ')' for prop in props"></select> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Classe</label>
 		<div class="col-sm-10">
 			<select ng-model="CsOut" ng-change="change()" 
-				ng-options="cs as cs.code +' (' + cs.modeOffre + ' ' + cs. type + ')' for cs in classe"></select>
-
-<!-- 			<select ng-model="bien.classeStandard.code" -->
-<!-- 				ng-options="cs.code as cs.code +' (' + cs.modeOffre + ' ' + cs. type + ')' for cs in classe"></select> -->
-
-<!-- 			<select name="repeatSelect" id="repeatSelect" -->
-<!-- 				ng-model="bien.classeStandard.code"> -->
-<!-- 				<option ng-repeat="option in data.availableOptions" -->
-<!-- 					value="{{option.id}}">{{option.name}}</option> -->
-<!-- 			</select> -->
+				ng-options="cs as cs.code +' (' + cs.modeOffre + ' ' + cs.type + ')' for cs in classe"></select>
 		</div>
 	</div>
 
