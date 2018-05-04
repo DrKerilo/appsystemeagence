@@ -1,11 +1,10 @@
-package fr.adaming.dao;
+package fr.adaming.service;
 
 import java.util.List;
 
 import fr.adaming.model.Contrat;
 
-
-public interface IContratDao {
+public interface IContratService {
 	
 	public Contrat addContrat(Contrat cont);
 	

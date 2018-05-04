@@ -43,7 +43,7 @@ public class ContratDaoImpl implements IContratDao {
 	}
 
 	@Override
-	public Contrat updateClient(Contrat cont) {
+	public Contrat updateContrat(Contrat cont) {
 		
 		s=sf.getCurrentSession();
 		
