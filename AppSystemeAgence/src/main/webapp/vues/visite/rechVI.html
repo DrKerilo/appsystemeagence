@@ -24,6 +24,11 @@
   		<td><img ng-src="data:image/JPEG;base64,{{v.bienImmo.photo}}" width="200"/>
   		<td>{{v.agent.nom}}</td>
   		<td>{{v.client.nom}} {{v.client.prenom}}</td>
+  		<td>
+  		  	<a ng-click="modifierLien(v)">Modifier</a>
+  			|
+  			<a ng-click="supprimerLien(v.id)">Supprimer</a>
+  		</td>
   	</tr>
   </tbody>
 </table>

@@ -23,30 +23,35 @@
 <table class="table table-striped" ng-show="indice">
 	<thead>
 		<tr>
-			<th style="text-align: center">Id</th>
-			<th style="text-align: center">Statut</th>
-			<th style="text-align: center">Date de soumission</th>
-			<th style="text-align: center">N°</th>
-			<th style="text-align: center">Rue</th>
-			<th style="text-align: center">Code Postal</th>
-			<th style="text-align: center">Localité</th>
-			<th style="text-align: center">Date de disposition</th>
-			<th style="text-align: center">Revenu cadastral</th>
 			<th style="text-align: center">Photo</th>
+			<th style="text-align: center">Ref</th>
+			<th style="text-align: center">Statut</th>
+			<th style="text-align: center">Adresse</th>
+			<th style="text-align: center">Soumis le </th>
+			<th style="text-align: center">Disponible le </th>
+			<th style="text-align: center">Prix</th>
+		
+			<th style="text-align: center">Caution</th>
+			<th style="text-align: center">Charge</th>
+			<th style="text-align: center">Type de bail</th>
+			<th style="text-align: center">Etat</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr ng-model="biOut">
+			<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="200"/></td>
 			<td>{{biOut.id}}</td>
 			<td>{{biOut.statut}}</td>
+			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal} {{biOut.adresse.localite}}</td>
 			<td>{{biOut.dateSoumission}}</td>
-			<td>{{biOut.adresse.numero}}</td>
-			<td>{{biOut.adresse.rue}}</td>
-			<td>{{biOut.adresse.codePostal}}</td>
-			<td>{{biOut.adresse.localite}}</td>
 			<td>{{biOut.dateDisposition}}</td>
 			<td>{{biOut.revenuCadastral}}</td>
+			
+			<td>{{biOut.cautionLocative}}</td>
+			<td>{{biOut.montantMensuelCharges}}</td>
+			<td>{{biOut.typeBail}}</td>
+			<td>{{biOut.garniture}}</td>
 			<td></td>
 		</tr>
 	</tbody>
