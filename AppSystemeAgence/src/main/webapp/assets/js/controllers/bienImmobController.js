@@ -262,8 +262,8 @@ app
 					prixMax : "",
 					superficieMin : ""
 				},
-				proprietaire : undefined//{
-//					id : 1,
+				proprietaire : {
+					id : ""//,
 //					nom : "",
 //					prenom : "",
 //					telPerso : "",
@@ -274,7 +274,7 @@ app
 //						localite : ""
 //					},
 //					telPro : ""
-//				}
+				}
 			}
 
 			$scope.indice = false;
@@ -328,6 +328,9 @@ app
 						modeOffre : "",
 						prixMax : "",
 						superficieMin : ""
+					},
+					proprietaire : {
+						id : ""
 					}
 				};
 			} else {

@@ -81,7 +81,7 @@
 		<label class="col-sm-2 control-label">Propriétaire</label>
 		<div class="col-sm-10">
 			<select ng-model="bien.proprietaire.id" 
-				ng-options="prop as prop.prenom + ' ' + prop.nom + ' (' + prop.id + ')' for prop in props"></select>
+				ng-options="prop.id as prop.prenom + ' ' + prop.nom + ' (' + prop.id + ')' for prop in props"></select>
 		</div>
 	</div>
 
