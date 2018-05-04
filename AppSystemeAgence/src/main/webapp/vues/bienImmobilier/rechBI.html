@@ -27,10 +27,10 @@
 			<th style="text-align: center">Ref</th>
 			<th style="text-align: center">Statut</th>
 			<th style="text-align: center">Adresse</th>
-			<th style="text-align: center">Soumis le </th>
-			<th style="text-align: center">Disponible le </th>
+			<th style="text-align: center">Soumis le</th>
+			<th style="text-align: center">Disponible le</th>
 			<th style="text-align: center">Prix</th>
-		
+
 			<th style="text-align: center">Caution</th>
 			<th style="text-align: center">Charge</th>
 			<th style="text-align: center">Type de bail</th>
@@ -40,14 +40,16 @@
 
 	<tbody>
 		<tr ng-model="biOut">
-			<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="200"/></td>
+			<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}"
+				width="200" /></td>
 			<td>{{biOut.id}}</td>
 			<td>{{biOut.statut}}</td>
-			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal} {{biOut.adresse.localite}}</td>
+			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}}
+				{{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</td>
 			<td>{{biOut.dateSoumission}}</td>
 			<td>{{biOut.dateDisposition}}</td>
 			<td>{{biOut.revenuCadastral}}</td>
-			
+
 			<td>{{biOut.cautionLocative}}</td>
 			<td>{{biOut.montantMensuelCharges}}</td>
 			<td>{{biOut.typeBail}}</td>
@@ -55,4 +57,10 @@
 			<td></td>
 		</tr>
 	</tbody>
+
+
+
 </table>
+
+
+<img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&markers=color:red%7Clabel:C%7C{{lat}},{{lng}}&zoom=14&size=600x400&key=AIzaSyC0YbBSL7amcTwd3Z-3WgyTPO5LZsI8Ko0" />

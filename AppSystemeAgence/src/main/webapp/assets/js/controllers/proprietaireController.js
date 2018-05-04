@@ -39,7 +39,7 @@ app.controller("listePRCtrl",
 
 		})
 
-.controller("ajoutPRCtrl", function($scope, $location, propService) {
+.controller("ajoutPRCtrl", function($scope, $location, propService, biService) {
 
 	// Variables
 	$scope.p = { // Déclaration d'un propriétaire vide
@@ -54,6 +54,11 @@ app.controller("listePRCtrl",
 		},
 		telPro: ""
 	};
+	
+	// Récupération de la liste des biens immobiliers
+	biService.getAllBi(function(callback) {
+		$scope.listeBI=callback;
+	})
 
 	// Fonction appelée via le bouton Ajouter
 	$scope.ajouterPR = function() {

@@ -45,12 +45,12 @@ app.factory("biService", function($http,$window) {
 		});
 	}
 
-	
+	// Rechercher par ID
 	function searchBi(id, busSC) {
 		$http.get(restUrl + "/bienImmo?pId=" + id)
 		
-		.then(function succesCallback(response) { //promise
-//			console.log(response.data);
+		.then(function succesCallback(response) { // promise
+// console.log(response.data);
 			busSC(response.data);
 		}, function erreurCallback(response) {
 			console.log("Erreur : ----" + response.statusText)
@@ -60,13 +60,14 @@ app.factory("biService", function($http,$window) {
 	function delBi(id, busSC) {
 		$http.delete(restUrl + "/bienImmo/" + id)
 		
-		.then(function succesCallback(response) { //promise
+		.then(function succesCallback(response) { // promise
 			busSC(response.data);
 			}, function erreurCallback(response) {
 			console.log("Erreur : ----" + response.statusText)
 		});
 	}
 	
+	// Ajouter
 	function addBi(bi, busSC) {
 		
 		// transformer l'image récupérée en base 64
@@ -81,15 +82,15 @@ app.factory("biService", function($http,$window) {
 			}
 		})
 		
-		.then(function succesCallback(response) { //promise
+		.then(function succesCallback(response) { // promise
 			busSC(response.statusText);
 		}, function erreurCallback(reason) {
 			console.log("Erreur : ----" + reason.statusText);
 		});
 	}
 	
+	// Modifier un bien immobilier
 	function editBi(bi, busSC) {
-		
 		// transformer l'image récupérée en base 64
 		bi.photo = bi.photo.base64;
 		
@@ -102,12 +103,36 @@ app.factory("biService", function($http,$window) {
 			}
 		})
 		
-		.then(function succesCallback(response) { //promise
+		.then(function succesCallback(response) { // promise
 			busSC(response.statusText);
 		}, function erreurCallback(reason) {
 			console.log("Erreur : ----" + reason.statusText);
 		});
 	}
+	
+	// FONCTION GEOLOCALISATION
+	function geoAdresse(rue, codePostal, ville, bus) {
+		$http(
+				{
+					method : "GET",
+					url : "https://maps.googleapis.com/maps/api/geocode/json?address="
+							+ rue
+							+ ","
+							+ codePostal
+							+ ""
+							+ ville
+							+ "&key=AIzaSyDy1ZKI7FhtHYJx8VEB0GQyjcUoxc2nwy4"
+				}).then(
+				function successCallBack(response) {
+					bus(response.data)
+				},
+				function errorCallBack(response) {
+					console.log("Erreur : ------"
+							+ response.statusText);
+				})
+
+}
+
 	
 	return {
 		getAllBi:findAllBi,
@@ -116,7 +141,8 @@ app.factory("biService", function($http,$window) {
 		supprimBi:delBi,
 		getBi:searchBi,
 		getBiByCat:findByCat,
-		getBiByProp:findByProp
+		getBiByProp:findByProp,
+		localisationBi : geoAdresse
 		
 	}
 	

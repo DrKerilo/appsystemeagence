@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @XmlRootElement
@@ -26,8 +29,8 @@ public class Client extends Personne {
 	private String mail;
 	
 	// Transformation des associations UML en JAVA
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.DETACH)
+	@Fetch(FetchMode.SELECT)
+	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.DETACH)
 	@JoinTable(name = "recherches_clients", joinColumns = @JoinColumn(name = "cl_id"), inverseJoinColumns = @JoinColumn(name = "cs_id"))
 	private List<ClasseStandard> listeClasseStd;
 
