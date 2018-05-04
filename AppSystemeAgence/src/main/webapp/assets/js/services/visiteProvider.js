@@ -7,7 +7,7 @@ app.factory("visiteService", function($http,$window) {
 	
 	// Déclaration externe des fonctions
 	// ----- Afficher liste visites d'un agent
-	function findAllByAgent(busSC){
+	function findAll(busSC){
 		$http({
 			method:"GET",
 			url:restUrl+"/listeVisites"
@@ -34,9 +34,40 @@ app.factory("visiteService", function($http,$window) {
 		})
 	};
 	
+	// ----- Supprimer une visite de la liste
+	function deleteVisite(id,busSC){
+		if($window.confirm("Êtes-vous sûr de vouloir annuler cette visite ?")){
+			$http.delete(restUrl+"/visite?pId="+id)
+			.then(function successCallback(response) {
+				busSC(response.statusText);
+			}, function errorCallback(reason) {
+				console.log("Erreur "+reason.status+": "+reason.statusText);
+			});
+		}
+	};
+	
+	// ----- Modifier
+	function updateVisite(vi, busSC) {
+		$http({
+			method : "PUT",
+			url : restUrl + "/visite",
+			data : angular.toJson(vi),
+			headers : {
+				"Content-Type" : "application/json"
+			}
+		}).then(function successCallback(response) {
+			busSC(response.status)
+		}, function errorCallback(reason) {
+			busSC(reason.status);
+			console.log("Erreur " + reason.status + ": " + reason.statusText);
+		})
+	}
+	
 	return {
-		getVisitesByAgent : findAllByAgent,
-		addVisite : newVisite
+		getAll : findAll,
+		addVisite : newVisite,
+		deleteOne : deleteVisite,
+		updateOne : updateVisite
 	}
 	
 })
