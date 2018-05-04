@@ -1,6 +1,12 @@
 <h1>Liste des visites prevues</h1>
 <hr/>
 
+      	<form>
+      	<i class="glyphicon glyphicon-search fa-pulse"></i>
+        <input type="text" ng-model="recherche">         
+        </form>
+
+
 <table class="table table-striped">
   <thead>
   	<tr>
@@ -13,7 +19,7 @@
   	</tr>
   </thead>
   <tbody>
-  	<tr	ng-repeat="v in listeVisites">
+  	<tr	ng-repeat="v in listeVisites | filter: recherche | orderBy: 'date' ">
   		<td>le {{v.date}} a {{v.heure}}</td>
   		<td>{{v.bienImmo.id}}</td>
   		<td><img ng-src="data:image/JPEG;base64,{{v.bienImmo.photo}}" width="200"/>

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,7 +27,7 @@ public class Client extends Personne {
 	
 	// Transformation des associations UML en JAVA
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.DETACH)
 	@JoinTable(name = "recherches_clients", joinColumns = @JoinColumn(name = "cl_id"), inverseJoinColumns = @JoinColumn(name = "cs_id"))
 	private List<ClasseStandard> listeClasseStd;
 

@@ -115,10 +115,34 @@ app
 	}
 })
 
-.controller("rechVICtrl", function($scope, visiteService) {
+.controller("rechVICtrl", function($scope, $rootScope, $location, visiteService) {
 	
 	visiteService.getAll(function(callback) {
 		$scope.listeVisites=callback;
 	})
+	
+	// Fonction appelée via le lien Supprimer
+	$scope.supprimerLien = function(idVisite) {
+		visiteService.deleteOne(idVisite, function(callback) {
+			if (callback == "OK") {
+				visiteService.getAll(function(callback) {
+				$scope.listeVisites = callback;
+				});
+			} else {
+				$scope.message="Erreur: la visite n'a pas pu être supprimée."
+			}
+		});
+	};
+	
+	// Déclaration de visiteModif avec un id undefined
+	$rootScope.viModif = {
+		id : undefined
+	};
+
+	// Fonction appelée via le lien Modifier
+	$scope.modifierLien = function(vi) {
+		$rootScope.viModif = vi;
+		$location.path("updateVI");
+	};
 
 });
