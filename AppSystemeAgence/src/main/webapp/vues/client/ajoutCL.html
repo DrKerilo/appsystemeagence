@@ -4,8 +4,8 @@
 	<div class="form-group">
 		<label for="idNom" class="col-sm-2 col-sm-offset-2 control-label">Nom</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" id="idNom"
-				placeholder="Nom" ng-model="cl.nom">
+			<input type="text" class="form-control" id="idNom" placeholder="Nom"
+				ng-model="cl.nom">
 		</div>
 	</div>
 	<div class="form-group">
@@ -30,7 +30,8 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="idCP" class="col-sm-2 col-sm-offset-2 control-label">Code postal</label>
+		<label for="idCP" class="col-sm-2 col-sm-offset-2 control-label">Code
+			postal</label>
 		<div class="col-sm-4">
 			<input type="number" class="form-control" id="idCP"
 				placeholder="Code postal" ng-model="cl.adresse.codePostal">
@@ -44,15 +45,26 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="idTelPerso" class="col-sm-2 col-sm-offset-2 control-label">Tel. perso</label>
+		<label for="idTelPerso" class="col-sm-2 col-sm-offset-2 control-label">Tel.
+			perso</label>
 		<div class="col-sm-4">
 			<input type="number" class="form-control" id="idTelPerso"
 				placeholder="Numero de telephone personnel" ng-model="cl.telPerso">
 		</div>
 	</div>
-	
+
 	<!-- Ajouter menu multiselect pour lui donner des classes -->
-	
+	<div class="form-group">
+		<label for="idCS" class="col-sm-2 col-sm-offset-2 control-label">Preferences</label>
+		<ui-select multiple ng-model="cl.listeClasseStd"
+			theme="bootstrap" sortable="true" close-on-select="false"
+			class="col-sm-4"> <ui-select-match
+			placeholder="Selectionner preference...">{{$item.code}}
+		({{$item.modeOffre}} {{$item.type}})</ui-select-match> <ui-select-choices
+			repeat="cs in listeCS">
+		<small> Mode d'offre: à {{cs.modeOffre}}, type: {{cs.type}}</small> </ui-select-choices> </ui-select>
+	</div>
+
 	<button class="btn btn-default" ng-click="ajouterCL()">Ajouter</button>
 </form>
 <hr />

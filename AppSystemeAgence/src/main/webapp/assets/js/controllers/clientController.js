@@ -33,7 +33,7 @@ app.controller("listeCLCtrl",
 
 		})
 
-.controller("ajoutCLCtrl", function($scope, $location, clService) {
+.controller("ajoutCLCtrl", function($scope, $location, clService, csService) {
 
 	// Variables
 	$scope.cl = { // Déclaration d'un client vide
@@ -45,13 +45,19 @@ app.controller("listeCLCtrl",
 			numero: "",
 			codePostal: "",
 			localite: ""
-		}
+		},
+		listeClasseStd:[]
 	};
-
+	
+	// Récupération de la liste des classes standards
+	csService.getAll(function(callback) {
+		$scope.listeCS=callback;
+	});
+		
 	// Fonction appelée via le bouton Ajouter
 	$scope.ajouterCL = function() {
 		clService.addOne($scope.cl, function(callback) {
-			if (callback == "OK") {
+			if (typeof callback == "object") {
 				$location.path("listCL");
 			} else {
 				$scope.message = "Erreur: l'ajout du client n'a pas abouti."
@@ -76,7 +82,8 @@ app.controller("listeCLCtrl",
 				numero: "",
 				codePostal: "",
 				localite: ""
-			}
+			},
+			listeClasseStd:[]
 		};
 	} else {
 		$scope.cl = $rootScope.clModif;
