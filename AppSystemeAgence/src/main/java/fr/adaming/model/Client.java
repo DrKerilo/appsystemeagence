@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +28,7 @@ public class Client extends Personne {
 	private List<ClasseStandard> listeClasseStd;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade=CascadeType.DETACH)
 	private List<Visite> visites;
 
 	public List<Visite> getVisites() {

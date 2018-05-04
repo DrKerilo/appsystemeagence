@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -72,7 +73,7 @@ public class BienImmobilier implements Serializable {
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
 	private Proprietaire proprietaire;
 
-	@OneToMany(mappedBy = "bienImmo",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "bienImmo",fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
 	@JsonIgnore
 	private List<Visite> listeVisites;
 
