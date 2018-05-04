@@ -170,7 +170,7 @@ app
 	}
 })
 
-.controller("ajoutBICtrl", function($scope, $location, biService) {
+.controller("ajoutBICtrl", function($scope, $location, biService, csService) {
 	$scope.statutBI = [ {
 		valeur : "DISPONIBLE",
 		nom : "Disponible"
@@ -192,7 +192,7 @@ app
 	
 	$scope.bailBI = ["Habitation", "Mixte", "Commercial", "Professionnel"];
 
-	$scope.etat = [{
+	$scope.etatBI = [{
 		valeur : "A_restaurer",
 		nom : "A restaurer"
 	}, {
@@ -202,10 +202,10 @@ app
 		valeur : "Impeccable",
 		nom : "Impeccable"
 	}];
-//	
-//	$scope.classe = csService.getAll(function(callback) {
-//		$scope.listeClassesStandards = callback;
-//	});
+	
+	csService.getAll(function(callback) {
+		$scope.classe = callback;
+	});
 
 	$scope.bien = {
 		statut : "",
@@ -232,13 +232,32 @@ app
 			modeOffre : "",
 			prixMax : "",
 			superficieMin : ""
-		}
+		},
+		proprietaire : null
 	}
 
 	$scope.indice = false;
 
 	$scope.ajouterBi = function() {
-		console.log($scope.bien.statut);
+		console.log($scope.bien);
+		
+		$scope.toto = $scope.bien.classeStandard;
+		
+		delete $scope.bien.classeStandard;
+		
+		console.log($scope.bien);
+		console.log($scope.toto);
+		
+//		$scope.bien.classeStandard = {
+//				code : $scope.toto.code,
+//				type : "",
+//				modeOffre : "",
+//				prixMax : "",
+//				superficieMin : ""
+//		};
+//		
+		console.log($scope.bien);
+		
 		biService.ajoutBi($scope.bien, function(callBack) {
 			if (callBack == "OK") {
 				$location.path('listBI');
@@ -248,6 +267,13 @@ app
 				$scope.msg = "Impossible d'ajouter";
 			}
 		})
+	}
+	
+	
+	$scope.change=function(){
+		if(bien.classeStandard.modeOffre == 'Louer'){
+			$scope.checked=true;
+		}
 	}
 })
 
