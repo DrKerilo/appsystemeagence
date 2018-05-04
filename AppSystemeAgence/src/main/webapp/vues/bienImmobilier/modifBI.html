@@ -10,78 +10,169 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Statut</label>
+		<div class="col-sm-10">
+			<select ng-model="bien.statut"
+				ng-options="st.valeur as st.nom for st in statutBI"></select>
+		</div>
+	</div>
 
-<form class="form-horizontal">
 	<div class="form-group">
-		<label for="statut" class="col-sm-2 control-label">Statut</label>
+		<label for="ds" class="col-sm-2 control-label">Date de
+			soumission</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="DISPONIBLE/LOUE/ACHETE" ng-model="bien.statut">
+			<input type="date" class="form-control" placeholder="Date" id="ds"
+				ng-model="bien.dateSoumission">
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="ds" class="col-sm-2 control-label">Date de soumission</label>
-		<div class="col-sm-10">
-			<input type="date" class="form-control" placeholder="Date" ng-model="bien.dateSoumission">
-		</div>
-	</div>
-	
+
 	<div class="form-group">
 		<label for="num" class="col-sm-2 control-label">N°</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.adresse.numero">
+			<input type="number" class="form-control" placeholder="Numéro"
+				id="num" ng-model="bien.adresse.numero">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="rue" class="col-sm-2 control-label">Rue</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="id" ng-model="bien.adresse.rue">
+			<input type="text" class="form-control" placeholder="Rue, Chemin..."
+				id="rue" ng-model="bien.adresse.rue">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="cp" class="col-sm-2 control-label">Code Postal</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.adresse.codePostal">
+			<input type="number" class="form-control" placeholder="Code Postal"
+				ng-model="bien.adresse.codePostal">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
 		<label for="localite" class="col-sm-2 control-label">Localité</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" placeholder="id" ng-model="bien.adresse.localite">
+			<input type="text" class="form-control" placeholder="Ville"
+				id="localite" ng-model="bien.adresse.localite">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
-		<label for="dd" class="col-sm-2 control-label">Date de disposition</label>
+		<label for="dd" class="col-sm-2 control-label">Date de
+			disposition</label>
 		<div class="col-sm-10">
-			<input type="date" class="form-control" placeholder="id" ng-model="bien.dateDisposition">
+			<input type="date" class="form-control" id="dd"
+				ng-model="bien.dateDisposition">
 		</div>
 	</div>
-	
+
 	<div class="form-group">
-		<label for="revenuC" class="col-sm-2 control-label">Revenu cadastral</label>
+		<label for="revenuC" class="col-sm-2 control-label">Revenu
+			cadastral</label>
 		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.revenuCadastral">
+			<input type="number" class="form-control" placeholder="Revenu"
+				id="revenuC" ng-model="bien.revenuCadastral">
 		</div>
 	</div>
-	
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Classe</label>
+		<div class="col-sm-10">
+			<select ng-model="CsOut" ng-change="change()" 
+				ng-options="cs as cs.code +' (' + cs.modeOffre + ' ' + cs. type + ')' for cs in classe"></select>
+
+<!-- 			<select ng-model="bien.classeStandard.code" -->
+<!-- 				ng-options="cs.code as cs.code +' (' + cs.modeOffre + ' ' + cs. type + ')' for cs in classe"></select> -->
+
+<!-- 			<select name="repeatSelect" id="repeatSelect" -->
+<!-- 				ng-model="bien.classeStandard.code"> -->
+<!-- 				<option ng-repeat="option in data.availableOptions" -->
+<!-- 					value="{{option.id}}">{{option.name}}</option> -->
+<!-- 			</select> -->
+		</div>
+	</div>
+
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre == 'Louer'">
+		<label for="caution" class="col-sm-2 control-label">Caution</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" placeholder="Caution"
+				ng-model="bien.cautionLocative" id="caution">
+		</div>
+	</div>
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Louer'">
+		<label for="loyer" class="col-sm-2 control-label">Loyer
+			mensuel</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" placeholder="Loyer"
+				ng-model="bien.loyerMensuel" id="loyer">
+		</div>
+	</div>
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Louer'">
+		<label for="charges" class="col-sm-2 control-label">Montant
+			mensuel des charges</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" placeholder="Charges"
+				ng-model="bien.montantMensuelCharges" id="charges">
+		</div>
+	</div>
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Louer'">
+		<label class="col-sm-2 control-label">Garniture</label>
+		<div class="col-sm-10">
+			<select ng-model="bien.garniture"
+				ng-options="gar.valeur as gar.nom for gar in garnitureBI"></select>
+		</div>
+	</div>
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Louer'">
+		<label class="col-sm-2 control-label">Type de bail</label>
+		<div class="col-sm-10">
+			<select ng-model="bien.typeBail" ng-options="bail for bail in bailBI"></select>
+		</div>
+	</div>
+
+	<!-- 	 Fin des options pour location -->
+
+	<!-- Cas de l'achat -->
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Acheter'">
+		<label for="prixAchat" class="col-sm-2 control-label">Prix
+			d'achat</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" placeholder="Prix"
+				ng-model="bien.prixAchat" id="prixAchat">
+		</div>
+	</div>
+
+	<div class="form-group"
+		ng-if="CsOut.modeOffre  == 'Acheter'">
+		<label class="col-sm-2 control-label">Etat (si pas terrain)</label>
+		<div class="col-sm-10">
+			<select ng-model="bien.etat"
+				ng-options="etat.valeur as etat.nom for etat in etatBI"></select>
+		</div>
+	</div>
+	<!-- Fin des cas pour achat -->
+
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Image</label>
 		<div class="col-sm-10">
-			<input type="file" class="form-control" ng-model="bien.photo" accept="image/*" base-sixty-four-input>
+			<input type="file" class="form-control" ng-model="bien.photo"
+				accept="image/*" base-sixty-four-input>
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="classe" class="col-sm-2 control-label">Classe</label>
-		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="id" ng-model="bien.classeStandard.code">
-		</div>
-	</div>
-	
+
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<button class="btn btn-default" ng-click="modifierBi()">Modifier</button>

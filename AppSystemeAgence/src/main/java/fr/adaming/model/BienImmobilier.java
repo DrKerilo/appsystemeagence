@@ -25,11 +25,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import fr.adaming.model.enumerations.Bail;
-import fr.adaming.model.enumerations.Etat;
-import fr.adaming.model.enumerations.Garniture;
-import fr.adaming.model.enumerations.ImmoStatut;
-
 @XmlRootElement
 @Entity
 @Table(name = "biens_immobiliers")
@@ -38,8 +33,7 @@ public class BienImmobilier implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
 	private int id;
-	@Enumerated(EnumType.STRING)
-	private ImmoStatut statut;
+	private String statut;
 	@Temporal(TemporalType.DATE)
 	private Date dateSoumission;
 	@Embedded
@@ -56,16 +50,13 @@ public class BienImmobilier implements Serializable {
 	private double loyerMensuel;
 	@Column(nullable = true)
 	private double montantMensuelCharges;
-	@Enumerated(EnumType.STRING)
-	private Bail typeBail;
-	@Enumerated(EnumType.STRING)
-	private Garniture garniture;
+	private String typeBail;
+	private String garniture;
 	
 	// Cas de acheter
 	@Column(nullable = true)
 	private double prixAchat;
-	@Enumerated(EnumType.STRING)
-	private Etat etat;
+	private String etat;
 
 	// Associations UML en Java
 	@ManyToOne
@@ -96,9 +87,9 @@ public class BienImmobilier implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BienImmobilier(ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
+	public BienImmobilier(String statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
 			double revenuCadastral, byte[] photo, double cautionLocative, double loyerMensuel,
-			double montantMensuelCharges, Bail typeBail, Garniture garniture, double prixAchat, Etat etat,
+			double montantMensuelCharges, String typeBail, String garniture, double prixAchat, String etat,
 			ClasseStandard classeStandard, Proprietaire proprietaire, List<Visite> listeVisites) {
 		super();
 		this.statut = statut;
@@ -119,9 +110,9 @@ public class BienImmobilier implements Serializable {
 		this.listeVisites = listeVisites;
 	}
 	
-	public BienImmobilier(int id, ImmoStatut statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
+	public BienImmobilier(int id, String statut, Date dateSoumission, Adresse adresse, Date dateDisposition,
 			double revenuCadastral, byte[] photo, double cautionLocative, double loyerMensuel,
-			double montantMensuelCharges, Bail typeBail, Garniture garniture, double prixAchat, Etat etat,
+			double montantMensuelCharges, String typeBail, String garniture, double prixAchat, String etat,
 			ClasseStandard classeStandard, Proprietaire proprietaire, List<Visite> listeVisites) {
 		super();
 		this.id = id;
@@ -152,11 +143,11 @@ public class BienImmobilier implements Serializable {
 		this.id = id;
 	}
 
-	public ImmoStatut getStatut() {
+	public String getStatut() {
 		return statut;
 	}
 
-	public void setStatut(ImmoStatut statut) {
+	public void setStatut(String statut) {
 		this.statut = statut;
 	}
 
@@ -240,19 +231,19 @@ public class BienImmobilier implements Serializable {
 		this.montantMensuelCharges = montantMensuelCharges;
 	}
 
-	public Bail getTypeBail() {
+	public String getTypeBail() {
 		return typeBail;
 	}
 
-	public void setTypeBail(Bail typeBail) {
+	public void setTypeBail(String typeBail) {
 		this.typeBail = typeBail;
 	}
 
-	public Garniture getGarniture() {
+	public String getGarniture() {
 		return garniture;
 	}
 
-	public void setGarniture(Garniture garniture) {
+	public void setGarniture(String garniture) {
 		this.garniture = garniture;
 	}
 
@@ -264,11 +255,11 @@ public class BienImmobilier implements Serializable {
 		this.prixAchat = prixAchat;
 	}
 
-	public Etat getEtat() {
+	public String getEtat() {
 		return etat;
 	}
 
-	public void setEtat(Etat etat) {
+	public void setEtat(String etat) {
 		this.etat = etat;
 	}
 

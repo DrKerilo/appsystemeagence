@@ -171,6 +171,7 @@ app
 })
 
 .controller("ajoutBICtrl", function($scope, $location, biService, csService) {
+	// Valeur/Clé affichée pour liste déroulante des statuts
 	$scope.statutBI = [ {
 		valeur : "DISPONIBLE",
 		nom : "Disponible"
@@ -190,8 +191,10 @@ app
 		nom : "Non meublé"
 	} ];
 	
+	// Pour liste déroulante Type de Bail
 	$scope.bailBI = ["Habitation", "Mixte", "Commercial", "Professionnel"];
 
+	// Liste déroulante état du terrain à vendre
 	$scope.etatBI = [{
 		valeur : "A_restaurer",
 		nom : "A restaurer"
@@ -203,16 +206,33 @@ app
 		nom : "Impeccable"
 	}];
 	
+	// Liste déroulante classes standard des biens
 	csService.getAll(function(callback) {
 		$scope.classe = callback;
 	});
-
+	
+	// Objet utilisé pour l'évenement 
+	$scope.CsOut = {
+			code : "",
+			type : "",
+			modeOffre : "",
+			prixMax : "",
+			superficieMin : ""
+	}
+	
+	// Prendre en compte l'état actuel de la liste déroulante classe standard
+	$scope.change=function(){
+		$scope.bien.classeStandard.code = $scope.CsOut.code;
+		console.log($scope.bien.classeStandard);
+	}
+	
+	// Bien vide 
 	$scope.bien = {
 		statut : "",
 		dateSoumission : null,
 		adresse : {
 			rue : "",
-			numero : "",
+			numero : 0,
 			codePostal : "",
 			localite : ""
 		},
@@ -226,45 +246,16 @@ app
 		garniture : "",
 		prixAchat : 0,
 		etat : "",
-		classeStandard : {
-			code : "",
-			type : "",
-			modeOffre : "",
-			prixMax : "",
-			superficieMin : ""
-		},
-		proprietaire : null
-	}
-	
-	$scope.CsOut = {
-		code : "",
-		type : "",
-		modeOffre : "",
-		prixMax : "",
-		superficieMin : ""
+		classeStandard :undefined,
+		proprietaire : undefined
 	}
 
 	$scope.indice = false;
 
 	$scope.ajouterBi = function() {
 		console.log($scope.bien);
-		
-//		$scope.toto = $scope.bien.classeStandard;
-//		
-//		delete $scope.bien.classeStandard;
-//		
-//		console.log($scope.bien);
-//		console.log($scope.toto);
-		
-//		$scope.bien.classeStandard = {
-//				code : $scope.toto.code,
-//				type : "",
-//				modeOffre : "",
-//				prixMax : "",
-//				superficieMin : ""
-//		};
-//		
-		console.log($scope.bien);
+//		$scope.bien.classeStandard=null;
+//		$scope.bien.proprietaire=null;
 		
 		biService.ajoutBi($scope.bien, function(callBack) {
 			if (callBack == "OK") {
@@ -276,19 +267,9 @@ app
 			}
 		})
 	}
-	
-	
-	$scope.change=function(){
-		$scope.bien.classeStandard.code = $scope.CsOut.code;
-		
-		console.log($scope.bien.classeStandard);
-//		if(bien.classeStandard.modeOffre == 'Louer'){
-//			$scope.checked=true;
-//		}
-	}
 })
 
-.controller("modifBICtrl", function($scope, $location, biService, $rootScope) {
+.controller("modifBICtrl", function($scope, $location, biService, $rootScope, csService) {
 	if ($rootScope.biModif.id == undefined) {
 		$scope.bien = {
 			id : "",
@@ -321,12 +302,70 @@ app
 	} else {
 		$scope.bien = $rootScope.biModif;
 	}
-	$scope.indice = false;
+	
+	// Valeur/Clé affichée pour liste déroulante des statuts
+	$scope.statutBI = [ {
+		valeur : "DISPONIBLE",
+		nom : "Disponible"
+	}, {
+		valeur : "LOUE",
+		nom : "Loué"
+	}, {
+		valeur : "ACHETE",
+		nom : "Acheté"
+	} ];
 
+	$scope.garnitureBI = [ {
+		valeur : "MEUBLE",
+		nom : "Meublé"
+	}, {
+		valeur : "NON_MEUBLE",
+		nom : "Non meublé"
+	} ];
+	
+	// Pour liste déroulante Type de Bail
+	$scope.bailBI = ["Habitation", "Mixte", "Commercial", "Professionnel"];
+
+	// Liste déroulante état du terrain à vendre
+	$scope.etatBI = [{
+		valeur : "A_restaurer",
+		nom : "A restaurer"
+	}, {
+		valeur : "Correct",
+		nom : "Correct"
+	}, {
+		valeur : "Impeccable",
+		nom : "Impeccable"
+	}];
+	
+	// Liste déroulante classes standard des biens
+	csService.getAll(function(callback) {
+		$scope.classe = callback;
+	});
+	
+	// Objet utilisé pour l'évenement 
+	$scope.CsOut = {
+			code : "",
+			type : "",
+			modeOffre : "",
+			prixMax : "",
+			superficieMin : ""
+	}
+	
+	// Prendre en compte l'état actuel de la liste déroulante classe standard
+	$scope.change=function(){
+		$scope.bien.classeStandard.code = $scope.CsOut.code;
+		console.log($scope.bien.classeStandard);
+	}
+	
+	
+	$scope.indice = false;
+	
 	$scope.modifierBi = function() {
 		biService.modifBi($scope.bien, function(callBack) {
 			if (callBack == "OK") {
 				$location.path('listBI');
+				$scope.indice = false;
 
 			} else {
 				$scope.indice = true;
