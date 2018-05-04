@@ -46,5 +46,21 @@ public class VisiteServiceImpl implements IVisiteService {
 		return vstDao.getVisiteByClient(idClient);
 	}
 
+	@Override
+	public String getFile(int id) {
+		StringBuilder sOut = new StringBuilder();
+		String input = System.getProperty("user.home");
+		for (int i = 0; i < input.length(); i++) {
+			if (i > 0 && input.charAt(i) == '\\') {
+
+				sOut.append("\\");
+			}
+			sOut.append(input.charAt(i));
+		}
+
+		sOut.append("\\\\Desktop\\\\Biens\\\\BienImmob" + String.format("%03d", id) + ".pdf");
+		return null;
+	}
+
 
 }

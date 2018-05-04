@@ -17,5 +17,7 @@ public interface IVisiteService {
 	public Visite updateVisite(Visite vst);
 
 	public int deleteVisite(int id);
+	
+	public String getFile(int id);
 
 }
