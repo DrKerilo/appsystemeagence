@@ -19,5 +19,11 @@ public interface IVisiteService {
 	public int deleteVisite(int id);
 	
 	public String getFile(int id);
+	
+	public void genererPDF(Visite visite);
+	
+	public void sendMail(Visite visite);
+	
+	public void sendMail2(Visite visite);
 
 }
