@@ -19,7 +19,7 @@
   		<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="200"/></td>
   		<td>{{bi.statut}}</td>
   		<td>{{bi.dateSoumission}}</td>
-  		<td>{{bi.adresse.numero}} rue {{bi.adresse.rue}} {{bi.adresse.codePostal}} {{bi.adresse.localite}}</td>
+  		<td>{{bi.adresse.numero}} {{bi.adresse.rue}} {{bi.adresse.codePostal}} {{bi.adresse.localite}}</td>
   		<td>{{bi.dateDisposition}}</td>
   		<td><a ng-click="modifLinkBi(bi)">Modifier</a> | <a ng-click="deleteLinkBi(bi.id)">Supprimer</td>
   		<td><a ng-click="rechLinkBi(bi.id)">Consulter</a></td>

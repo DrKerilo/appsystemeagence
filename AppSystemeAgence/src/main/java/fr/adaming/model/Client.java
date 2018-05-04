@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @AttributeOverride(name = "id", column = @Column(name = "id_cl"))
 public class Client extends Personne {
 
+	// Attribut
+	private String mail;
+	
 	// Transformation des associations UML en JAVA
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY)
@@ -27,7 +31,7 @@ public class Client extends Personne {
 	private List<ClasseStandard> listeClasseStd;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade=CascadeType.DETACH)
 	private List<Visite> visites;
 
 	public List<Visite> getVisites() {
@@ -43,12 +47,15 @@ public class Client extends Personne {
 		super();
 	}
 
-	public Client(String nom, String prenom, int telPerso, Adresse adresse) {
+	public Client(String nom, String prenom, int telPerso, Adresse adresse, String mail) {
 		super(nom, prenom, telPerso, adresse);
+		this.mail = mail;
 	}
 
-	public Client(int id, String nom, String prenom, int telPerso, Adresse adresse) {
+	
+	public Client(int id, String nom, String prenom, int telPerso, Adresse adresse, String mail) {
 		super(id, nom, prenom, telPerso, adresse);
+		this.mail = mail;
 	}
 
 	// Getters et setters
@@ -59,5 +66,15 @@ public class Client extends Personne {
 	public void setListeClasseStd(List<ClasseStandard> listeClasseStd) {
 		this.listeClasseStd = listeClasseStd;
 	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
+	
 
 }
