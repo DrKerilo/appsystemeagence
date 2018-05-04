@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +33,7 @@ public class Agent implements Serializable{
 	private int tel;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="agent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="agent", fetch = FetchType.LAZY, cascade=CascadeType.DETACH)
 	private List<Visite> visites;
 	
 	// déclaration des constructeurs

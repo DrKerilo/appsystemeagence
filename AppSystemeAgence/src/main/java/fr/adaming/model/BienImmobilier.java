@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -50,8 +51,11 @@ public class BienImmobilier implements Serializable {
 	@Lob
 	private byte[] photo;
 	// Cas de location
+	@Column(nullable = true)
 	private double cautionLocative;
+	@Column(nullable = true)
 	private double loyerMensuel;
+	@Column(nullable = true)
 	private double montantMensuelCharges;
 	@Enumerated(EnumType.STRING)
 	private Bail typeBail;
@@ -59,6 +63,7 @@ public class BienImmobilier implements Serializable {
 	private Garniture garniture;
 	
 	// Cas de acheter
+	@Column(nullable = true)
 	private double prixAchat;
 	@Enumerated(EnumType.STRING)
 	private Etat etat;
@@ -72,7 +77,7 @@ public class BienImmobilier implements Serializable {
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
 	private Proprietaire proprietaire;
 
-	@OneToMany(mappedBy = "bienImmo",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "bienImmo",fetch=FetchType.LAZY, cascade=CascadeType.DETACH)
 	@JsonIgnore
 	private List<Visite> listeVisites;
 
