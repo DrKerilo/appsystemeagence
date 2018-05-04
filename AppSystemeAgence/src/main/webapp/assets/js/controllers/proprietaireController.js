@@ -98,7 +98,7 @@ app.controller("listePRCtrl",
 	// Fonction appelée via le bouton Modifier
 	$scope.modifierPR = function() {
 		propService.updateOne($scope.p, function(callback) {
-			if (callback == "OK") {
+			if (typeof callback == "object") {
 				$location.path("listPR");
 				$scope.indice = false;
 			} else {

@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @XmlRootElement
 @Entity
@@ -22,8 +24,8 @@ public class Proprietaire extends Personne {
 	private int telPro;
 
 	// Transformation de l'association UML en Java
-	@JsonIgnore
-	@OneToMany(mappedBy = "proprietaire", fetch = FetchType.LAZY)
+	@Fetch(FetchMode.SELECT)
+	@OneToMany(mappedBy = "proprietaire", fetch = FetchType.EAGER, cascade=CascadeType.DETACH)
 	private List<BienImmobilier> listeBiens;
 
 	// Constructeurs
