@@ -57,6 +57,17 @@
 				placeholder="Numero de telephone professionnel" ng-model="p.telPro">
 		</div>
 	</div>
+	<div class="form-group">
+		<label for="idBI" class="col-sm-2 col-sm-offset-2 control-label">Bien(s) immobilier(s)</label>
+		<ui-select multiple ng-model="p.listeBI"
+			theme="bootstrap" sortable="true" close-on-select="false"
+			class="col-sm-4"> <ui-select-match
+			placeholder="Selectionner bien immobilier...">{{$item.id}}
+		({{$item.adresse.rue}} {{$item.adresse.localite}})</ui-select-match> <ui-select-choices
+			repeat="bi in listeBI">
+		<small> Adresse: {{bi.adresse.numero}} {{bi.adresse.rue}}</small> </ui-select-choices> </ui-select>
+	</div>
+	{{p.listeBI}}
 	<button class="btn btn-default" ng-click="ajouterPR()">Ajouter</button>
 </form>
 <hr />

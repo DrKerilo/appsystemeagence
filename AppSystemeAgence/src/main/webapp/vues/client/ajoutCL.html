@@ -53,16 +53,29 @@
 		</div>
 	</div>
 
-	<!-- Ajouter menu multiselect pour lui donner des classes -->
+	<!-- Menu multiselect pour lui donner des classes -->
 	<div class="form-group">
 		<label for="idCS" class="col-sm-2 col-sm-offset-2 control-label">Preferences</label>
-		<ui-select multiple ng-model="cl.listeClasseStd"
-			theme="bootstrap" sortable="true" close-on-select="false"
-			class="col-sm-4"> <ui-select-match
-			placeholder="Selectionner preference...">{{$item.code}}
-		({{$item.modeOffre}} {{$item.type}})</ui-select-match> <ui-select-choices
-			repeat="cs in listeCS">
-		<small> Mode d'offre: à {{cs.modeOffre}}, type: {{cs.type}}</small> </ui-select-choices> </ui-select>
+		<div class="col-sm-4">
+			<div class="input-group">
+				<ui-select multiple allow-clear ng-model="cl.listeClasseStd" sortable="true"
+					close-on-select="false" theme="bootstrap"> <ui-select-match
+					placeholder="Selectionner preference...">Classe
+				n.{{$item.code}}: {{$item.modeOffre}} {{$item.type}}</ui-select-match> <ui-select-choices
+					repeat="cs in listeCS | propsFilter: {code: $select.search, modeOffre: $select.search, type: $select.search}"">
+				<div ng-bind-html="cs.code | highlight: $select.search"></div>
+				<small> Mode d'offre: <span
+					ng-bind-html="''+cs.modeOffre | highlight: $select.search"></span>
+					, type: <span ng-bind-html="''+cs.type | highlight: $select.search"></span>
+				</small> </ui-select-choices> </ui-select>
+				<span class="input-group-btn">
+					<button type="button" ng-click="cl.listeClasseStd = undefined"
+						class="btn btn-default">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</span>
+			</div>
+		</div>
 	</div>
 
 	<button class="btn btn-default" ng-click="ajouterCL()">Ajouter</button>
