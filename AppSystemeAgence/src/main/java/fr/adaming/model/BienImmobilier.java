@@ -51,8 +51,11 @@ public class BienImmobilier implements Serializable {
 	@Lob
 	private byte[] photo;
 	// Cas de location
+	@Column(nullable = true)
 	private double cautionLocative;
+	@Column(nullable = true)
 	private double loyerMensuel;
+	@Column(nullable = true)
 	private double montantMensuelCharges;
 	@Enumerated(EnumType.STRING)
 	private Bail typeBail;
@@ -60,6 +63,7 @@ public class BienImmobilier implements Serializable {
 	private Garniture garniture;
 	
 	// Cas de acheter
+	@Column(nullable = true)
 	private double prixAchat;
 	@Enumerated(EnumType.STRING)
 	private Etat etat;
