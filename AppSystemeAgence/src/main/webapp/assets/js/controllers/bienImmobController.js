@@ -209,22 +209,22 @@ app
 
 	$scope.bien = {
 		statut : "",
-		dateSoumission : "",
+		dateSoumission : null,
 		adresse : {
 			rue : "",
 			numero : "",
 			codePostal : "",
 			localite : ""
 		},
-		dateDisposition : "",
+		dateDisposition : null,
 		revenuCadastral : "",
 		photo : "",
-		cautionLocative : "",
-		loyerMensuel : "",
-		montantMensuelCharges : "",
+		cautionLocative : 0,
+		loyerMensuel : 0,
+		montantMensuelCharges : 0,
 		typeBail : "",
 		garniture : "",
-		prixAchat : "",
+		prixAchat : 0,
 		etat : "",
 		classeStandard : {
 			code : "",
@@ -235,18 +235,26 @@ app
 		},
 		proprietaire : null
 	}
+	
+	$scope.CsOut = {
+		code : "",
+		type : "",
+		modeOffre : "",
+		prixMax : "",
+		superficieMin : ""
+	}
 
 	$scope.indice = false;
 
 	$scope.ajouterBi = function() {
 		console.log($scope.bien);
 		
-		$scope.toto = $scope.bien.classeStandard;
-		
-		delete $scope.bien.classeStandard;
-		
-		console.log($scope.bien);
-		console.log($scope.toto);
+//		$scope.toto = $scope.bien.classeStandard;
+//		
+//		delete $scope.bien.classeStandard;
+//		
+//		console.log($scope.bien);
+//		console.log($scope.toto);
 		
 //		$scope.bien.classeStandard = {
 //				code : $scope.toto.code,
@@ -271,9 +279,12 @@ app
 	
 	
 	$scope.change=function(){
-		if(bien.classeStandard.modeOffre == 'Louer'){
-			$scope.checked=true;
-		}
+		$scope.bien.classeStandard.code = $scope.CsOut.code;
+		
+		console.log($scope.bien.classeStandard);
+//		if(bien.classeStandard.modeOffre == 'Louer'){
+//			$scope.checked=true;
+//		}
 	}
 })
 
@@ -291,7 +302,7 @@ app
 			},
 			dateDisposition : "",
 			revenuCadastral : "",
-			photo : "",
+			photo : null,
 			cautionLocative : "",
 			loyerMensuel : "",
 			montantMensuelCharges : "",
