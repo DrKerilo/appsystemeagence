@@ -21,15 +21,15 @@
 	<div class="form-group">
 		<label for="idRef" class="col-sm-2 col-sm-offset-2 control-label">Reference du bien</label>
 		<div class="col-sm-4">
-			<select ng-model="vi.bienImmo.id">
-			<option ng-repeat="bi in listeBI" ng-value="{{bi.id}}">{{ bi.id }}</option>
+			<select ng-model="vi.bienImmo.id" class="form-control">
+			<option ng-repeat="bi in listeBI" ng-value="{{bi.id}}">({{ bi.id }}): {{bi.adresse.numero}}, {{bi.adresse.rue}} {{bi.adresse.codePostal}} {{bi.adresse.localite}}</option>
 			</select>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="idPrix" class="col-sm-2 col-sm-offset-2 control-label">Nom de l'agent immobilier</label>
 		<div class="col-sm-4">
-			<select ng-model="vi.agent.id">
+			<select ng-model="vi.agent.id" class="form-control">
 			<option ng-repeat="a in listeAgents" ng-value="{{a.id}}">{{ a.nom }}</option>
 			</select>
 		</div>
@@ -37,8 +37,8 @@
 	<div class="form-group">
 		<label for="idSuperficie" class="col-sm-2 col-sm-offset-2 control-label">Nom du client</label>
 		<div class="col-sm-4">
-			<select ng-model="vi.client.id">
-			<option ng-repeat="cl in listeClients" value="{{cl.id}}">{{ cl.nom }}</option>
+			<select ng-model="vi.client.id" class="form-control">
+			<option ng-repeat="cl in listeClients" value="{{cl.id}}">{{ cl.nom }} {{cl.prenom}}</option>
 			</select>
 		</div>
 	</div>
