@@ -9,8 +9,10 @@
 <script type="text/javascript" src="assets/resources/js/jquery-3.3.1.js"></script>
 
 <!-- ===== Ajouter les librairies d'icônes ===== -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- ===== Ajouter les librairies de bootstrap ===== -->
 <link rel="stylesheet" type="text/css"
@@ -25,9 +27,11 @@
 	src="assets/resources/js/angular-locale_fr-fr.js"></script>
 <script type="text/javascript"
 	src="assets/resources/js/angular-base64-upload.js"></script>
-<script type="text/javascript" src="assets/resources/js/angular-sanitize.min.js"></script>
+<script type="text/javascript"
+	src="assets/resources/js/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="assets/resources/js/select.js"></script>
-<link rel="stylesheet" type="text/css" href="assets/resources/css/select.min.css"/>
+<link rel="stylesheet" type="text/css"
+	href="assets/resources/css/select.min.css" />
 
 <!-- ===== Ajouter les scripts AngularJS ===== -->
 <script type="text/javascript" src="assets/js/modules/app.js"></script>
@@ -73,46 +77,37 @@
 	src="assets/js/services/proprietaireProvider.js"></script>
 
 </head>
-<body ng-app="app">
+<body ng-app="app" style="color: #666666">
+
+	<div class="container" style="margin-top: 10px">
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-9">
+					<h1>
+						Jean-Michel <span style="color: red">Immobilier</span>
+					</h1>
+					<h4>Votre système de gestion de vos locations et ventes de
+						biens immobiliers</h4>
+					<h5>
+						Agence de: <a href="https://goo.gl/maps/Cog2DEQnm4J2"
+							target="_blank">Blagnac</a>
+					</h5>
+				</div>
+				<div class="col-sm-3" style="text-align: right">
+					<img src="assets/images/logoJMI.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- ========== Menu navigation ========== -->
-	<div class="container-fluid" style="margin-top: 10px">
+	<div class="container">
 		<nav class="navbar navbar-default" style="padding: 10px">
-			<ul class="nav nav-pills">
-				<li role="presentation" class="active"><a href="#!listCS">Home</a></li>
+			<ul class="nav nav-pills nav-justified">
+				<li role="presentation" class="active"><a href="#" style="background-color: #FA5858">Accueil</a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Classes standards <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#!listCS">Liste des classes standards</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#!addCS">Ajouter</a></li>
-						<li><a href="#!updateCS">Modifier</a></li>
-						<li><a href="#!deleteCS">Supprimer</a></li>
-						<li><a href="#!searchCS">Chercher</a></li>
-					</ul></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Biens immobiliers <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#!listBI">Liste des biens immobiliers</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#!addBI">Ajouter</a></li>
-					</ul></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Clients <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#!listCL">Liste des clients</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#!addCL">Ajouter</a></li>
-						<li><a href="#!updateCL">Modifier</a></li>
-						<li><a href="#!deleteCL">Supprimer</a></li>
-						<li><a href="#!searchCL">Chercher</a></li>
-					</ul></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Visites <span class="caret"></span></a>
+					aria-expanded="false" style="color: #666666"> Visites <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#!listVI">Liste des visites</a></li>
 						<li role="separator" class="divider"></li>
@@ -121,21 +116,42 @@
 					</ul></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> Propriétaires <span class="caret"></span></a>
+					aria-expanded="false" style="color: #666666"> Clients <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listCL">Liste des clients</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addCL">Ajouter</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false" style="color: #666666"> Biens immobiliers <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listBI">Liste des biens immobiliers</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addBI">Ajouter</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false" style="color: #666666"> Propriétaires <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#!listPR">Liste des propriétaires</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#!addPR">Ajouter</a></li>
-						<li><a href="#!updatePR">Modifier</a></li>
-						<li><a href="#!deletePR">Supprimer</a></li>
-						<li><a href="#!searchPR">Chercher</a></li>
+					</ul></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false" style="color: #666666"> Classes standards <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#!listCS">Liste des classes standards</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#!addCS">Ajouter</a></li>
 					</ul></li>
 			</ul>
 		</nav>
 	</div>
 
 	<div class="container"
-		style="background-color: seashell; border-radius: 8px; text-align: center">
+		style="background-color: #f8f8f8; border-radius: 8px; border: 1px solid; border-color:#e7e7e7; text-align: center">
 		<div ng-view></div>
 	</div>
 </body>
