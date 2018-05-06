@@ -66,7 +66,7 @@ app.controller("listeCLCtrl",
 	};
 })
 
-.controller("modifCLCtrl", function($rootScope, $scope, $location, clService) {
+.controller("modifCLCtrl", function($rootScope, $scope, $location, clService, csService) {
 
 	// Variables
 	$scope.indice = false;
@@ -88,6 +88,11 @@ app.controller("listeCLCtrl",
 	} else {
 		$scope.cl = $rootScope.clModif;
 	}
+	
+	// Récupération de la liste des classes standards
+	csService.getAll(function(callback) {
+		$scope.listeCS=callback;
+	});
 
 	// Fonction appelée via le bouton Modifier
 	$scope.modifierCL = function() {
