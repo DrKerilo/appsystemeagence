@@ -1,6 +1,11 @@
 <h1>Liste des biens immobiliers</h1>
 <hr/>
 
+      	<form>
+      	<i class="glyphicon glyphicon-search"></i>
+        <input type="text" ng-model="recherche">         
+        </form>
+
 <table class="table table-striped">
   <thead>
   	<tr>
@@ -14,7 +19,7 @@
   	</tr>
   </thead>
   <tbody>
-  	<tr	ng-repeat="bi in listeBiensImmobilier">
+  	<tr	ng-repeat="bi in listeBiensImmobilier  | filter: recherche | orderBy: 'id' ">
   		<td>{{bi.id}}</td>
   		<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}" width="200"/></td>
   		<td>{{bi.statut}}</td>
