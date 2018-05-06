@@ -2,13 +2,6 @@
 <hr />
 <form class="form-horizontal">
 	<div class="form-group">
-		<label for="idID" class="col-sm-2 col-sm-offset-2 control-label">#</label>
-		<div class="col-sm-4">
-			<input type="number" class="form-control" id="idID"
-				placeholder="Identifiant" ng-model="p.id">
-		</div>
-	</div>
-	<div class="form-group">
 		<label for="idNom" class="col-sm-2 col-sm-offset-2 control-label">Nom</label>
 		<div class="col-sm-4">
 			<input type="text" class="form-control" id="idNom"
@@ -62,6 +55,29 @@
 		<div class="col-sm-4">
 			<input type="number" class="form-control" id="idTelPro"
 				placeholder="Num de telephone professionnel" ng-model="p.telPro">
+		</div>
+	</div>
+	
+	<!-- Menu multiselect pour lui donner des biens immobiliers -->
+	<div class="form-group">
+		<label for="idBI" class="col-sm-2 col-sm-offset-2 control-label">Bien(s) immobilier(s)</label>
+		<div class="col-sm-4">
+			<div class="input-group">
+				<ui-select multiple allow-clear ng-model="p.listeBiens" sortable="true"
+					close-on-select="false" theme="bootstrap" id="idBI"> <ui-select-match
+					placeholder="Selectionner bien immobilier...">Adresse: {{$item.adresse.numero}}, {{$item.adresse.rue}} - {{$item.adresse.codePostal}} {{$item.adresse.localite}}</ui-select-match> <ui-select-choices
+					repeat="bi in listeBI | propsFilter: {id: $select.search}">
+				<div ng-bind-html="bi.id | highlight: $select.search"></div>
+				<small> 
+					Adresse: {{bi.adresse.numero}}, {{bi.adresse.rue}} - {{bi.adresse.codePostal}} {{bi.adresse.localite}}
+				</small> </ui-select-choices> </ui-select>
+				<span class="input-group-btn">
+					<button type="button" ng-click="p.listeBiens = undefined"
+						class="btn btn-default">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+				</span>
+			</div>
 		</div>
 	</div>
 	<button class="btn btn-default" ng-click="modifierPR()">Modifier</button>

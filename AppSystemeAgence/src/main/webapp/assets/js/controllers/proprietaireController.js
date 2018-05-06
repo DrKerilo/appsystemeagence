@@ -72,7 +72,7 @@ app.controller("listePRCtrl",
 	};
 })
 
-.controller("modifPRCtrl", function($rootScope, $scope, $location, propService) {
+.controller("modifPRCtrl", function($rootScope, $scope, $location, propService, biService) {
 
 	// Variables
 	$scope.indice = false;
@@ -94,6 +94,11 @@ app.controller("listePRCtrl",
 	} else {
 		$scope.p = $rootScope.pModif;
 	}
+	
+	// Récupération de la liste des biens immobiliers
+	biService.getAllBi(function(callback) {
+		$scope.listeBI=callback;
+	})
 
 	// Fonction appelée via le bouton Modifier
 	$scope.modifierPR = function() {

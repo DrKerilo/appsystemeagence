@@ -97,7 +97,7 @@ app.controller("listeCLCtrl",
 	// Fonction appelée via le bouton Modifier
 	$scope.modifierCL = function() {
 		clService.updateOne($scope.cl, function(callback) {
-			if (callback == "OK") {
+			if (typeof callback == "object") {
 				$location.path("listCL");
 				$scope.indice = false;
 			} else {

@@ -42,7 +42,7 @@ app.factory("clService", function($http,$window) {
 			data : JSON.stringify(cl),
 			headers : {"Content-Type" : "application/json"}
 		}).then(function successCallback(response) {
-			busSC(response.status)
+			busSC(response.data)
 		}, function errorCallback(reason) {
 			busSC(reason.status);
 			console.log("Erreur " + reason.status + ": " + reason.statusText);
