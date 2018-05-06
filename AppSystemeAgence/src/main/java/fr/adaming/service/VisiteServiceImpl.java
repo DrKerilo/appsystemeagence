@@ -1,8 +1,26 @@
 package fr.adaming.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +39,7 @@ import fr.adaming.dao.IVisiteDao;
 import fr.adaming.model.Adresse;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Client;
 import fr.adaming.model.Visite;
 
 @Service("vstService")
@@ -164,11 +183,157 @@ public class VisiteServiceImpl implements IVisiteService {
 
 	@Override
 	public void sendMail(Visite visite) {
+		String mailRecup = visite.getClient().getMail();
+		Client cl = visite.getClient();
+		BienImmobilier bien = visite.getBienImmo();
+		Adresse adresse = bien.getAdresse();
+		String adresse2 = adresse.getNumero() + ", " + adresse.getRue() + "<br/>" + adresse.getCodePostal() + " " + adresse.getLocalite();
+//		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyyy");
+//		SimpleDateFormat dt2 = new SimpleDateFormat("hh:mm");
+
+		// TODO Auto-generated method stub
+		final String username = "clear.skies928@gmail.com";
+		final String password = /* Ne soyez pas trop curieux ! */ 																																												"BubblyClouds8";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		// Get Session object.
+		Session session = Session.getInstance(props, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try {
+
+			// Create a default MimeMessage object.
+			Message message = new MimeMessage(session);
+			Multipart multipart = new MimeMultipart();
+
+			// Set From: header field of the header.
+			message.setFrom(new InternetAddress(username));
+
+			// Set To: header field of the header.
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(mailRecup));
+
+			// Set Subject: header field
+			message.setSubject("Visite programée pour le bien n°" + bien.getId() + " à " + visite.getDate());
+
+			MimeBodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setContent(
+					"Bonjour M. ou Mme " + cl.getNom() + ",<br/> "
+					+ "La visite pour le bien n° " + bien.getId() + " le " + visite.getDate() + " à " + visite.getHeure() + "a bien été prise en compte par nos services.<br/>"
+							+ "Pour rappel, celui-ci se situe au : <br/>"
+							+  adresse2
+							+ "<br/>Veuillez trouver ci-joint le récapitulatif du bien proposé.<br/><br/>"
+							+ "En cas d'imprévu pour cette visite, nous vous recontacterons par téléphone pour fixer un nouveau rendez-vous. Vous pouvez également appeler nos services par téléphone ou vous déplacer en centre pour modifier ce rendez-vous."
+							+ "En esperant vous revoir bientôt dans notre centre, <br/> " + "Jean-Michel Scrum Immobilier",
+					"text/html");
+
+			// creates body part for the attachment
+			MimeBodyPart attachPart = new MimeBodyPart();
+			
+			// ajouter la PJ
+			String attachFile = getFile(visite.getBienImmo().getId());
+
+			DataSource source = new FileDataSource(attachFile);
+			attachPart.setDataHandler(new DataHandler(source));
+			attachPart.setFileName(new File(attachFile).getName());
+
+			// adds parts to the multipart
+			multipart.addBodyPart(messageBodyPart);
+			multipart.addBodyPart(attachPart);
+
+			// sets the multipart as message's content
+			message.setContent(multipart);
+
+			// Send message
+			Transport.send(message, message.getAllRecipients());
+			System.out.println("Sent message successfully....");
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
 		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void sendMail2(Visite visite) {
+		String mailRecup = visite.getClient().getMail();
+		Client cl = visite.getClient();
+		BienImmobilier bien = visite.getBienImmo();
+		Adresse adresse = bien.getAdresse();
+		String adresse2 = adresse.getNumero() + ", " + adresse.getRue() + "<br/>" + adresse.getCodePostal() + " " + adresse.getLocalite();
+//		SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyyy");
+//		SimpleDateFormat dt2 = new SimpleDateFormat("hh:mm");
+
+		// TODO Auto-generated method stub
+		final String username = "clear.skies928@gmail.com";
+		final String password = /* Ne soyez pas trop curieux ! */ 																																												"BubblyClouds8";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		// Get Session object.
+		Session session = Session.getInstance(props, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		try {
+
+			// Create a default MimeMessage object.
+			Message message = new MimeMessage(session);
+			Multipart multipart = new MimeMultipart();
+
+			// Set From: header field of the header.
+			message.setFrom(new InternetAddress(username));
+
+			// Set To: header field of the header.
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(mailRecup));
+
+			// Set Subject: header field
+			message.setSubject("Visite déplacée au " + visite.getDate() + " - " + visite.getHeure() + " pour le bien n°" + bien.getId());
+
+			MimeBodyPart messageBodyPart = new MimeBodyPart();
+			messageBodyPart.setContent(
+					"Bonjour M. ou Mme " + cl.getNom() + ",<br/> "
+					+ "La visite pour le bien n° " + bien.getId() + " a été déplacée au " + visite.getDate() + " à " + visite.getHeure() + ".<br/>"
+							+ "Pour rappel, celui-ci se situe au : <br/>"
+							+  adresse2
+							+ "<br/>Veuillez trouver ci-joint le récapitulatif du bien proposé.<br/><br/>"
+ 							+ "En cas d'imprévu pour cette visite, nous vous recontacterons par téléphone pour fixer un nouveau rendez-vous. Vous pouvez également appeler nos services par téléphone ou vous déplacer en centre pour modifier ce rendez-vous."
+							+ "En esperant vous revoir bientôt dans notre centre, <br/> " + "Jean-Michel Scrum Immobilier",
+					"text/html");
+
+			// creates body part for the attachment
+			MimeBodyPart attachPart = new MimeBodyPart();
+			
+			// ajouter la PJ
+			String attachFile = getFile(visite.getBienImmo().getId());
+
+			DataSource source = new FileDataSource(attachFile);
+			attachPart.setDataHandler(new DataHandler(source));
+			attachPart.setFileName(new File(attachFile).getName());
+
+			// adds parts to the multipart
+			multipart.addBodyPart(messageBodyPart);
+			multipart.addBodyPart(attachPart);
+
+			// sets the multipart as message's content
+			message.setContent(multipart);
+
+			// Send message
+			Transport.send(message, message.getAllRecipients());
+			System.out.println("Sent message successfully....");
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
 		// TODO Auto-generated method stub
 		
 
