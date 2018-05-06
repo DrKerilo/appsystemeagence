@@ -1,141 +1,138 @@
-<h1 style="text-align: center; color: red">Modifier des biens immobiliers</h1>
+<h1>Modifier des biens immobiliers</h1>
 
-<br />
+<hr />
 
 <form class="form-horizontal">
-	<div class="form-group">
-		<label for="ID" class="col-sm-2 control-label">id</label>
-		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="ID" ng-model="bien.id">
-		</div>
-	</div>
+	<!-- 	<div class="form-group"> -->
+	<!-- 		<label for="ID" class="col-sm-2 col-sm-offset-2 control-label">id</label> -->
+	<!-- 		<div class="col-sm-4"> -->
+	<!-- 			<input type="number" class="form-control" placeholder="ID" ng-model="bien.id"> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Statut</label>
-		<div class="col-sm-10">
+		<label class="col-sm-2 col-sm-offset-2 control-label">Statut</label>
+		<div class="col-sm-4">
 			<select ng-model="bien.statut"
-				ng-options="st.valeur as st.nom for st in statutBI"></select>
+				ng-options="st.valeur as st.nom for st in statutBI" class="form-control"></select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="ds" class="col-sm-2 control-label">Date de
-			soumission</label>
-		<div class="col-sm-10">
+		<label for="ds" class="col-sm-2 col-sm-offset-2 control-label">Date
+			de soumission</label>
+		<div class="col-sm-4">
 			<input type="date" class="form-control" placeholder="Date" id="ds"
 				ng-model="bien.dateSoumission">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="num" class="col-sm-2 control-label">N°</label>
-		<div class="col-sm-10">
-			<input type="number" class="form-control" placeholder="Numéro"
+		<label for="num" class="col-sm-2 col-sm-offset-2 control-label">Numero</label>
+		<div class="col-sm-4">
+			<input type="number" class="form-control" placeholder="Numero"
 				id="num" ng-model="bien.adresse.numero">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="rue" class="col-sm-2 control-label">Rue</label>
-		<div class="col-sm-10">
+		<label for="rue" class="col-sm-2 col-sm-offset-2 control-label">Rue</label>
+		<div class="col-sm-4">
 			<input type="text" class="form-control" placeholder="Rue, Chemin..."
 				id="rue" ng-model="bien.adresse.rue">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="cp" class="col-sm-2 control-label">Code Postal</label>
-		<div class="col-sm-10">
+		<label for="cp" class="col-sm-2 col-sm-offset-2 control-label">Code
+			Postal</label>
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Code Postal"
 				ng-model="bien.adresse.codePostal">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="localite" class="col-sm-2 control-label">Localité</label>
-		<div class="col-sm-10">
+		<label for="localite" class="col-sm-2 col-sm-offset-2 control-label">Ville</label>
+		<div class="col-sm-4">
 			<input type="text" class="form-control" placeholder="Ville"
 				id="localite" ng-model="bien.adresse.localite">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="dd" class="col-sm-2 control-label">Date de
-			disposition</label>
-		<div class="col-sm-10">
+		<label for="dd" class="col-sm-2 col-sm-offset-2 control-label">Date
+			de disposition</label>
+		<div class="col-sm-4">
 			<input type="date" class="form-control" id="dd"
 				ng-model="bien.dateDisposition">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="revenuC" class="col-sm-2 control-label">Revenu
+		<label for="revenuC" class="col-sm-2 col-sm-offset-2 control-label">Revenu
 			cadastral</label>
-		<div class="col-sm-10">
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Revenu"
 				id="revenuC" ng-model="bien.revenuCadastral">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Propriétaire</label>
-		<div class="col-sm-10">
-			<select ng-model="bien.proprietaire.id" 
+		<label class="col-sm-2 col-sm-offset-2 control-label">Propriétaire</label>
+		<div class="col-sm-4">
+			<select class="form-control" ng-model="bien.proprietaire.id"
 				ng-options="prop.id as prop.prenom + ' ' + prop.nom + ' (' + prop.id + ')' for prop in props"></select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Classe</label>
-		<div class="col-sm-10">
-			<select ng-model="CsOut" ng-change="change()" 
+		<label class="col-sm-2 col-sm-offset-2 control-label">Classe</label>
+		<div class="col-sm-4">
+			<select class="form-control" ng-model="CsOut" ng-change="change()"
 				ng-options="cs as cs.code +' (' + cs.modeOffre + ' ' + cs.type + ')' for cs in classe"></select>
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre == 'Louer'">
-		<label for="caution" class="col-sm-2 control-label">Caution</label>
-		<div class="col-sm-10">
+	<div class="form-group" ng-if="CsOut.modeOffre == 'Louer'">
+		<label for="caution" class="col-sm-2 col-sm-offset-2 control-label">Caution</label>
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Caution"
 				ng-model="bien.cautionLocative" id="caution">
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Louer'">
-		<label for="loyer" class="col-sm-2 control-label">Loyer
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Louer'">
+		<label for="loyer" class="col-sm-2 col-sm-offset-2 control-label">Loyer
 			mensuel</label>
-		<div class="col-sm-10">
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Loyer"
 				ng-model="bien.loyerMensuel" id="loyer">
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Louer'">
-		<label for="charges" class="col-sm-2 control-label">Montant
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Louer'">
+		<label for="charges" class="col-sm-2 col-sm-offset-2 control-label">Montant
 			mensuel des charges</label>
-		<div class="col-sm-10">
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Charges"
 				ng-model="bien.montantMensuelCharges" id="charges">
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Louer'">
-		<label class="col-sm-2 control-label">Garniture</label>
-		<div class="col-sm-10">
-			<select ng-model="bien.garniture"
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Louer'">
+		<label class="col-sm-2 col-sm-offset-2 control-label">Garniture</label>
+		<div class="col-sm-4">
+			<select class="form-control" ng-model="bien.garniture"
 				ng-options="gar.valeur as gar.nom for gar in garnitureBI"></select>
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Louer'">
-		<label class="col-sm-2 control-label">Type de bail</label>
-		<div class="col-sm-10">
-			<select ng-model="bien.typeBail" ng-options="bail for bail in bailBI"></select>
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Louer'">
+		<label class="col-sm-2 col-sm-offset-2 control-label">Type de
+			bail</label>
+		<div class="col-sm-4">
+			<select class="form-control" ng-model="bien.typeBail" ng-options="bail for bail in bailBI"></select>
 		</div>
 	</div>
 
@@ -143,40 +140,36 @@
 
 	<!-- Cas de l'achat -->
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Acheter'">
-		<label for="prixAchat" class="col-sm-2 control-label">Prix
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Acheter'">
+		<label for="prixAchat" class="col-sm-2 col-sm-offset-2 control-label">Prix
 			d'achat</label>
-		<div class="col-sm-10">
+		<div class="col-sm-4">
 			<input type="number" class="form-control" placeholder="Prix"
 				ng-model="bien.prixAchat" id="prixAchat">
 		</div>
 	</div>
 
-	<div class="form-group"
-		ng-if="CsOut.modeOffre  == 'Acheter'">
-		<label class="col-sm-2 control-label">Etat (si pas terrain)</label>
-		<div class="col-sm-10">
-			<select ng-model="bien.etat"
+	<div class="form-group" ng-if="CsOut.modeOffre  == 'Acheter'">
+		<label class="col-sm-2 col-sm-offset-2 control-label">Etat (si
+			pas terrain)</label>
+		<div class="col-sm-4">
+			<select class="form-control" ng-model="bien.etat"
 				ng-options="etat.valeur as etat.nom for etat in etatBI"></select>
 		</div>
 	</div>
 	<!-- Fin des cas pour achat -->
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Image</label>
-		<div class="col-sm-10">
+		<label class="col-sm-2 col-sm-offset-2 control-label">Image</label>
+		<div class="col-sm-4">
 			<input type="file" class="form-control" ng-model="bien.photo"
 				accept="image/*" base-sixty-four-input>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-			<button class="btn btn-default" ng-click="modifierBi()">Modifier</button>
-		</div>
-	</div>
+	<button class="btn btn-default" ng-click="modifierBi()">Modifier</button>
+
 </form>
+<hr/>
 
-
-<h1 style="text-align: center; color: red" ng-show = "indice">{{msg}}</h1>
+<h1 style="text-align: center; color: red" ng-show="indice">{{msg}}</h1>
