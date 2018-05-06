@@ -200,6 +200,19 @@ app
 		$scope.biOut = $rootScope.biRech;
 		biService.getBi($scope.biOut.id, function(callBack) {
 			$scope.biOut = callBack;
+			
+			 var adresse = $scope.biOut.adresse;
+				
+			 biService.localisationBi(adresse.numero + " " + adresse.rue, adresse.codePostal, adresse.ville,
+			 function(callBack) {
+			
+			 $scope.lat = callBack.results[0].geometry.location.lat;
+			 $scope.lng = callBack.results[0].geometry.location.lng;
+			
+			 console.log($scope.lat);
+			 console.log($scope.lng);
+			
+			 });
 		})
 	}
 
