@@ -25,5 +25,6 @@ public interface IVisiteService {
 	public void sendMail(Visite visite);
 	
 	public void sendMail2(Visite visite);
+	
 
 }

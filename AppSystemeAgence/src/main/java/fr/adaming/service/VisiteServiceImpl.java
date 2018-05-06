@@ -20,6 +20,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import fr.adaming.dao.IVisiteDao;
 import fr.adaming.model.Adresse;
 import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Visite;
 
 @Service("vstService")
@@ -94,30 +95,66 @@ public class VisiteServiceImpl implements IVisiteService {
 		try {
 			BienImmobilier bien = visite.getBienImmo();
 			Adresse adresse = bien.getAdresse();
-			
+			ClasseStandard cs = bien.getClasseStandard();
+
+			String offre = "";
+			if (cs.getModeOffre() == "Acheter") {
+				offre = "Achat";
+			} else if (cs.getModeOffre() == "Louer") {
+				offre = "Location";
+			}
+
 			Document document = new Document(PageSize.A4, 75, 75, 75, 75);
 
 			String path = getFile(visite.getBienImmo().getId());
 
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path));
-			
+
 			Paragraph titre = new Paragraph("Jean-Michel SCRUM\nBien immobilier n°" + bien.getId(), FontFactory
 					.getFont(FontFactory.HELVETICA_BOLD, 18, Font.UNDERLINE, new CMYKColor(54, 255, 201, 0)));
 			titre.setSpacingAfter(20);
 			document.add(titre);
-			
-			
-			
-			Paragraph sousTitre1 = new Paragraph(
-					"Adresse : " + adresse.getNumero() + ", " + adresse.getRue() + "\n" + adresse.getCodePostal() + " " + adresse.getLocalite()
-					+ "\nStatut : " + bien.getStatut() + " \n"
-							+ "Date de soumission : " + bien.getDateSoumission() 
-							+ "\nDate de mise à disposition : " + bien.getDateDisposition()
-							+ "\n",
-//							+ co.getClient().getTel() + "\n" + co.getClient().getEmail(),
+
+			Paragraph parag1 = new Paragraph("Type de bien : " + cs.getType() + "\nType d'offre " + offre
+			// + "\nPrix maximum : " + cs.getPrixMax() + "€\nSuperficie minimale
+			// : "
+			// est ce que cela doit se retrouver côté client ?
+					, FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15));
+			parag1.setSpacingAfter(20);
+			document.add(parag1);
+
+			String partie2 = "";
+
+			if (bien.getClasseStandard().getModeOffre() == "Louer") {
+				partie2 = "\nCaution locative : " + bien.getCautionLocative() + "€\nLoyer mensuel : "
+						+ bien.getLoyerMensuel() + "€"
+						// + "\n Montant mensuel des charges : " +
+						// bien.getMontantMensuelCharges()
+						+ "\nType de bail : " + bien.getTypeBail() + "\nGarniture : " + bien.getGarniture();
+			} else if (bien.getClasseStandard().getModeOffre() == "Acheter") {
+				partie2 = "\nPrix demandé : " + bien.getPrixAchat();
+
+				if (cs.getType() == "Terrain") {
+					String etat = "";
+					if (bien.getEtat() == "A_restaurer") {
+						etat = "à restaurer";
+					} else {
+						etat = bien.getEtat();
+					}
+					partie2 = partie2 + "\nEtat du terrain : " + etat;
+				}
+			}
+
+			Paragraph parag2 = new Paragraph(
+					"Adresse : " + adresse.getNumero() + ", " + adresse.getRue() + "\n" + adresse.getCodePostal() + " "
+							+ adresse.getLocalite() + "\nStatut : " + bien.getStatut() + " \n" + "Date de soumission : "
+							+ bien.getDateSoumission() + "\nDate de mise à disposition : " + bien.getDateDisposition()
+							+ "\nRevenu cadastral : " + bien.getRevenuCadastral() + partie2,
 					FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 15));
-			sousTitre1.setSpacingAfter(20);
-			document.add(sousTitre1);
+			parag2.setSpacingAfter(20);
+			document.add(parag2);
+			
+			// TODO inserer image
 
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
@@ -133,6 +170,7 @@ public class VisiteServiceImpl implements IVisiteService {
 	@Override
 	public void sendMail2(Visite visite) {
 		// TODO Auto-generated method stub
+		
 
 	}
 

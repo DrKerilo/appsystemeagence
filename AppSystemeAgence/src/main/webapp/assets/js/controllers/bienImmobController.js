@@ -209,6 +209,24 @@ app
 				$scope.biOut = callBack;
 				$scope.indice = true;
 				$scope.indice2 = false;
+				
+
+				 var adresse = $scope.biOut.adresse;
+				
+				 biService.localisationBi(adresse.numero + " "
+				 + adresse.rue,
+				 adresse.codePostal,
+				 adresse.ville,
+				 function(callBack) {
+				
+				 $scope.lat = callBack.results[0].geometry.location.lat;
+				 $scope.lng = callBack.results[0].geometry.location.lng;
+				
+				 console.log($scope.lat);
+				 console.log($scope.lng);
+				
+				 });
+
 			} else {
 				$scope.indice = false;
 				$scope.indice2 = true;
