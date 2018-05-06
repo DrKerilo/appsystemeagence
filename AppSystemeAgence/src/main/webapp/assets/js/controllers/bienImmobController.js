@@ -199,6 +199,7 @@ app
 		$scope.indice = true;
 		$scope.biOut = $rootScope.biRech;
 		biService.getBi($scope.biOut.id, function(callBack) {
+			$scope.indice = true;
 			$scope.biOut = callBack;
 			
 			 var adresse = $scope.biOut.adresse;

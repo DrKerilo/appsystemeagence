@@ -1,6 +1,11 @@
 <h1>Liste des classes standards</h1>
 <hr/>
 
+      	<form>
+      	<i class="glyphicon glyphicon-search"></i>
+        <input type="text" ng-model="recherche">         
+        </form>
+
 <table class="table table-striped">
   <thead>
   	<tr>
@@ -14,7 +19,7 @@
   	</tr>
   </thead>
   <tbody>
-  	<tr	ng-repeat="cs in listeClassesStandards">
+  	<tr	ng-repeat="cs in listeClassesStandards | filter: recherche | orderBy: 'code' ">
   		<td>{{cs.code}}</td>
   		<td>{{cs.type}}</td>
   		<td>{{cs.modeOffre}}</td>
