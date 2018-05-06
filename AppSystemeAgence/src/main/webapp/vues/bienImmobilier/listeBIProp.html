@@ -1,7 +1,12 @@
 <h1>Liste des biens immobiliers</h1>
 <hr/>
 
-<form class="form-horizontal">
+      	<form>
+      	<i class="glyphicon glyphicon-search"></i>
+        <input type="text" ng-model="recherche">         
+        </form>
+
+<form class="form-horizontal" ng-hide="indice>
 	<div class="form-group">
 		<label for="ID" class="col-sm-2 control-label">ID Proprietaire</label>
 		<div class="col-sm-10">
@@ -17,7 +22,7 @@
 	</div>
 </form>
 
-<table class="table table-striped">
+<table class="table table-striped | filter: recherche | orderBy: 'id' ">
   <thead>
   	<tr>
   		<th style="text-align:center">Reference du bien</th>
