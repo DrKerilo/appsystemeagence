@@ -1,10 +1,10 @@
 <h1 style="text-align: center; color: red" ng-show="indice2">{{msg}}</h1>
 
-<h1 style="text-align: center; color: red">Rechercher des biens</h1>
+<h1 style="text-align: center; color: red" ng-hide="indice">Rechercher des biens</h1>
 
 <br />
 
-<form class="form-horizontal">
+<form class="form-horizontal" ng-hide="indice">
 	<div class="form-group">
 		<label for="ID" class="col-sm-2 control-label">ID</label>
 		<div class="col-sm-10">
@@ -40,7 +40,7 @@
 
 	<tbody>
 		<tr ng-model="biOut">
-			<td><img ng-src="data:image/JPEG;base64,{{biOut.photo}}" width="200" /></td>
+			<td><img ng-src="data:image/JPEG;base64,{{biOut.photo}}" width="250" /></td>
 			<td>{{biOut.id}}</td>
 			<td>{{biOut.statut}}</td>
 			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</td>
