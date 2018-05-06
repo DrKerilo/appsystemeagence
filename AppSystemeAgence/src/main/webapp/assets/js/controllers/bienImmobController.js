@@ -30,19 +30,23 @@ app
 
 	}
 
+	$rootScope.biRech = {
+		id : undefined
+	};
+
 	$scope.rechLinkBi = function(id) {
 		console.log(id);
-		biService.getBi(id, function(callBack) {
-			$rootScope.bi = callBack;
-			$location.path('searchBI');
-
-		});
+		$rootScope.biRech.id = id;
+		$location.path('searchBI');
 	}
 
 })
 
 .controller("listeBICatCtrl",
 		function($rootScope, $scope, $location, biService) {
+
+			$scope.indice = false;
+
 			if ($rootScope.code == undefined) {
 				$scope.code = "";
 			} else {
@@ -83,11 +87,23 @@ app
 				$location.path('updateBI');
 
 			}
+			
+			$rootScope.biRech = {
+					id : undefined
+				};
+
+			$scope.rechLinkBi = function(id) {
+				console.log(id);
+				$rootScope.biRech.id = id;
+				$location.path('searchBI');
+			}
 
 		})
 
 .controller("listeBIPropCtrl",
 		function($rootScope, $scope, $location, biService) {
+
+			$scope.indice = false;
 
 			// Vérification si arrivé à partir de la liste des proprios
 			if ($rootScope.codeProp == undefined) {
@@ -130,13 +146,62 @@ app
 				$location.path('updateBI');
 
 			}
+			
+			$rootScope.biRech = {
+					id : undefined
+				};
+
+			$scope.rechLinkBi = function(id) {
+				console.log(id);
+				$rootScope.biRech.id = id;
+				$location.path('searchBI');
+			}
 
 		})
 
 .controller("rechBICtrl", function($rootScope, $scope, biService) {
-	$scope.id = undefined;
 	$scope.indice = false;
 	$scope.indice2 = false;
+
+	if ($rootScope.biRech == undefined) {
+		$scope.biOut = {
+			id : "",
+			statut : "",
+			dateSoumission : "",
+			adresse : {
+				rue : "",
+				numero : "",
+				codePostal : "",
+				localite : ""
+			},
+			dateDisposition : "",
+			revenuCadastral : "",
+			photo : null,
+			cautionLocative : "",
+			loyerMensuel : "",
+			montantMensuelCharges : "",
+			typeBail : "",
+			garniture : "",
+			prixAchat : "",
+			etat : "",
+			classeStandard : {
+				code : "",
+				type : "",
+				modeOffre : "",
+				prixMax : "",
+				superficieMin : ""
+			},
+			proprietaire : {
+				id : ""
+			}
+		};
+	} else {
+		$scope.indice = true;
+		$scope.biOut = $rootScope.biRech;
+		biService.getBi($scope.biOut.id, function(callBack) {
+			$scope.biOut = callBack;
+		})
+	}
 
 	$scope.rechercherBiParId = function() {
 		biService.getBi($scope.id, function(callBack) {
@@ -263,17 +328,17 @@ app
 					superficieMin : ""
 				},
 				proprietaire : {
-					id : ""//,
-//					nom : "",
-//					prenom : "",
-//					telPerso : "",
-//					adresse : {
-//						rue : "",
-//						numero : 0,
-//						codePostal : 0,
-//						localite : ""
-//					},
-//					telPro : ""
+					id : ""// ,
+				// nom : "",
+				// prenom : "",
+				// telPerso : "",
+				// adresse : {
+				// rue : "",
+				// numero : 0,
+				// codePostal : 0,
+				// localite : ""
+				// },
+				// telPro : ""
 				}
 			}
 
@@ -296,7 +361,6 @@ app
 			}
 		})
 
-		
 .controller(
 		"modifBICtrl",
 		function($scope, $location, biService, $rootScope, csService,

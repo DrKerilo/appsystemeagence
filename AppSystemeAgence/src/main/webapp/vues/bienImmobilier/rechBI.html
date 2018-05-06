@@ -40,12 +40,10 @@
 
 	<tbody>
 		<tr ng-model="biOut">
-			<td><img ng-src="data:image/JPEG;base64,{{bi.photo}}"
-				width="200" /></td>
+			<td><img ng-src="data:image/JPEG;base64,{{biOut.photo}}" width="200" /></td>
 			<td>{{biOut.id}}</td>
 			<td>{{biOut.statut}}</td>
-			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}}
-				{{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</td>
+			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</td>
 			<td>{{biOut.dateSoumission}}</td>
 			<td>{{biOut.dateDisposition}}</td>
 			<td>{{biOut.revenuCadastral}}</td>
@@ -53,8 +51,7 @@
 			<td>{{biOut.cautionLocative}}</td>
 			<td>{{biOut.montantMensuelCharges}}</td>
 			<td>{{biOut.typeBail}}</td>
-			<td>{{biOut.garniture}}</td>
-			<td></td>
+			<td>{{biOut.etat}}</td>
 		</tr>
 	</tbody>
 
