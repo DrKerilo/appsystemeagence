@@ -23,37 +23,85 @@
 <table class="table table-striped" ng-show="indice">
 	<thead>
 		<tr>
-			<th style="text-align: center">Photo</th>
-			<th style="text-align: center">Ref</th>
-			<th style="text-align: center">Statut</th>
-			<th style="text-align: center">Adresse</th>
-			<th style="text-align: center">Soumis le</th>
-			<th style="text-align: center">Disponible le</th>
-			<th style="text-align: center">Prix</th>
 
-			<th style="text-align: center">Caution</th>
-			<th style="text-align: center">Charge</th>
-			<th style="text-align: center">Type de bail</th>
-			<th style="text-align: center">Etat</th>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-body">Photo</h3>
+				</div>
+				<img ng-src="data:image/JPEG;base64,{{biOut.photo}}" width="350" />
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Reference</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.id}}</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Statut</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.statut}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Adresse</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">Soumis le</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.dateSoumission}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Disponible le</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.dateDisposition}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Prix</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.prixAchat}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Caution</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.cautionLocative}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Charge</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.montantMensuelCharges}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Type de bail</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.typeBail}}</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Etat</div>
+				<div class="panel-title">
+					<div class="panel-body">{{biOut.etat}}</div>
+				</div>
+			</div>
 		</tr>
 	</thead>
-
-	<tbody>
-		<tr ng-model="biOut">
-			<td><img ng-src="data:image/JPEG;base64,{{biOut.photo}}" width="250" /></td>
-			<td>{{biOut.id}}</td>
-			<td>{{biOut.statut}}</td>
-			<td>{{biOut.adresse.numero}} {{biOut.adresse.rue}} {{biOut.adresse.codePostal}} {{biOut.adresse.localite}}</td>
-			<td>{{biOut.dateSoumission}}</td>
-			<td>{{biOut.dateDisposition}}</td>
-			<td>{{biOut.revenuCadastral}}</td>
-
-			<td>{{biOut.cautionLocative}}</td>
-			<td>{{biOut.montantMensuelCharges}}</td>
-			<td>{{biOut.typeBail}}</td>
-			<td>{{biOut.etat}}</td>
-		</tr>
-	</tbody>
 
 
 
