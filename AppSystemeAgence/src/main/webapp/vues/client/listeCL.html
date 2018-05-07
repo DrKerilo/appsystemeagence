@@ -9,7 +9,6 @@
 <table class="table table-striped">
   <thead>
   	<tr>
-  		<th style="text-align:center">#</th>
   		<th style="text-align:center">Nom</th>
   		<th style="text-align:center">Prenom</th>
   		<th style="text-align:center">Num</th>
@@ -17,13 +16,11 @@
   		<th style="text-align:center">Code Postal</th>
   		<th style="text-align:center">Ville</th>
   		<th style="text-align:center">Tel. perso</th>
-  		<th style="text-align:center">Preferences</th>
   		<th style="text-align:center">Operations</th>
   	</tr>
   </thead>
   <tbody>
   	<tr	ng-repeat="cl in listeClients | filter: recherche | orderBy: 'nom' ">
-  		<td>{{cl.id}}</td>
   		<td>{{cl.nom}}</td>
   		<td>{{cl.prenom}}</td>
   		<td>{{cl.adresse.numero}}</td>
@@ -31,7 +28,6 @@
   		<td>{{cl.adresse.codePostal}}</td>
   		<td>{{cl.adresse.localite}}</td>
   		<td>{{cl.telPerso}}</td>
-  		<td><a ng-click="getListeByProprio(p.id)">Afficher</a></td>
   		<td>
   			<a ng-click="modifierLien(cl)">Modifier</a>
   			|

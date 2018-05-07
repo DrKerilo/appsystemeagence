@@ -19,9 +19,9 @@ app.config(function($routeProvider) {
 			controller:"supprCSCtrl",
 			templateUrl:"vues/classeStandard/supprCS.html"
 		})
-		.when("/searchCS", {
+		.when("/home", {		// Page choisie pour faire l'accueil
 			controller:"rechCSCtrl",
-			templateUrl:"vues/classeStandard/rechCS.html"
+			templateUrl:"vues/home.html"
 		});
 	
 	// ----- BienImmobilier
@@ -122,5 +122,11 @@ app.config(function($routeProvider) {
 	.when("/searchVI", {
 		controller:"rechVICtrl",
 		templateUrl:"vues/visite/rechVI.html"
+	});
+	
+	// ----- Page d'accueil
+	$routeProvider
+	.otherwise({
+		redirectTo: "/home"
 	});
 })
